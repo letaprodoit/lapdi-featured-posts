@@ -1,0 +1,220 @@
+/* Widget: TSP Featured Posts */
+#tspfp_article {
+	position: relative;
+	text-align: left;
+	width: 100%;
+}
+
+/* Image Formatting */
+#tspfp_article img,
+#tspfp_article object,
+#tspfp_article code {
+	float: left;
+	clear: left;
+	margin-right: 10px;
+}
+
+
+#tspfp_article.layout1 img,
+#tspfp_article.layout1 object,
+#tspfp_article.layout1 code {
+	margin-bottom: 10px;
+}
+
+
+#tspfp_article #left img,
+#tspfp_article #left object,
+#tspfp_article #left code {
+	max-width: 98%;
+	max-height: 98%
+}
+/* #Image Formatting */
+
+#tspfp_article #top,
+#tspfp_article #bottom,
+#tspfp_article #full {
+	position: relative;
+	width: 100%;
+	text-align: left;
+}
+
+#tspfp_article #left,
+#tspfp_article #right {
+	position: relative;
+	text-align: left;
+	float: left;
+}
+
+/* Make total less than 100% */
+#tspfp_article #left {
+    padding-right: 2px;
+}
+
+#tspfp_article #right {
+    float: right;
+    width: 55%;
+}
+
+#tspfp_article #clear {
+	clear: both;
+}
+
+/* Layout 1 */
+#tspfp_article.layout1 #left {
+	width: 90%;
+}
+
+#tspfp_article.layout1 #right {
+	width: 8%
+}
+/* #Layout 1 */
+
+/* Layout 2 */
+#tspfp_article .comments-link {
+	position: relative;
+	float: right;
+	text-align: right;
+	height: 30px;
+	padding-bottom: 5px;
+}
+
+
+#tspfp_article.layout2 .entry-other,
+#tspfp_article.layout4 .entry-other {
+	position: relative;
+	width: 100%;
+	text-align: right;
+	height: 25px;
+	padding-bottom: 10px;
+}
+#tspfp_article.layout2 #left {
+	width: 45%;
+}
+#tspfp_article.layout2 #right {
+	width: 54%;
+}
+/* #Layout 2 */
+
+/* Layout 4 */
+#tspfp_article.layout4 #left {
+	width: 25%;
+}
+#tspfp_article.layout4 #right {
+	width: 74%;
+}
+#postSliderWrapper article{
+	border-bottom: none;
+}
+#tspfp_article.layout4 .entry-header .comments-link{
+	margin-top: 0px;
+}
+/* #Layout 4 */
+
+
+#tspfp_article #top .entry-title, 
+#tspfp_article #top .entry-quote,
+#tspfp_article #left .entry-title, 
+#tspfp_article #left .entry-quote {
+	padding-bottom: 10px;
+}
+
+#tspfp_article .entry-title,
+#tspfp_article .entry-title a {
+	font-weight: bold;
+}
+
+#tspfp_article .entry-quote,
+#tspfp_article .entry-quote a {
+	font-style: italic;
+}
+
+#tspfp_article .entry-summary,
+#tspfp_article .entry-content {
+	line-height: 18px;
+}
+
+#tspfp_article .entry-summary,
+#tspfp_article .entry-summary p {
+	padding-bottom: 5px;
+	vertical-align: top;
+}
+
+#tspfp_article .entry-content {
+	padding-bottom: 30px;
+}
+
+#tspfp_article .entry-format {
+	position: relative;	
+	font-size: 10px;
+	font-weight: 500;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	margin: 5px 0px -10px 0px;
+	line-height: 2.6em;
+}
+
+/* Moving Boxes demo CSS */
+* {
+  /*margin: 0;
+  padding: 0;*/
+}
+
+body {
+  /*font: 11px Helvetica, Arial, sans-serif;*/
+}
+
+
+#postSliderWrapper {
+	width: 865px;
+	height: 300px;
+	overflow: hidden;
+}
+
+/* Moving Boxes title image wrapper */
+#postSlider #title {
+  /*text-align: center;*/
+}
+#postSlider #title img {
+  border: 0;
+}
+
+/* panel images */
+#postSlider .mb-inside img {
+  /*width: 100%;*/
+}
+
+
+#postSlider .current img {
+  /* height of the placeholder until image completely loads - needed for
+     webkit browsers, add this only if you don't want the height animation
+     on startup.
+
+     326px measures the height of the current image when enlarged 
+
+  height: 326px;
+
+  */
+}
+
+/* panel links */
+#postSlider .mb-inside a {
+  /*color: #333;
+  text-decoration: none;
+  border-bottom: 1px dotted #ccc;*/
+}
+
+#postSlider .mb-inside a:hover {
+  /*border-bottom: 1px solid #999;*/
+}
+
+/* Add/remove panels buttons */
+#postSlider .buttons {
+  /*padding: 5px 10px;
+  text-align: center;*/
+}
+
+/* direct link styling */
+#postSlider .dlinks {
+  /*text-align: center;
+  font-size: 20px;*/
+}

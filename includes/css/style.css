@@ -1,0 +1,63 @@
+.tsp_form_element label{
+	width: 300px;
+	float: left;
+	clear: left;
+}
+.tsp_form_element {
+	padding-bottom: 10px;
+}
+.tsp_container #tsp_icon-options-general.tsp_icon {
+	 background: url("../../images/tsp_icon.png") no-repeat scroll left top transparent;
+	 background-size: 35px 35px;
+	 margin-top: -10px;
+}
+.tsp_container fieldset{
+	padding-top: 20px;
+}
+/* Alert Styles */
+
+.tsp_container div.note, .tsp_container div.info {
+	text-align: left;
+	padding: 20px 10px 20px 70px;
+	border: 2px solid;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-khtml-border-radius: 4px;
+	margin: 15px 0px 15px 0px;
+	line-height: 150%;
+	font-size: 1em;
+	width: 750px;
+}
+.tsp_container div.note a, .tsp_container div.info a {
+	font-weight:bold;
+}
+.tsp_container div.note {
+	background:#FEF6D8 url(../../images/icons/24/folder.png) no-repeat 10px 50%;
+	border-color:#FDE179;
+	color:#B79000;
+	box-shadow: 1px 1px 0 #eff6ff inset, -1px -1px 0 #eff6ff inset;
+	-moz-box-shadow: 1px 1px 0 #eff6ff inset, -1px -1px 0 #eff6ff inset;
+	-webkit-box-shadow: 1px 1px 0 #eff6ff inset, -1px -1px 0 #eff6ff inset;
+	text-shadow: #fff 1px 1px 0;
+	-moz-text-shadow: #fff 1px 1px 0;
+	-webkit-text-shadow: #fff 1px 1px 0;
+}
+.tsp_container div.note a {
+	color:#B79000;
+}
+.tsp_container div.info {
+	background: #D8E5F8 url(../../images/icons/24/info.png) no-repeat 10px 50%;
+	border-color: #9ebbe1;
+	color: #0055BB;
+	text-shadow: #f4f8ff 1px 1px 0;
+	-moz-text-shadow: #f4f8ff 1px 1px 0;
+	-webkit-text-shadow: #f4f8ff 1px 1px 0;
+	box-shadow: 1px 1px 0 #eff6ff inset, -1px -1px 0 #eff6ff inset;
+	-moz-box-shadow: 1px 1px 0 #eff6ff inset, -1px -1px 0 #eff6ff inset;
+	-webkit-box-shadow: 1px 1px 0 #eff6ff inset, -1px -1px 0 #eff6ff inset;
+}
+.tsp_container div.info a {
+	color: #0055BB;
+}
+
