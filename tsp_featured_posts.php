@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: 	TSP Featured Posts
-Plugin URI: 	http://www.thesoftwarepeople.com/
+Plugin URI: 	http://www.thesoftwarepeople.com/software/plugins/wordpress/featured-posts-for-wordpress.html
 Description: 	Featured Posts allows you to add featured posts to your blog's website via widget or on pages and posts using shortcodes. Featured Posts has five (5) layouts and can include thumbnails and quotes.
 Author: 		The Software People
 Author URI: 	http://www.thesoftwarepeople.com/
@@ -514,25 +514,25 @@ class TSP_Featured_Posts_Widget extends WP_Widget
 <p>
    <label for="<?php
         echo $this->get_field_id('layout'); ?>"><?php
-        _e('Choose layout of the post preview:', 'tsp_featured_posts') ?></label>
+        _e('Choose the post layout:', 'tsp_featured_posts') ?></label>
    <select name="<?php
         echo $this->get_field_name('layout'); ?>" id="<?php
         echo $this->get_field_id('layout'); ?>" >
       <option class="level-0" value="0" <?php
         if ($instance['layout'] == "0") echo " selected='selected'" ?>><?php
-        _e('Left: Image - Right: Title, Text (Thumbnail)', 'tsp_featured_posts') ?></option>
+        _e('Image (left), Title, Text (right)', 'tsp_featured_posts') ?></option>
       <option class="level-0" value="1" <?php
         if ($instance['layout'] == "1") echo " selected='selected'" ?>><?php
-        _e('Top: Title - Left: Image - Right: Text (Featured-Medium)', 'tsp_featured_posts') ?></option>
+        _e('Title (top), Image (below,left), Text (right)', 'tsp_featured_posts') ?></option>
       <option class="level-0" value="2" <?php
         if ($instance['layout'] == "2") echo " selected='selected'" ?>><?php
-        _e('Left: Title, Image - Right: Text (Featured-Large)', 'tsp_featured_posts') ?></option>
+        _e('Title, Image (left) - Text (right)', 'tsp_featured_posts') ?></option>
       <option class="level-0" value="3" <?php
         if ($instance['layout'] == "3") echo " selected='selected'" ?>><?php
-        _e('Left: Image - Right: Text (Thumbnail/No title)', 'tsp_featured_posts') ?></option>
+        _e('Image (left) - Text (right)', 'tsp_featured_posts') ?></option>
       <option class="level-0" value="4" <?php
         if ($instance['layout'] == "4") echo " selected='selected'" ?>><?php
-        _e('Slider: Title, Image - Right: Text (Featured-Large)', 'tsp_featured_posts') ?></option>
+		_e('Slider', 'tsp_featured_posts') ?></option>
    </select>
 </p>
 
