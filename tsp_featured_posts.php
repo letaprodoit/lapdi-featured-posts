@@ -431,8 +431,8 @@ class TSP_Featured_Posts_Widget extends WP_Widget
         $instance['showtextposts'] = $new_instance['showtextposts'];
         $instance['category']      = $new_instance['category'];
         $instance['numberposts']   = $new_instance['numberposts'];
-        $instance['widthslider']   = $new_instance['widthslider'],
-        $instance['heightslider']  = $new_instance['heightslider'],
+        $instance['widthslider']   = $new_instance['widthslider'];
+        $instance['heightslider']  = $new_instance['heightslider'];
         $instance['layout']        = $new_instance['layout'];
         $instance['orderby']       = $new_instance['orderby'];
         $instance['widththumb']    = $new_instance['widththumb'];
