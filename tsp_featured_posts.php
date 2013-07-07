@@ -196,7 +196,7 @@ function fn_tsp_featured_posts_display ($args = null, $echo = true)
         
     $post_cnt = 0;
     $num_posts = sizeof($queried_posts);
-    
+
     foreach ($queried_posts as $post)
     {    
         setup_postdata($post);
@@ -692,4 +692,5 @@ function fn_tsp_featured_posts_add_box()
 
 add_action('admin_menu', 'fn_tsp_featured_posts_add_box');
 //--------------------------------------------------------
+?>-
 ?>

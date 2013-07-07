@@ -166,6 +166,7 @@ body {
 
 #postSliderWrapper {
 	overflow: hidden;
+	margin-left: -50px;
 }
 
 /* Moving Boxes title image wrapper */
