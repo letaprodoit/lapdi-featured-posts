@@ -692,5 +692,4 @@ function fn_tsp_featured_posts_add_box()
 
 add_action('admin_menu', 'fn_tsp_featured_posts_add_box');
 //--------------------------------------------------------
-?>-
 ?>
