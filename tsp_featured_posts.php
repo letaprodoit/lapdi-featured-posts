@@ -167,22 +167,22 @@ function fn_tsp_featured_posts_display ($args = null, $echo = true)
 		$fp = array_merge( $TSPFP_OPTIONS, $args );
     
     // User settings
-    $title        = $fp['title'];
-    $showquotes   = $fp['showquotes'];
-    $showtextposts= $fp['showtextposts'];
-    $numberposts  = $fp['numberposts'];
-    $category     = $fp['category'];
-    $layout       = $fp['layout'];
-    $orderby      = $fp['orderby'];
-    $widththumb   = $fp['widththumb'];
-    $heightthumb  = $fp['heightthumb'];
-    $before_title = $fp['beforetitle'];
-    $after_title  = $fp['aftertitle'];        
+    $title        	= $fp['title'];
+    $showquotes   	= $fp['showquotes'];
+    $showtextposts	= $fp['showtextposts'];
+    $numberposts  	= $fp['numberposts'];
+    $category     	= $fp['category'];
+    $layout       	= $fp['layout'];
+    $orderby      	= $fp['orderby'];
+    $widththumb   	= $fp['widththumb'];
+    $heightthumb  	= $fp['heightthumb'];
+    $beforetitle	= $fp['beforetitle'];
+    $aftertitle  	= $fp['aftertitle'];        
     
     
     // If there is a title insert before/after title tags
     if (!empty($title)) {
-        $return_HTML .= $before_title . $title . $after_title;
+        $return_HTML .= $beforetitle . $title . $aftertitle;
     }
     
     // Process Featured Posts
@@ -406,8 +406,8 @@ class TSP_Featured_Posts_Widget extends WP_Widget
             'orderby' 		=> $instance['orderby'],
             'widththumb' 	=> $instance['widththumb'],
             'heightthumb'	=> $instance['heightthumb'],
-            'beforetitle' 	=> $before_title,
-            'aftertitle' 	=> $after_title
+            'beforetitle' 	=> $beforetitle,
+            'aftertitle' 	=> $aftertitle
         );
                 
         // Display the widget
@@ -422,16 +422,19 @@ class TSP_Featured_Posts_Widget extends WP_Widget
     function update($new_instance, $old_instance)
     {
         $instance = $old_instance;
+        
         // Update the widget data
-        $instance['title']          = strip_tags($new_instance['title']);
-        $instance['showquotes']     = $new_instance['showquotes'];
-        $instance['showtextposts']  = $new_instance['showtextposts'];
-        $instance['layout']         = $new_instance['layout'];
-        $instance['category']       = $new_instance['category'];
-        $instance['numberposts']    = $new_instance['numberposts'];
-        $instance['orderby']        = $new_instance['orderby'];
+        $instance['title']         = strip_tags($new_instance['title']);
+        $instance['showquotes']    = $new_instance['showquotes'];
+        $instance['showtextposts'] = $new_instance['showtextposts'];
+        $instance['layout']        = $new_instance['layout'];
+        $instance['category']      = $new_instance['category'];
+        $instance['numberposts']   = $new_instance['numberposts'];
+        $instance['orderby']       = $new_instance['orderby'];
         $instance['widththumb']    = $new_instance['widththumb'];
         $instance['heightthumb']   = $new_instance['heightthumb'];
+        $instance['beforetitle']   = $new_instance['beforetitle'];
+        $instance['aftertitle']    = $new_instance['aftertitle'];
         return $instance;
     }
     
