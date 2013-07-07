@@ -404,8 +404,8 @@ class TSP_Featured_Posts_Widget extends WP_Widget
             'numberposts' 	=> $instance['numberposts'],
             'category' 		=> $instance['category'],
             'orderby' 		=> $instance['orderby'],
-            'widththumb' 	=> $instance['width-thumb'],
-            'heightthumb'	=> $instance['height-thumb'],
+            'widththumb' 	=> $instance['widththumb'],
+            'heightthumb'	=> $instance['heightthumb'],
             'beforetitle' 	=> $before_title,
             'aftertitle' 	=> $after_title
         );
@@ -430,8 +430,8 @@ class TSP_Featured_Posts_Widget extends WP_Widget
         $instance['category']       = $new_instance['category'];
         $instance['numberposts']    = $new_instance['numberposts'];
         $instance['orderby']        = $new_instance['orderby'];
-        $instance['width-thumb']    = $new_instance['width-thumb'];
-        $instance['height-thumb']   = $new_instance['height-thumb'];
+        $instance['widththumb']    = $new_instance['widththumb'];
+        $instance['heightthumb']   = $new_instance['heightthumb'];
         return $instance;
     }
     
@@ -567,24 +567,46 @@ class TSP_Featured_Posts_Widget extends WP_Widget
 
 <!-- Choose the thumbnail width -->
 <p>
-   <input id="<?php
-        echo $this->get_field_id('width-thumb'); ?>" name="<?php
-        echo $this->get_field_name('width-thumb'); ?>" value="<?php
-        echo $instance['width-thumb']; ?>" style="width:20%;" />
    <label for="<?php
-        echo $this->get_field_id('width-thumb'); ?>"><?php
-        _e('Width Thumbnail', 'tsp_featured_posts') ?></label>
+        echo $this->get_field_id('widththumb'); ?>"><?php
+        _e('Thumbnail Width', 'tsp_featured_posts') ?></label>
+   <input id="<?php
+        echo $this->get_field_id('widththumb'); ?>" name="<?php
+        echo $this->get_field_name('widththumb'); ?>" value="<?php
+        echo $instance['widththumb']; ?>" style="width:20%;" />
 </p>
 
 <!-- Choose the thumbnail height -->
 <p>
-   <input id="<?php
-        echo $this->get_field_id('height-thumb'); ?>" name="<?php
-        echo $this->get_field_name('height-thumb'); ?>" value="<?php
-        echo $instance['height-thumb']; ?>" style="width:20%;" />
    <label for="<?php
-        echo $this->get_field_id('height-thumb'); ?>"><?php
-        _e('Height Thumbnail', 'tsp_featured_posts') ?></label>
+        echo $this->get_field_id('heightthumb'); ?>"><?php
+        _e('Thumbnail Height', 'tsp_featured_posts') ?></label>
+   <input id="<?php
+        echo $this->get_field_id('heightthumb'); ?>" name="<?php
+        echo $this->get_field_name('heightthumb'); ?>" value="<?php
+        echo $instance['heightthumb']; ?>" style="width:20%;" />
+</p>
+
+<!-- Before title -->
+<p>
+   <label for="<?php
+        echo $this->get_field_id('beforetitle'); ?>"><?php
+        _e('HTML Before Title', 'tsp_featured_posts') ?></label>
+   <input id="<?php
+        echo $this->get_field_id('beforetitle'); ?>" name="<?php
+        echo $this->get_field_name('beforetitle'); ?>" value="<?php
+        echo $instance['beforetitle']; ?>" style="width:20%;" />
+</p>
+
+<!-- After title -->
+<p>
+   <label for="<?php
+        echo $this->get_field_id('aftertitle'); ?>"><?php
+        _e('HTML After Title', 'tsp_featured_posts') ?></label>
+   <input id="<?php
+        echo $this->get_field_id('aftertitle'); ?>" name="<?php
+        echo $this->get_field_name('aftertitle'); ?>" value="<?php
+        echo $instance['aftertitle']; ?>" style="width:20%;" />
 </p>
    <?php
     }
