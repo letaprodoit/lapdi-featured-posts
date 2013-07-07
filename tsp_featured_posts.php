@@ -172,6 +172,8 @@ function fn_tsp_featured_posts_display ($args = null, $echo = true)
     $showtextposts	= $fp['showtextposts'];
     $numberposts  	= $fp['numberposts'];
     $category     	= $fp['category'];
+    $widthslider   	= $fp['widthslider'];
+    $heightslider       = $fp['heightslider'];
     $layout       	= $fp['layout'];
     $orderby      	= $fp['orderby'];
     $widththumb   	= $fp['widththumb'];
@@ -192,16 +194,8 @@ function fn_tsp_featured_posts_display ($args = null, $echo = true)
     
     $queried_posts = get_posts($args);
         
-	// gallery before & after code
-	if ($layout == 4 && count($queried_posts) > 0)
-	{
-		$return_HTML .= '
-			<!-- Layout #4 -->
-			<div id="postSliderWrapper">
-				<div id="postSlider">
-			';
-	}
-	
+    $post_cnt = 0;
+    $num_posts = sizeof($queried_posts);
     
     foreach ($queried_posts as $post)
     {    
@@ -311,6 +305,14 @@ function fn_tsp_featured_posts_display ($args = null, $echo = true)
 		    	$smarty->assign("$key", $val, true);
 		    }
 
+	        $post_cnt++;
+	
+			if ($post_cnt == 1)
+				$smarty->assign("first_post", true, true);
+			else
+				$smarty->assign("first_post", null, true);
+	
+
 			$smarty->assign("ID", get_the_ID(), true);
 			$smarty->assign("post_class", get_post_class(), true);
 			$smarty->assign("comments_open", comments_open(), true);
@@ -332,16 +334,14 @@ function fn_tsp_featured_posts_display ($args = null, $echo = true)
 			$smarty->assign("full_preview", $full_preview, true);
 			$smarty->assign("content_bottom", $content_bottom, true);
             
+			if ($post_cnt == $num_posts)
+				$smarty->assign("last_post", true, true);
+			else
+				$smarty->assign("last_post", null, true);
+
             $return_HTML .= $smarty->fetch('layout'.$layout.'.tpl');
         }
     } //endforeach;
-    
-	if ($layout == 4 && count($queried_posts) > 0)
-    {
-    	$return_HTML .= '
-    		</div>
-    	</div> <!-- end wrapper -->';
-    }
     
     if ($echo)
     	echo $return_HTML;
@@ -399,10 +399,12 @@ class TSP_Featured_Posts_Widget extends WP_Widget
         $arguments = array(
             'title' 		=> $instance['title'],
             'showquotes' 	=> $instance['showquotes'],
-            'showtextposts' => $instance['showtextposts'],
-            'layout' 		=> $instance['layout'],
+            'showtextposts'     => $instance['showtextposts'],
             'numberposts' 	=> $instance['numberposts'],
             'category' 		=> $instance['category'],
+            'widthslider' 	=> $instance['widthslider'],
+            'heightslider' 	=> $instance['heightslider'],
+            'layout' 		=> $instance['layout'],
             'orderby' 		=> $instance['orderby'],
             'widththumb' 	=> $instance['widththumb'],
             'heightthumb'	=> $instance['heightthumb'],
@@ -427,9 +429,11 @@ class TSP_Featured_Posts_Widget extends WP_Widget
         $instance['title']         = strip_tags($new_instance['title']);
         $instance['showquotes']    = $new_instance['showquotes'];
         $instance['showtextposts'] = $new_instance['showtextposts'];
-        $instance['layout']        = $new_instance['layout'];
         $instance['category']      = $new_instance['category'];
         $instance['numberposts']   = $new_instance['numberposts'];
+        $instance['widthslider']   = $new_instance['widthslider'],
+        $instance['heightslider']  = $new_instance['heightslider'],
+        $instance['layout']        = $new_instance['layout'];
         $instance['orderby']       = $new_instance['orderby'];
         $instance['widththumb']    = $new_instance['widththumb'];
         $instance['heightthumb']   = $new_instance['heightthumb'];
@@ -511,6 +515,28 @@ class TSP_Featured_Posts_Widget extends WP_Widget
         echo $this->get_field_id('category'); ?>" name="<?php
         echo $this->get_field_name('category'); ?>" value="<?php
         echo $instance['category']; ?>" style="width:20%;" />
+</p>
+
+<!-- Choose the slider width -->
+<p>
+   <label for="<?php
+        echo $this->get_field_id('widthslider'); ?>"><?php
+        _e('Slider Width (Sliding Gallery Only)', 'tsp_featured_posts') ?></label>
+   <input id="<?php
+        echo $this->get_field_id('widthslider'); ?>" name="<?php
+        echo $this->get_field_name('widthslider'); ?>" value="<?php
+        echo $instance['widthslider']; ?>" style="width:20%;" />
+</p>
+
+<!-- Choose the slider height -->
+<p>
+   <label for="<?php
+        echo $this->get_field_id('heightslider'); ?>"><?php
+        _e('Slider Height (Sliding Gallery Only)', 'tsp_featured_posts') ?></label>
+   <input id="<?php
+        echo $this->get_field_id('heightslider'); ?>" name="<?php
+        echo $this->get_field_name('heightslider'); ?>" value="<?php
+        echo $instance['heightslider']; ?>" style="width:20%;" />
 </p>
 
 <!-- Choose the post's layout -->

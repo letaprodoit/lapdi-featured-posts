@@ -7,6 +7,8 @@ $TSPFP_DEFAULTS = array(
 			    'showtextposts'	=> 'N',
 			    'numberposts'   => 5,
 			    'category'      => 0,
+			    'widthslider'   => 865,
+			    'heightslider'  => 350,
 			    'layout'        => 0,
 			    'orderby'       => 'DESC',
 			    'widththumb'    => 80,
@@ -21,6 +23,8 @@ $TSPFP_ADMIN_FIELDS = array (
 		array( 'showtextposts', 'SELECT', __( 'Show Posts With No Media Content?', 'tsp_featured_posts' ), __( 'Show Posts With No Media Content?', 'tsp_featured_posts' ) ),
 		array( 'numberposts','TEXT',  __( 'How many posts do you want to display?', 'tsp_featured_posts' ), __( 'How many posts do you want to display?', 'tsp_featured_posts' ) ),
 		array( 'category','TEXT',  __( 'Enter the category ID to query from.<br>Enter 0 to query all categories.', 'tsp_featured_posts' ), __( 'Enter the category ID to query from. Enter 0 to query all categories.', 'tsp_featured_posts' ) ),
+		array( 'widthslider','TEXT',  __( 'Slider Width (Sliding Gallery Only)', 'tsp_featured_posts' ), __( 'Slider Width (Sliding Gallery Only)', 'tsp_featured_posts' ) ),
+		array( 'heightslider','TEXT',  __( 'Slider Height (Sliding Gallery Only)', 'tsp_featured_posts' ), __( 'Slider Height (Sliding Gallery Only)', 'tsp_featured_posts' ) ),
 		array( 'layout','SELECT',  __( 'Choose the post layout:', 'tsp_featured_posts' ), __( 'Choose the post layout:', 'tsp_featured_posts') ),
 		array( 'orderby','SELECT',  __( 'Choose type of order:', 'tsp_featured_posts' ), __( 'Choose type of order:', 'tsp_featured_posts' ) ),		
 		array( 'widththumb','TEXT',  __( 'Thumbnail Width', 'tsp_featured_posts' ), __( 'Thumbnail Width', 'tsp_featured_posts' ) ),
@@ -279,6 +283,8 @@ function fn_tsp_featured_posts_settings_page() {
 								<li>Show Posts with No Media Content: <strong>showtextposts="N"</strong>(Options: Y, N)</li>
 								<li>Number Posts: <strong>numberposts="5"</strong></li>
 								<li>Category: <strong>category="0"</strong>(Any category ID, 0 returns all categories)</li>
+								<li>Slider Width: <strong>widthslider="865"</strong></li>
+								<li>Slider Height: <strong>heightslider="365"</strong></li>
 								<li>Layout: <strong>layout="0"</strong>(Options: 0, 1, 2, 3, 4)
 									<ul style="padding-left: 30px;">
 										<li>0: Left: Image - Right: Title, Text (Thumbnail)</li>
@@ -299,7 +305,7 @@ function fn_tsp_featured_posts_settings_page() {
 					</ul>
 					<hr>
 					A shortcode with all the options will look like the following:<br><br>
-					<strong>[tsp_featured_posts title="Title of Posts" showquotes="N" showtextposts="N" numberposts="5" category="0" layout="0" orderby="DESC" widththumb="80" heightthumb="80" beforetitle="" aftertitle=""]</strong>
+					<strong>[tsp_featured_posts title="Title of Posts" showquotes="N" showtextposts="N" numberposts="5" category="0" widthslider="865" heightslider="365 layout="0" orderby="DESC" widththumb="80" heightthumb="80" beforetitle="" aftertitle=""]</strong>
 				</div>
 			</div>
 			<script>

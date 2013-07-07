@@ -2,13 +2,13 @@
  * MovingBoxes script
  */
 
+// After Page Loads
 jQuery(window).load(function() {
 
 	jQuery("div#postSlider").movingBoxes({
 		autoScroll	 : true,
 		scrollSpeed	 : 7000,
 		startPanel   : 1,      // start with this panel
-		width        : 865,    // overall width of movingBoxes (not including navigation arrows)
 		panelWidth   : .96,    // current panel width adjusted to 70% of overall width
 		reducedSize  : 1,    // non-current panel size: 80% of panel size
 		speed        : 1000,   // animation time in milliseconds
@@ -21,6 +21,6 @@ jQuery(window).load(function() {
 		//navFormatter : function(index, panel){ return panel.find('div.entry-title a').text(); }  // function which gets nav text from span inside the panel header
 	});
 	
-	// if everything loaded properly then increase the size of the #postSliderWrapper
-	jQuery("div#postSliderWrapper").css('height','350px');
+	// Show the #postSliderWrapper after the page loads
+	jQuery("div#postSlider").css('visibility','');
 });
