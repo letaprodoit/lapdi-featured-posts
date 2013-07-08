@@ -42,4 +42,3 @@ Make sure the folder `/wp-content/plugins/tsp_featured_posts/templates/` has rec
 
 
 == Upgrade notice ==
-s
