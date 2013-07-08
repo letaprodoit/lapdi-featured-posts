@@ -117,16 +117,21 @@ function fn_tsp_featured_posts_adjust_video($video, $width, $height)
 //--------------------------------------------------------
 function fn_tsp_featured_posts_enqueue_styles()
 {
-    wp_enqueue_style('movingboxes.css', TSPFP_URL_PATH . 'css/movingboxes.css');
+    wp_enqueue_style('movingboxes.css', plugins_url('css/movingboxes.css', __FILE__ ));
         
     if (is_lt_IE9())
-    	wp_enqueue_style('movingboxes-ie.css', TSPFP_URL_PATH . 'css/movingboxes-ie.css');
+    {
+    	wp_enqueue_style('movingboxes-ie.css', plugins_url('css/movingboxes-ie.css', __FILE__ ));
+    }//endif
     	
     if (is_IE())
-    	wp_enqueue_style('tsp_featured_posts.ie.css', TSPFP_URL_PATH . 'tsp_featured_posts.ie.css');
+    {
+    	wp_enqueue_style('tsp_featured_posts.ie.css', plugins_url('tsp_featured_posts.ie.css', __FILE__ ));
+    }//endif
     else
-    	wp_enqueue_style('tsp_featured_posts.css', TSPFP_URL_PATH . 'tsp_featured_posts.css');
-
+    {
+    	wp_enqueue_style('tsp_featured_posts.css', plugins_url('tsp_featured_posts.css', __FILE__ ));
+	}//endelse
 }
 
 add_action('wp_print_styles', 'fn_tsp_featured_posts_enqueue_styles');
@@ -136,13 +141,19 @@ add_action('wp_print_styles', 'fn_tsp_featured_posts_enqueue_styles');
 //--------------------------------------------------------
 function fn_tsp_featured_posts_enqueue_scripts()
 {
-    wp_enqueue_script( 'jquery' );
+    wp_enqueue_script( 'jquery' ); // Queue in wordpress jquery
     
-    wp_register_script('jquery.movingboxes.js', TSPFP_URL_PATH . 'js/jquery.movingboxes.js', array('jquery'));
-    wp_enqueue_script('jquery.movingboxes.js');
+    // Moving boxes is NOT apart of WordPress library so add
+    wp_register_script('tspfp-jquery.movingboxes.js', plugins_url('js/jquery.movingboxes.js', __FILE__ ), array('jquery'));
+    wp_enqueue_script('tspfp-jquery.movingboxes.js');
     
-    wp_enqueue_script('tsp_featured_posts-slider-scripts.js', TSPFP_URL_PATH . 'js/tsp_featured_posts-slider-scripts.js', array('jquery','jquery.movingboxes.js'));
-    wp_enqueue_script('tsp_featured_posts-scripts.js', TSPFP_URL_PATH . 'js/tsp_featured_posts-scripts.js', array('jquery'));
+	// Slider initiation for moving boxes
+    wp_register_script('tspfp-slider-scripts.js', plugins_url('js/slider-scripts.js', __FILE__ ), array('jquery','tspfp-jquery.movingboxes.js'));
+    wp_enqueue_script('tspfp-slider-scripts.js');
+    
+    // Custom jquery functions for plugin
+    wp_register_script('tspfp-scripts.js', plugins_url('js/scripts.js', __FILE__ ), array('jquery'));
+    wp_enqueue_script('tspfp-scripts.js');
 }
 
 add_action('wp_enqueue_scripts', 'fn_tsp_featured_posts_enqueue_scripts');
@@ -173,13 +184,13 @@ function fn_tsp_featured_posts_display ($args = null, $echo = true)
     $numberposts  	= $fp['numberposts'];
     $category     	= $fp['category'];
     $widthslider   	= $fp['widthslider'];
-    $heightslider       = $fp['heightslider'];
+    $heightslider   = $fp['heightslider'];
     $layout       	= $fp['layout'];
     $orderby      	= $fp['orderby'];
     $widththumb   	= $fp['widththumb'];
     $heightthumb  	= $fp['heightthumb'];
-    $beforetitle	= $fp['beforetitle'];
-    $aftertitle  	= $fp['aftertitle'];        
+    $beforetitle 	= html_entity_decode($fp['beforetitle']);
+    $aftertitle  	= html_entity_decode($fp['aftertitle']);
     
     
     // If there is a title insert before/after title tags
@@ -399,7 +410,7 @@ class TSP_Featured_Posts_Widget extends WP_Widget
         $arguments = array(
             'title' 		=> $instance['title'],
             'showquotes' 	=> $instance['showquotes'],
-            'showtextposts'     => $instance['showtextposts'],
+            'showtextposts' => $instance['showtextposts'],
             'numberposts' 	=> $instance['numberposts'],
             'category' 		=> $instance['category'],
             'widthslider' 	=> $instance['widthslider'],
@@ -408,8 +419,8 @@ class TSP_Featured_Posts_Widget extends WP_Widget
             'orderby' 		=> $instance['orderby'],
             'widththumb' 	=> $instance['widththumb'],
             'heightthumb'	=> $instance['heightthumb'],
-            'beforetitle' 	=> $beforetitle,
-            'aftertitle' 	=> $aftertitle
+            'beforetitle' 	=> $instance['beforetitle'],
+            'aftertitle' 	=> $instance['aftertitle']
         );
                 
         // Display the widget
@@ -437,8 +448,9 @@ class TSP_Featured_Posts_Widget extends WP_Widget
         $instance['orderby']       = $new_instance['orderby'];
         $instance['widththumb']    = $new_instance['widththumb'];
         $instance['heightthumb']   = $new_instance['heightthumb'];
-        $instance['beforetitle']   = $new_instance['beforetitle'];
-        $instance['aftertitle']    = $new_instance['aftertitle'];
+        $instance['beforetitle']   = htmlentities($new_instance['beforetitle']);
+        $instance['aftertitle']    = htmlentities($new_instance['aftertitle']);
+        
         return $instance;
     }
     

@@ -19,8 +19,8 @@ For up-to-date installation and setup notes, visit the FAQ:
 - Add some widgets to the sidemenu bar, Add shortcodes to pages and posts (see Instructions)
 - View your site
 - Adjust your CSS for your theme by visiting 'Appearance > Edit CSS'
-- Adjust the Sliding Gallery settings by visiting 'Plugins > Editor', Select 'TSP Featured Posts' and edit the 'tsp_featured_posts.css' and 'js/tsp_featured_posts-slider-scripts.js' files
-- Manipulating the CSS for '#postSlider' and '#tspfp_article' entries change the gallery
+- Adjust the Sliding Gallery settings by visiting 'Plugins > Editor', Select 'TSP Featured Posts' and edit the 'tsp_featured_posts.css' and 'js/slider-scripts.js' files
+- Manipulating the CSS for '#postSlider' and '#tspfp_article' entries changes the gallery and article styles respectfully
 
 *REPORTING ISSUES*
 

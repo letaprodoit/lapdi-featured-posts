@@ -2,19 +2,19 @@
 
 // Default settings at install
 $TSPFP_DEFAULTS = array(
-			    'title'         => 'TSP Featured Posts',
-			    'showquotes'	=> 'N',
-			    'showtextposts'	=> 'N',
-			    'numberposts'   => 5,
-			    'category'      => 0,
-			    'widthslider'   => 865,
-			    'heightslider'  => 350,
-			    'layout'        => 0,
-			    'orderby'       => 'DESC',
-			    'widththumb'    => 80,
-			    'heightthumb'   => 80,
-			    'beforetitle'   => '<h3>',
-			    'aftertitle'    =>  '</h3>');
+	    'title'         => 'TSP Featured Posts',
+	    'showquotes'	=> 'N',
+	    'showtextposts'	=> 'N',
+	    'numberposts'   => 5,
+	    'category'      => 0,
+	    'widthslider'   => 865,
+	    'heightslider'  => 350,
+	    'layout'        => 0,
+	    'orderby'       => 'DESC',
+	    'widththumb'    => 80,
+	    'heightthumb'   => 80,
+        'beforetitle'   => '<h3 class="widget-title">',
+	    'aftertitle'    =>  '</h3>');
 
 // These fields for the settings block which is located at the admin setting TSP Featured Posts page
 $TSPFP_ADMIN_FIELDS = array (
@@ -362,11 +362,11 @@ function fn_tsp_featured_posts_delete_options() {
 
 function fn_tsp_featured_posts_admin_head() 
 {
-	wp_register_script( 'tsp_plugin_skel.min.js', plugins_url( 'js/skel.min.js', __FILE__ ) );
-	wp_enqueue_script( 'tsp_plugin_skel.min.js' );
+	wp_register_script( 'tspp-skel.min.js', plugins_url( 'js/skel.min.js', __FILE__ ) );
+	wp_enqueue_script( 'tspp-skel.min.js' );
 
-	wp_register_style( 'tspfp_admin_stylesheet', plugins_url( 'css/style.css', __FILE__ ) );
-	wp_enqueue_style( 'tspfp_admin_stylesheet' );
+	wp_register_style( 'tspfp_admin-style.css', plugins_url( 'css/style.css', __FILE__ ) );
+	wp_enqueue_style( 'tspfp_admin-style.css' );
 }
 
 
