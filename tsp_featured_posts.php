@@ -182,6 +182,7 @@ function fn_tsp_featured_posts_display ($args = null, $echo = true)
     $showquotes   	= $fp['showquotes'];
     $showtextposts	= $fp['showtextposts'];
     $numberposts  	= $fp['numberposts'];
+    $postids	  	= $fp['postids'];
     $category     	= $fp['category'];
     $widthslider   	= $fp['widthslider'];
     $heightslider   = $fp['heightslider'];
@@ -201,7 +202,7 @@ function fn_tsp_featured_posts_display ($args = null, $echo = true)
     // Process Featured Posts
     global $post;
     
-    $args                  = 'category=' . $category . '&numberposts=' . $numberposts . '&orderby=' . $orderby;
+    $args                  = 'category=' . $category . '&numberposts=' . $numberposts . '&orderby=' . $orderby . '&include=' . $postids;
     
     $queried_posts = get_posts($args);
         
@@ -300,6 +301,7 @@ function fn_tsp_featured_posts_display ($args = null, $echo = true)
         if ($showtextposts == 'Y' || ($showtextposts == 'N' && $media_found == true)) {
         
         	$title = get_the_title();
+        	$ID = get_the_ID();
         	
         	$max_words = 7;
         	$words          = explode(' ', $title, $max_words + 1);
@@ -412,6 +414,7 @@ class TSP_Featured_Posts_Widget extends WP_Widget
             'showquotes' 	=> $instance['showquotes'],
             'showtextposts' => $instance['showtextposts'],
             'numberposts' 	=> $instance['numberposts'],
+            'postids'	 	=> $instance['postids'],
             'category' 		=> $instance['category'],
             'widthslider' 	=> $instance['widthslider'],
             'heightslider' 	=> $instance['heightslider'],
@@ -442,6 +445,7 @@ class TSP_Featured_Posts_Widget extends WP_Widget
         $instance['showtextposts'] = $new_instance['showtextposts'];
         $instance['category']      = $new_instance['category'];
         $instance['numberposts']   = $new_instance['numberposts'];
+        $instance['postids']   	   = $new_instance['postids'];
         $instance['widthslider']   = $new_instance['widthslider'];
         $instance['heightslider']  = $new_instance['heightslider'];
         $instance['layout']        = $new_instance['layout'];
@@ -516,6 +520,17 @@ class TSP_Featured_Posts_Widget extends WP_Widget
         echo $this->get_field_id('numberposts'); ?>" name="<?php
         echo $this->get_field_name('numberposts'); ?>" value="<?php
         echo $instance['numberposts']; ?>" style="width:100%;" />
+</p>
+
+<!-- Display the post IDs -->
+<p>
+   <label for="<?php
+        echo $this->get_field_id('postids'); ?>"><?php
+        _e('Post IDs to display (seperate by comma)', 'tsp_featured_posts') ?></label>
+   <input id="<?php
+        echo $this->get_field_id('postids'); ?>" name="<?php
+        echo $this->get_field_name('postids'); ?>" value="<?php
+        echo $instance['postids']; ?>" style="width:100%;" />
 </p>
 
 <!-- Choose the post's category -->
