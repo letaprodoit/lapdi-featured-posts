@@ -326,16 +326,17 @@ function fn_tsp_featured_posts_display ($args = null, $echo = true)
 				$smarty->assign("first_post", null, true);
 	
 
-			$smarty->assign("ID", get_the_ID(), true);
+			$smarty->assign("ID", $ID, true);
 			$smarty->assign("post_class", get_post_class(), true);
 			$smarty->assign("comments_open", comments_open(), true);
 			$smarty->assign("post_password_required", post_password_required(), true);
 			$smarty->assign("long_title", get_the_title(), true);
 			$smarty->assign("wp_link_pages", wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'tsp_featured_posts' ), 'after' => '</div>', 'echo' => 0 ) ), true);
-			$smarty->assign("edit_post_link", get_edit_post_link( __( 'Edit', 'tsp_featured_posts' ), '<div class="edit-link">', '</div>', get_the_ID() ), true);
+			$smarty->assign("edit_post_link", get_edit_post_link( __( 'Edit', 'tsp_featured_posts' ), '<div class="edit-link">', '</div>', $ID ), true);
 			$smarty->assign("author_first_name", get_the_author_meta('first_name'), true);
 			$smarty->assign("author_last_name", get_the_author_meta('last_name'), true);
-			$smarty->assign("sticky", is_sticky(get_the_ID()), true);
+			$smarty->assign("sticky", is_sticky($ID), true);
+			$smarty->assign("permalink", get_permalink( $ID ), true);
 			
 			$smarty->assign("featured", __( 'Featured', 'tsp_featured_posts' ), true);
 			$smarty->assign("title", $title, true);
