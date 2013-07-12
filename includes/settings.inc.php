@@ -14,25 +14,25 @@ $TSPFP_DEFAULTS = array(
 	    'orderby'       => 'DESC',
 	    'widththumb'    => 80,
 	    'heightthumb'   => 80,
-        'beforetitle'   => '<h3 class="widget-title">',
+        'beforetitle'   => '<h3>',
 	    'aftertitle'    =>  '</h3>');
 
 // These fields for the settings block which is located at the admin setting TSP Featured Posts page
 $TSPFP_ADMIN_FIELDS = array (
-		array( 'title', 'TEXT', __( 'Title', 'tsp_featured_posts' ), __( 'Title', 'tsp_featured_posts' ) ),
-		array( 'showquotes', 'SELECT', __( 'Show Intro Quotes?', 'tsp_featured_posts' ), __( 'Show Intro Quotes?', 'tsp_featured_posts' ) ),
-		array( 'showtextposts', 'SELECT', __( 'Show Posts With No Media Content?', 'tsp_featured_posts' ), __( 'Show Posts With No Media Content?', 'tsp_featured_posts' ) ),
-		array( 'numberposts','TEXT',  __( 'How many posts do you want to display?', 'tsp_featured_posts' ), __( 'How many posts do you want to display?', 'tsp_featured_posts' ) ),
-		array( 'postids','TEXT',  __( 'Post IDs to display', 'tsp_featured_posts' ), __( 'Post IDs to display', 'tsp_featured_posts' ) ),
-		array( 'category','TEXT',  __( 'Enter the category ID to query from.<br>Enter 0 to query all categories.', 'tsp_featured_posts' ), __( 'Enter the category ID to query from. Enter 0 to query all categories.', 'tsp_featured_posts' ) ),
-		array( 'widthslider','TEXT',  __( 'Slider Width (Sliding Gallery Only)', 'tsp_featured_posts' ), __( 'Slider Width (Sliding Gallery Only)', 'tsp_featured_posts' ) ),
-		array( 'heightslider','TEXT',  __( 'Slider Height (Sliding Gallery Only)', 'tsp_featured_posts' ), __( 'Slider Height (Sliding Gallery Only)', 'tsp_featured_posts' ) ),
-		array( 'layout','SELECT',  __( 'Choose the post layout:', 'tsp_featured_posts' ), __( 'Choose the post layout:', 'tsp_featured_posts') ),
-		array( 'orderby','SELECT',  __( 'Choose type of order:', 'tsp_featured_posts' ), __( 'Choose type of order:', 'tsp_featured_posts' ) ),		
-		array( 'widththumb','TEXT',  __( 'Thumbnail Width', 'tsp_featured_posts' ), __( 'Thumbnail Width', 'tsp_featured_posts' ) ),
-		array( 'heightthumb','TEXT',  __( 'Thumbnail Height', 'tsp_featured_posts' ), __( 'Thumbnail Height', 'tsp_featured_posts' ) ),
-		array( 'beforetitle','TEXT',  __( 'HTML Before Title', 'tsp_featured_posts' ), __( 'HTML Before Title', 'tsp_featured_posts' ) ),
-		array( 'aftertitle','TEXT',  __( 'HTML After Title', 'tsp_featured_posts' ), __( 'HTML After Title', 'tsp_featured_posts') ),
+		array( 'title', 'TEXT', __( 'Title', 'tsp-featured-posts' ), __( 'Title', 'tsp-featured-posts' ) ),
+		array( 'showquotes', 'SELECT', __( 'Show Intro Quotes?', 'tsp-featured-posts' ), __( 'Show Intro Quotes?', 'tsp-featured-posts' ) ),
+		array( 'showtextposts', 'SELECT', __( 'Show Posts With No Media Content?', 'tsp-featured-posts' ), __( 'Show Posts With No Media Content?', 'tsp-featured-posts' ) ),
+		array( 'numberposts','TEXT',  __( 'How many posts do you want to display?', 'tsp-featured-posts' ), __( 'How many posts do you want to display?', 'tsp-featured-posts' ) ),
+		array( 'postids','TEXT',  __( 'Post IDs to display', 'tsp-featured-posts' ), __( 'Post IDs to display', 'tsp-featured-posts' ) ),
+		array( 'category','TEXT',  __( 'Enter the category ID to query from.<br>Enter 0 to query all categories.', 'tsp-featured-posts' ), __( 'Enter the category ID to query from. Enter 0 to query all categories.', 'tsp-featured-posts' ) ),
+		array( 'widthslider','TEXT',  __( 'Slider Width (Sliding Gallery Only)', 'tsp-featured-posts' ), __( 'Slider Width (Sliding Gallery Only)', 'tsp-featured-posts' ) ),
+		array( 'heightslider','TEXT',  __( 'Slider Height (Sliding Gallery Only)', 'tsp-featured-posts' ), __( 'Slider Height (Sliding Gallery Only)', 'tsp-featured-posts' ) ),
+		array( 'layout','SELECT',  __( 'Choose the post layout:', 'tsp-featured-posts' ), __( 'Choose the post layout:', 'tsp-featured-posts') ),
+		array( 'orderby','SELECT',  __( 'Choose type of order:', 'tsp-featured-posts' ), __( 'Choose type of order:', 'tsp-featured-posts' ) ),		
+		array( 'widththumb','TEXT',  __( 'Thumbnail Width', 'tsp-featured-posts' ), __( 'Thumbnail Width', 'tsp-featured-posts' ) ),
+		array( 'heightthumb','TEXT',  __( 'Thumbnail Height', 'tsp-featured-posts' ), __( 'Thumbnail Height', 'tsp-featured-posts' ) ),
+		array( 'beforetitle','TEXT',  __( 'HTML Before Title', 'tsp-featured-posts' ), __( 'HTML Before Title', 'tsp-featured-posts' ) ),
+		array( 'aftertitle','TEXT',  __( 'HTML After Title', 'tsp-featured-posts' ), __( 'HTML After Title', 'tsp-featured-posts') ),
 );
 
 
@@ -48,10 +48,10 @@ if (! function_exists('fn_tsp_plugins_add_menu_render') ){
 		$array_recomend = array();
 		$count_activate = $count_install = $count_recomend = 0;
 		$array_plugins	= array(
-			array( 'tsp_featured_categories\/tsp_featured_categories.php', 'Featured Categories', 'http://www.thesoftwarepeople.com/software/plugins/wordpress/featured-categories-for-wordpress.html', 'http://www.thesoftwarepeople.com/software/plugins/wordpress/featured-categories-for-wordpress.html', '/wp-admin/plugin-install.php?tab=search&type=term&s=TSP+Featured+Categories&plugin-search-input=Search+Plugins', 'admin.php?page=tsp_featured_categories.php' ), 
-			array( 'tsp_featured_posts\/tsp_featured_posts.php', 'Featured Posts', 'http://www.thesoftwarepeople.com/software/plugins/wordpress/featured-posts-for-wordpress.html', 'http://www.thesoftwarepeople.com/software/plugins/wordpress/featured-posts-for-wordpress.html', '/wp-admin/plugin-install.php?tab=search&type=term&s=TSP+Featured+Posts&plugin-search-input=Search+Plugins', 'admin.php?page=tsp_featured_posts.php' ), 
-			array( 'tsp_facepile\/tsp_facepile.php', 'Facepile', 'http://www.thesoftwarepeople.com/software/plugins/wordpress/facepile-for-wordpress.html', 'http://www.thesoftwarepeople.com/software/plugins/wordpress/facepile-for-wordpress.html', '/wp-admin/plugin-install.php?tab=search&type=term&s=TSP+Facepile&plugin-search-input=Search+Plugins', 'admin.php?page=tsp_facepile.php' ), 
-			array( 'tsp_disable_autosave\/tsp_disable_autosave.php', 'Disable Auto-Save', 'http://www.thesoftwarepeople.com/software/plugins/wordpress/disable-autosave-for-wordpress.html', 'http://www.thesoftwarepeople.com/software/plugins/wordpress/disable-autosave-for-wordpress.html', '/wp-admin/plugin-install.php?tab=search&type=term&s=TSP+Disable+Autosave&plugin-search-input=Search+Plugins', '#' ), 
+			array( 'tsp-featured-categories\/tsp-featured-categories.php', 'Featured Categories', 'http://www.thesoftwarepeople.com/software/plugins/wordpress/featured-categories-for-wordpress.html', 'http://www.thesoftwarepeople.com/software/plugins/wordpress/featured-categories-for-wordpress.html', '/wp-admin/plugin-install.php?tab=search&type=term&s=TSP+Featured+Categories&plugin-search-input=Search+Plugins', 'admin.php?page=tsp-featured-categories.php' ), 
+			array( 'tsp-featured-posts\/tsp-featured-posts.php', 'Featured Posts', 'http://www.thesoftwarepeople.com/software/plugins/wordpress/featured-posts-for-wordpress.html', 'http://www.thesoftwarepeople.com/software/plugins/wordpress/featured-posts-for-wordpress.html', '/wp-admin/plugin-install.php?tab=search&type=term&s=TSP+Featured+Posts&plugin-search-input=Search+Plugins', 'admin.php?page=tsp-featured-posts.php' ), 
+			array( 'tsp-facepile\/tsp-facepile.php', 'Facepile', 'http://www.thesoftwarepeople.com/software/plugins/wordpress/facepile-for-wordpress.html', 'http://www.thesoftwarepeople.com/software/plugins/wordpress/facepile-for-wordpress.html', '/wp-admin/plugin-install.php?tab=search&type=term&s=TSP+Facepile&plugin-search-input=Search+Plugins', 'admin.php?page=tsp-facepile.php' ), 
+			array( 'tsp-disable-auto-save\/tsp-disable-auto-save.php', 'Disable Auto-Save', 'http://www.thesoftwarepeople.com/software/plugins/wordpress/disable-autosave-for-wordpress.html', 'http://www.thesoftwarepeople.com/software/plugins/wordpress/disable-autosave-for-wordpress.html', '/wp-admin/plugin-install.php?tab=search&type=term&s=TSP+Disable+Auto+Save&plugin-search-input=Search+Plugins', '#' ), 
 		);
 		foreach ( $array_plugins as $plugins ) {
 			if( 0 < count( preg_grep( "/".$plugins[0]."/", $active_plugins ) ) ) {
@@ -159,7 +159,7 @@ if (! function_exists('fn_tsp_plugins_add_menu_render') ){
 }
 
 // Function for display captcha settings page in the admin area
-function fn_tsp_featured_posts_settings_page() {
+function fn_tspfp_settings_page() {
 	global $TSPFP_ADMIN_FIELDS;
 	global $TSPFP_OPTIONS;
 
@@ -177,162 +177,156 @@ function fn_tsp_featured_posts_settings_page() {
 		// array merge incase this version has added new options
 		$TSPFP_OPTIONS = array_merge( $TSPFP_OPTIONS , $tspfp_request_options );
 
-		update_option( 'tsp_featured_posts_options', $TSPFP_OPTIONS );
-		$message = __( "Options saved.", 'tsp_featured_posts' );
+		update_option( 'tspfp_options', $TSPFP_OPTIONS );
+		$message = __( "Options saved.", 'tsp-featured-posts' );
 	}
 
 	// Display form on the setting page
 ?>
 <div class="tsp_container">
 	<div class="icon32 tsp_icon" id="tsp_icon-options-general"></div>
-	<h2><?php _e('Featured Posts Shortcode Settings (The Software People)', 'tsp_featured_posts' ); ?></h2>
-	<div class="row">
-		<div class="4u">
-			<div class="updated fade" <?php if( ! isset( $_REQUEST['tspfp_form_submit'] ) || $error != "" ) echo "style=\"display:none\""; ?>><p><strong><?php echo $message; ?></strong></p></div>
-			<div class="error" <?php if( "" == $error ) echo "style=\"display:none\""; ?>><p><strong><?php echo $error; ?></strong></p></div>
-			<form method="post" action="admin.php?page=tsp_featured_posts.php">
-				<fieldset>
-				<?php foreach ($TSPFP_ADMIN_FIELDS as $fields): ?>
-					<div class="tsp_form_element" id="<?php echo $fields[0]; ?>_container_div" style="">
-						<label for="<?php echo $fields[0]; ?>"><?php echo __( $fields[2], 'tsp_featured_posts' ); ?></label>
-						
-						<?php if ($fields[1] == 'TEXT'): ?>
-						   <input id="<?php echo $fields[0]; ?>" name="<?php echo $fields[0]; ?>" value="<?php echo $TSPFP_OPTIONS[$fields[0]]; ?>" />
-						<?php elseif ($fields[1] == 'SELECT'): ?>
-							<?php if ($fields[0] == 'showquotes'): ?>
-							   <select name="<?php echo $fields[0]; ?>" id="<?php echo $fields[0]; ?>" >
-							      <option class="level-0" value="Y" <?php
-							        if ($TSPFP_OPTIONS[$fields[0]] == "Y") echo " selected='selected'" ?>><?php
-							        _e('Yes', 'tsp_featured_posts') ?></option>
-							      <option class="level-0" value="N" <?php
-							        if ($TSPFP_OPTIONS[$fields[0]] == "N") echo " selected='selected'" ?>><?php
-							        _e('No', 'tsp_featured_posts') ?></option>
-							   </select>
-							<?php elseif ($fields[0] == 'showtextposts'): ?>
-							   <select name="<?php echo $fields[0]; ?>" id="<?php echo $fields[0]; ?>" >
-							      <option class="level-0" value="Y" <?php
-							        if ($TSPFP_OPTIONS[$fields[0]] == "Y") echo " selected='selected'" ?>><?php
-							        _e('Yes', 'tsp_featured_posts') ?></option>
-							      <option class="level-0" value="N" <?php
-							        if ($TSPFP_OPTIONS[$fields[0]] == "N") echo " selected='selected'" ?>><?php
-							        _e('No', 'tsp_featured_posts') ?></option>
-							   </select>
-							<?php elseif ($fields[0] == 'layout'): ?>
-							   <select name="<?php echo $fields[0]; ?>" id="<?php echo $fields[0]; ?>" >
-							      <option class="level-0" value="0" <?php
-							        if ($TSPFP_OPTIONS[$fields[0]] == "0") echo " selected='selected'" ?>><?php
-							        _e('Image (left), Title, Text (right)', 'tsp_featured_posts') ?></option>
-							      <option class="level-0" value="1" <?php
-							        if ($TSPFP_OPTIONS[$fields[0]] == "1") echo " selected='selected'" ?>><?php
-							        _e('Title (top), Image (below,left), Text (right)', 'tsp_featured_posts') ?></option>
-							      <option class="level-0" value="2" <?php
-							        if ($TSPFP_OPTIONS[$fields[0]] == "2") echo " selected='selected'" ?>><?php
-							        _e('Title, Image (left) - Text (right)', 'tsp_featured_posts') ?></option>
-							      <option class="level-0" value="3" <?php
-							        if ($TSPFP_OPTIONS[$fields[0]] == "3") echo " selected='selected'" ?>><?php
-							        _e('Image (left) - Text (right)', 'tsp_featured_posts') ?></option>
-							      <option class="level-0" value="4" <?php
-							        if ($TSPFP_OPTIONS[$fields[0]] == "4") echo " selected='selected'" ?>><?php
-							        _e('Slider', 'tsp_featured_posts') ?></option>
-							   </select>
-							<?php elseif ($fields[0] == 'orderby'): ?>
-							   <select name="<?php echo $fields[0]; ?>" id="<?php echo $fields[0]; ?>" >
-							      <option class="level-0" value="rand" <?php
-							        if ($TSPFP_OPTIONS[$fields[0]] == "rand") echo " selected='selected'" ?>><?php
-							        _e('Random', 'tsp_featured_posts') ?></option>
-							      <option class="level-0" value="title" <?php
-							        if ($TSPFP_OPTIONS[$fields[0]] == "title") echo " selected='selected'" ?>><?php
-							        _e('Title', 'tsp_featured_posts') ?></option>
-							      <option class="level-0" value="date" <?php
-							        if ($TSPFP_OPTIONS[$fields[0]] == "date") echo " selected='selected'" ?>><?php
-							        _e('Date', 'tsp_featured_posts') ?></option>
-							      <option class="level-0" value="author" <?php
-							        if ($TSPFP_OPTIONS[$fields[0]] == "author") echo " selected='selected'" ?>><?php
-							        _e('Author', 'tsp_featured_posts') ?></option>
-							      <option class="level-0" value="modified" <?php
-							        if ($TSPFP_OPTIONS[$fields[0]] == "modified") echo " selected='selected'" ?>><?php
-							        _e('Modified', 'tsp_featured_posts') ?></option>
-							      <option class="level-0" value="ID" <?php
-							        if ($TSPFP_OPTIONS[$fields[0]] == "ID") echo " selected='selected'" ?>><?php
-							        _e('ID', 'tsp_featured_posts') ?></option>
-							   </select>
-							<?php endif; ?>
-							
-						<?php endif; ?>
-						
-						<div class="clear"></div>
-						<div id="error-message-name"></div>
-					</div>
-				<?php endforeach; ?>
-				</fieldset>
-				<input type="hidden" name="tspfp_form_submit" value="submit" />
-				<p class="submit">
-					<input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
-				</p>
-				<?php wp_nonce_field( plugin_basename(__FILE__), 'tspfp_nonce_name' ); ?>
-			</form>
-		</div><!-- 4u -->
-		<div class="8u">
-			<div class="mycomment">
-				<p><h3>Using Featured Posts Shortcode <a href="#" class="toggle">(hide/show details)</a>:</h3></p>
-				<div class="note-details">
-					<ul style="list-style-type:square;">
-						<li>Changing the default post options below allows you to place <strong>[tsp_featured_posts]</strong> shortcode tag into any post or page with these options.</li>
-						<li>However, if you wish to add different options to the <strong>[tsp_featured_posts]</strong> shortcode please use the following settings:
+	<h2><?php _e('Featured Posts Shortcode Settings (The Software People)', 'tsp-featured-posts' ); ?></h2>
+	<div class="mycomment">
+		<p><h3>Using Featured Posts Shortcode <a href="#" class="toggle">(hide/show details)</a>:</h3></p>
+		<div class="note-details">
+			<ul style="list-style-type:square;">
+				<li>Changing the default post options below allows you to place <strong>[tsp-featured-posts]</strong> shortcode tag into any post or page with these options.</li>
+				<li>However, if you wish to add different options to the <strong>[tsp-featured-posts]</strong> shortcode please use the following settings:
+					<ul style="padding-left: 30px;">
+						<li>Title: <strong>title="Title of Posts"</strong></li>
+						<li>Show Quotes: <strong>showquotes="Y"</strong>(Options: Y, N)</li>
+						<li>Show Posts with No Media Content: <strong>showtextposts="N"</strong>(Options: Y, N)</li>
+						<li>Number Posts: <strong>numberposts="5"</strong></li>
+						<li>Post IDs: <strong>postids="5,3,4"</strong></li>
+						<li>Category: <strong>category="0"</strong>(Any category ID, 0 returns all categories)</li>
+						<li>Slider Width: <strong>widthslider="865"</strong></li>
+						<li>Slider Height: <strong>heightslider="365"</strong></li>
+						<li>Layout: <strong>layout="0"</strong>(Options: 0, 1, 2, 3, 4)
 							<ul style="padding-left: 30px;">
-								<li>Title: <strong>title="Title of Posts"</strong></li>
-								<li>Show Quotes: <strong>showquotes="Y"</strong>(Options: Y, N)</li>
-								<li>Show Posts with No Media Content: <strong>showtextposts="N"</strong>(Options: Y, N)</li>
-								<li>Number Posts: <strong>numberposts="5"</strong></li>
-								<li>Post IDs: <strong>postids="5,3,4"</strong></li>
-								<li>Category: <strong>category="0"</strong>(Any category ID, 0 returns all categories)</li>
-								<li>Slider Width: <strong>widthslider="865"</strong></li>
-								<li>Slider Height: <strong>heightslider="365"</strong></li>
-								<li>Layout: <strong>layout="0"</strong>(Options: 0, 1, 2, 3, 4)
-									<ul style="padding-left: 30px;">
-										<li>0: Left: Image - Right: Title, Text (Thumbnail)</li>
-										<li>1: Top: Title - Left: Image - Right: Text (Featured-Medium)</li>
-										<li>2: Left: Title, Image - Right: Text (Featured-Large)</li>
-										<li>3: Left: Image - Right: Text (Thumbnail/No title)</li>
-										<li>4: Slider: Title, Image - Right: Text (Featured-Large)</li>
-									</ul>
-								</li>
-								<li>Order By: <strong>orderby="DESC"</strong>(Options: rand,title,date,author,modified,ID)</li>
-								<li>Thumbnail Width: <strong>widththumb="80"</strong></li>
-								<li>Thumbnail Height: <strong>heightthumb="80"</strong></li>
-								<li>HTML Tag Before Title: <strong>beforetitle="&lt;h3&gt;"</strong></li>
-								<li>HTML Tag After Title: <strong>aftertitle="&lt;/h3&gt;"</strong></li>
+								<li>0: Left: Image - Right: Title, Text (Thumbnail)</li>
+								<li>1: Top: Title - Left: Image - Right: Text (Featured-Medium)</li>
+								<li>2: Left: Title, Image - Right: Text (Featured-Large)</li>
+								<li>3: Left: Image - Right: Text (Thumbnail/No title)</li>
+								<li>4: Slider: Title, Image - Right: Text (Featured-Large)</li>
 							</ul>
 						</li>
-						<li>Insert your desired shortcode into any page or post.</li>
+						<li>Order By: <strong>orderby="DESC"</strong>(Options: rand,title,date,author,modified,ID)</li>
+						<li>Thumbnail Width: <strong>widththumb="80"</strong></li>
+						<li>Thumbnail Height: <strong>heightthumb="80"</strong></li>
+						<li>HTML Tag Before Title: <strong>beforetitle="&lt;h3&gt;"</strong></li>
+						<li>HTML Tag After Title: <strong>aftertitle="&lt;/h3&gt;"</strong></li>
 					</ul>
-					<hr>
-					A shortcode with all the options will look like the following:<br><br>
-					<strong>[tsp_featured_posts title="Title of Posts" showquotes="N" showtextposts="N" numberposts="5" postids="5,3,4" category="0" widthslider="865" heightslider="365 layout="0" orderby="DESC" widththumb="80" heightthumb="80" beforetitle="" aftertitle=""]</strong>
-				</div>
+				</li>
+				<li>Insert your desired shortcode into any page or post.</li>
+			</ul>
+			<hr>
+			A shortcode with all the options will look like the following:<br><br>
+			<strong>[tsp-featured-posts title="Title of Posts" showquotes="N" showtextposts="N" numberposts="5" postids="5,3,4" category="0" widthslider="865" heightslider="365 layout="0" orderby="DESC" widththumb="80" heightthumb="80" beforetitle="" aftertitle=""]</strong>
+		</div>
+	</div>
+	<script>
+		jQuery("div.tsp_container a.toggle").click(function () {
+			jQuery(".note-details").toggle();
+		});
+	</script>
+	<div class="updated fade" <?php if( ! isset( $_REQUEST['tspfp_form_submit'] ) || $error != "" ) echo "style=\"display:none\""; ?>><p><strong><?php echo $message; ?></strong></p></div>
+	<div class="error" <?php if( "" == $error ) echo "style=\"display:none\""; ?>><p><strong><?php echo $error; ?></strong></p></div>
+	<form method="post" action="admin.php?page=tsp-featured-posts.php">
+		<fieldset>
+		<?php foreach ($TSPFP_ADMIN_FIELDS as $fields): ?>
+			<div class="tsp_form_element" id="<?php echo $fields[0]; ?>_container_div" style="">
+				<label for="<?php echo $fields[0]; ?>"><?php echo __( $fields[2], 'tsp-featured-posts' ); ?></label>
+				
+				<?php if ($fields[1] == 'TEXT'): ?>
+				   <input id="<?php echo $fields[0]; ?>" name="<?php echo $fields[0]; ?>" value="<?php echo $TSPFP_OPTIONS[$fields[0]]; ?>" />
+				<?php elseif ($fields[1] == 'SELECT'): ?>
+					<?php if ($fields[0] == 'showquotes'): ?>
+					   <select name="<?php echo $fields[0]; ?>" id="<?php echo $fields[0]; ?>" >
+					      <option class="level-0" value="Y" <?php
+					        if ($TSPFP_OPTIONS[$fields[0]] == "Y") echo " selected='selected'" ?>><?php
+					        _e('Yes', 'tsp-featured-posts') ?></option>
+					      <option class="level-0" value="N" <?php
+					        if ($TSPFP_OPTIONS[$fields[0]] == "N") echo " selected='selected'" ?>><?php
+					        _e('No', 'tsp-featured-posts') ?></option>
+					   </select>
+					<?php elseif ($fields[0] == 'showtextposts'): ?>
+					   <select name="<?php echo $fields[0]; ?>" id="<?php echo $fields[0]; ?>" >
+					      <option class="level-0" value="Y" <?php
+					        if ($TSPFP_OPTIONS[$fields[0]] == "Y") echo " selected='selected'" ?>><?php
+					        _e('Yes', 'tsp-featured-posts') ?></option>
+					      <option class="level-0" value="N" <?php
+					        if ($TSPFP_OPTIONS[$fields[0]] == "N") echo " selected='selected'" ?>><?php
+					        _e('No', 'tsp-featured-posts') ?></option>
+					   </select>
+					<?php elseif ($fields[0] == 'layout'): ?>
+					   <select name="<?php echo $fields[0]; ?>" id="<?php echo $fields[0]; ?>" >
+					      <option class="level-0" value="0" <?php
+					        if ($TSPFP_OPTIONS[$fields[0]] == "0") echo " selected='selected'" ?>><?php
+					        _e('Image (left), Title, Text (right)', 'tsp-featured-posts') ?></option>
+					      <option class="level-0" value="1" <?php
+					        if ($TSPFP_OPTIONS[$fields[0]] == "1") echo " selected='selected'" ?>><?php
+					        _e('Title (top), Image (below,left), Text (right)', 'tsp-featured-posts') ?></option>
+					      <option class="level-0" value="2" <?php
+					        if ($TSPFP_OPTIONS[$fields[0]] == "2") echo " selected='selected'" ?>><?php
+					        _e('Title, Image (left) - Text (right)', 'tsp-featured-posts') ?></option>
+					      <option class="level-0" value="3" <?php
+					        if ($TSPFP_OPTIONS[$fields[0]] == "3") echo " selected='selected'" ?>><?php
+					        _e('Image (left) - Text (right)', 'tsp-featured-posts') ?></option>
+					      <option class="level-0" value="4" <?php
+					        if ($TSPFP_OPTIONS[$fields[0]] == "4") echo " selected='selected'" ?>><?php
+					        _e('Slider', 'tsp-featured-posts') ?></option>
+					   </select>
+					<?php elseif ($fields[0] == 'orderby'): ?>
+					   <select name="<?php echo $fields[0]; ?>" id="<?php echo $fields[0]; ?>" >
+					      <option class="level-0" value="rand" <?php
+					        if ($TSPFP_OPTIONS[$fields[0]] == "rand") echo " selected='selected'" ?>><?php
+					        _e('Random', 'tsp-featured-posts') ?></option>
+					      <option class="level-0" value="title" <?php
+					        if ($TSPFP_OPTIONS[$fields[0]] == "title") echo " selected='selected'" ?>><?php
+					        _e('Title', 'tsp-featured-posts') ?></option>
+					      <option class="level-0" value="date" <?php
+					        if ($TSPFP_OPTIONS[$fields[0]] == "date") echo " selected='selected'" ?>><?php
+					        _e('Date', 'tsp-featured-posts') ?></option>
+					      <option class="level-0" value="author" <?php
+					        if ($TSPFP_OPTIONS[$fields[0]] == "author") echo " selected='selected'" ?>><?php
+					        _e('Author', 'tsp-featured-posts') ?></option>
+					      <option class="level-0" value="modified" <?php
+					        if ($TSPFP_OPTIONS[$fields[0]] == "modified") echo " selected='selected'" ?>><?php
+					        _e('Modified', 'tsp-featured-posts') ?></option>
+					      <option class="level-0" value="ID" <?php
+					        if ($TSPFP_OPTIONS[$fields[0]] == "ID") echo " selected='selected'" ?>><?php
+					        _e('ID', 'tsp-featured-posts') ?></option>
+					   </select>
+					<?php endif; ?>
+					
+				<?php endif; ?>
+				
+				<div class="clear"></div>
+				<div id="error-message-name"></div>
 			</div>
-			<script>
-				jQuery("div.tsp_container a.toggle").click(function () {
-					jQuery(".note-details").toggle();
-				});
-			</script>
-		</div><!-- 8u -->
-	</div><!-- row -->
+		<?php endforeach; ?>
+		</fieldset>
+		<input type="hidden" name="tspfp_form_submit" value="submit" />
+		<p class="submit">
+			<input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
+		</p>
+		<?php wp_nonce_field( plugin_basename(__FILE__), 'tspfp_nonce_name' ); ?>
+	</form>
 </div><!-- tsp_container -->
 <?php } 
 
 // register settings function
-function fn_tsp_featured_posts_register_settings() {
+function fn_tspfp_register_settings() {
 
 	global $TSPFP_DEFAULTS,$TSPFP_OPTIONS;
 			
 	// install the option defaults
-	if( !get_option( 'tsp_featured_posts_options' ) ) 
+	if( !get_option( 'tspfp_options' ) ) 
 	{
-		add_option( 'tsp_featured_posts_options', $TSPFP_DEFAULTS, '', 'yes' );
+		add_option( 'tspfp_options', $TSPFP_DEFAULTS, '', 'yes' );
 	}
 
-	$TSPFP_OPTIONS = get_option( 'tsp_featured_posts_options' );// get options from the database
+	$TSPFP_OPTIONS = get_option( 'tspfp_options' );// get options from the database
 	
 	// array merge incase this version has added new options
 	
@@ -346,43 +340,84 @@ function fn_tsp_featured_posts_register_settings() {
 	}//endelse
 }
 
-function fn_tsp_featured_posts_add_admin_menu() 
+function fn_tspfp_add_admin_menu() 
 {
-	add_menu_page( 'TSP Plugins', 'TSP Plugins', 'manage_options', 'tsp_plugins', 'fn_tsp_plugins_add_menu_render', WP_CONTENT_URL."/plugins/tsp_featured_posts/images/tsp_icon_16.png", 2617638); 
-	add_submenu_page('tsp_plugins', __( 'Featured Posts', 'tsp_featured_posts' ), __( 'Featured Posts', 'tsp_featured_posts' ), 'manage_options', "tsp_featured_posts.php", 'fn_tsp_featured_posts_settings_page');
+	add_menu_page( 'TSP Plugins', 'TSP Plugins', 'manage_options', 'tsp_plugins', 'fn_tsp_plugins_add_menu_render', WP_CONTENT_URL."/plugins/tsp-featured-posts/images/tsp_icon_16.png", 2617638); 
+	add_submenu_page('tsp_plugins', __( 'Featured Posts', 'tsp-featured-posts' ), __( 'Featured Posts', 'tsp-featured-posts' ), 'manage_options', "tsp-featured-posts.php", 'fn_tspfp_settings_page');
 
 	//call register settings function
-	add_action( 'admin_init', 'fn_tsp_featured_posts_register_settings' );
+	add_action( 'admin_init', 'fn_tspfp_register_settings' );
 }
 
-function fn_tsp_featured_posts_plugin_init() 
+function fn_tspfp_plugin_init() 
 {
+	global $wp_version;
+	
+	if (version_compare($wp_version, "3.5.1", "<"))
+	{
+		wp_die("<pre>TSP Featured Posts requires WordPress version <strong>" . TSPFP_REQUIRED_WP_VERSION ." or higher</<strong>.<br>You have version <strong>$wp_version</strong> installed.</pre>");
+	}//endif
+	
+	if( is_plugin_active('tsp_featured_posts/tsp_featured_posts.php') ) 
+	{
+		deactivate_plugins( 'tsp_featured_posts/tsp_featured_posts.php' );
+	}//endif
 }
 
-function fn_tsp_featured_posts_delete_options() {
-	delete_option( 'tsp_featured_posts_options' );
+function fn_tspfp_delete_options() {
+	delete_option( 'tspfp_options' );
 }
 
-function fn_tsp_featured_posts_admin_head() 
+function fn_tspfp_admin_head() 
 {
 	wp_register_script( 'tspp-skel.min.js', plugins_url( 'js/skel.min.js', __FILE__ ) );
 	wp_enqueue_script( 'tspp-skel.min.js' );
 
-	wp_register_style( 'tspfp_admin-style.css', plugins_url( 'css/style.css', __FILE__ ) );
-	wp_enqueue_style( 'tspfp_admin-style.css' );
+	wp_register_style( 'tspfp-admin_stylesheet', plugins_url( 'css/style.css', __FILE__ ) );
+	wp_enqueue_style( 'tspfp-admin_stylesheet' );
 }
 
+/*
+function fn_tspfp_plugin_action_links( $links, $file ) 
+{
+	//Static so we don't call plugin_basename on every plugin row.
+	static $this_plugin;
+	if ( ! $this_plugin ) $this_plugin = plugin_basename(__FILE__);
 
+	if ( $file == $this_plugin ){
+			 $settings_link = '<a href="admin.php?page=tsp-featured-posts.php">' . __( 'Settings', 'tsp-featured-posts' ) . '</a>';
+			 array_unshift( $links, $settings_link );
+	}
+	return $links;
+} // end function fn_tspfp_plugin_action_links
+
+// adds "Settings" link to the plugin action page
+add_filter( 'plugin_action_links', 'fn_tspfp_plugin_action_links', 10, 2 );
+
+function fn_tspfp_register_plugin_links($links, $file) 
+{
+	$base = plugin_basename(__FILE__);
+	if ($file == $base) {
+		$links[] = '<a href="admin.php?page=tsp-featured-posts.php">' . __( 'Settings', 'tsp-featured-posts' ) . '</a>';
+		$links[] = '<a href="http://wordpress.org/extend/plugins/tsp-featured-posts/faq/" target="_blank">' . __( 'FAQ', 'tsp-featured-posts' ) . '</a>';
+		$links[] = '<a href="http://lab.thesoftwarepeople.com/tracker/wordpress-fp" target="_blank">' . __( 'Support', 'tsp-featured-posts' ) . '</a>';
+	}
+	return $links;
+} // end function fn_tspfp_register_plugin_links
+
+//Additional links on the plugin page
+add_filter( 'plugin_row_meta', 'fn_tspfp_register_plugin_links', 10, 2 );
+*/
 
 // Add global setting for Captcha
-$TSPFP_OPTIONS = get_option( 'tsp_featured_posts_options' );// get the options from the database
+$TSPFP_OPTIONS = get_option( 'tspfp_options' );// get the options from the database
 
-add_action( 'init', 'fn_tsp_featured_posts_plugin_init' );
-add_action( 'admin_init', 'fn_tsp_featured_posts_plugin_init' );
-add_action( 'admin_menu', 'fn_tsp_featured_posts_add_admin_menu' );
-add_action( 'admin_enqueue_scripts', 'fn_tsp_featured_posts_admin_head' );
+add_action( 'init', 'fn_tspfp_plugin_init' );
+add_action( 'admin_init', 'fn_tspfp_plugin_init' );
+add_action( 'admin_menu', 'fn_tspfp_add_admin_menu' );
+add_action( 'admin_enqueue_scripts', 'fn_tspfp_admin_head' );
 
-register_uninstall_hook( __FILE__, 'fn_tsp_featured_posts_delete_options' );
+register_uninstall_hook( __FILE__, 'fn_tspfp_delete_options' );
 
 
 ?>
