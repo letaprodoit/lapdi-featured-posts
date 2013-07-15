@@ -342,8 +342,18 @@ function fn_tspfp_register_settings() {
 
 function fn_tspfp_add_admin_menu() 
 {
-	add_menu_page( 'TSP Plugins', 'TSP Plugins', 'manage_options', 'tsp_plugins', 'fn_tsp_plugins_add_menu_render', WP_CONTENT_URL."/plugins/tsp-featured-posts/images/tsp_icon_16.png", 2617638); 
-	add_submenu_page('tsp_plugins', __( 'Featured Posts', 'tsp-featured-posts' ), __( 'Featured Posts', 'tsp-featured-posts' ), 'manage_options', "tsp-featured-posts.php", 'fn_tspfp_settings_page');
+	$parent_slug 	= 'tsp_plugins';
+	$child_slug 	= 'tsp-featured-posts.php';
+
+	if ( !menu_page_url( $parent_slug, false ) )
+	{
+		add_menu_page( 'TSP Plugins', 'TSP Plugins', 'manage_options', $parent_slug, 'fn_tsp_plugins_add_menu_render', WP_CONTENT_URL."/plugins/tsp-featured-posts/images/tsp_icon_16.png", 2617638); 
+	}//endif
+			
+	if ( !menu_page_url( $menu_slug, false ) )
+	{				
+		add_submenu_page($parent_slug, __( 'Featured Posts', 'tsp-featured-posts' ), __( 'Featured Posts', 'tsp-featured-posts' ), 'manage_options', $child_slug, 'fn_tspfp_settings_page');
+	}//endif
 
 	//call register settings function
 	add_action( 'admin_init', 'fn_tspfp_register_settings' );
