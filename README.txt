@@ -19,7 +19,7 @@ The Software People's (TSP) Featured Posts plugin allows you to add featured pos
 Add a `Featured Posts` to posts and pages by using a shortcode inside your text or evaluated from within your theme. You may override page/post `Featured Posts` options with shortcode attributes defined on the plugin's settings page.
 
 * `[tsp-featured-posts]` - Will display posts with the default options defined in the plugin's settings page.
-* `[tsp-featured-posts title="Title of Posts" showquotes="N" showtextposts="N" numberposts="5" postids="5,3,4" category="0" widthslider="865" heightslider="365 layout="0" orderby="DESC" widththumb="80" heightthumb="80" beforetitle="" aftertitle=""]` - Will override all attributes defined on the plugin's settings page.
+* `[tsp-featured-posts title="Title of Posts" show_quotes="N" show_text_posts="N" number_posts="5" excerpt_length=100 post_ids="5,3,4" category="0" slider_width="865" slider_height="365 layout="0" order_by="DESC" thumb_width="80" thumb_height="80" before_title="" after_title=""]` - Will override all attributes defined on the plugin's settings page.
 
 == Installation ==
 
@@ -38,7 +38,7 @@ Add a `Featured Posts` to posts and pages by using a shortcode inside your text 
 = I've installed the plugin but my posts are not displaying? =
 
 1. Make sure the folder `/wp-content/uploads/` has recursive, 777 permissions
-2. Make sure you are listing posts from all `categories` that exist and/or `postids` is empty or the posts it refers to exists
+2. Make sure you are listing posts from all `categories` that exist and/or `post_ids` is empty or the posts it refers to exists
 
 == Screenshots ==
 
@@ -52,7 +52,7 @@ Add a `Featured Posts` to posts and pages by using a shortcode inside your text 
 = 1.0.1 =
 * Checks for existence of parent settings menu before overwriting it
 
-= 1.0 =
+= 1.0.0 =
 * Launch
 
 == Upgrade notice ==
