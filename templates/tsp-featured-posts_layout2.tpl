@@ -5,11 +5,7 @@
 			<header class="entry-header">
 				<div class="entry-title"><a target="{$target}" href="{$permalink}" title="{$title}">{$title}</a></div>
       		</header>
-			{if $first_img }
-				<img align="left" src="{$first_img}" alt="{$long_title}" width="{$thumb_width}" height="{$thumb_height}"/>
-			{elseif $first_video}
-				<code>{$first_video}</code>
-			{/if}
+			{$media}
 		</div>
 		<div id="right">
 			<header class="entry-header">

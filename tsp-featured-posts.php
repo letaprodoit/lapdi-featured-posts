@@ -2,7 +2,7 @@
 /*
 Plugin Name: 	TSP Featured Posts
 Plugin URI: 	http://www.thesoftwarepeople.com/software/plugins/wordpress/featured-posts-for-wordpress.html
-Description: 	Featured Posts allows you to add featured posts to your blog's website via widget or on pages and posts using shortcodes. Featured Posts has five (5) layouts and can include thumbnails and quotes.
+Description: 	Featured Posts allows you to add featured posts to your blog's website via widgets, pages and/or posts.
 Author: 		The Software People
 Author URI: 	http://www.thesoftwarepeople.com/
 Version: 		1.1.0
@@ -55,6 +55,8 @@ $featured_posts->required_wordpress_version 	= "3.5.1";
 
 $featured_posts->settings						= new TSP_Easy_Plugins_Settings_Featured_Posts();
 
+$featured_posts->widget_class					= 'TSP_Easy_Plugins_Widget_Featured_Posts';
+
 // Quueue User styles
 $featured_posts->add_css( TSPFP_PLUGIN_URL . 'css' . DS . 'movingboxes.css' );
 
@@ -65,11 +67,11 @@ if ( fn_easy_plugins_pro_this_browser( 'IE', 8 ) )
 	
 if ( fn_easy_plugins_pro_this_browser( 'IE' ) )
 {
-	$featured_posts->add_css( TSPFP_PLUGIN_URL . 'tsp-featured-posts.ie.css' );
+	$featured_posts->add_css( TSPFP_PLUGIN_URL . TSPFP_PLUGIN_NAME . '.ie.css' );
 }//endif
 else
 {
-	$featured_posts->add_css( TSPFP_PLUGIN_URL . 'tsp-featured-posts.css' );
+	$featured_posts->add_css( TSPFP_PLUGIN_URL . TSPFP_PLUGIN_NAME . '.css' );
 }//endelse
 
 // Quueue User Scripts
@@ -89,7 +91,11 @@ $featured_posts->add_shortcode ( 'tsp_featured_posts' ); //backwards compatibili
 $featured_posts->run( __FILE__ );
 
 // Initialize widget - Required by WordPress
-add_action('widgets_init', function () { 
-	register_widget ( 'TSP_Easy_Plugins_Widget_Featured_Posts' ); 
+add_action('widgets_init', function () {
+	global $featured_posts;
+	
+	register_widget ( $featured_posts->widget_class ); 
+	apply_filters( $featured_posts->widget_class.'-init', $featured_posts->get_globals() );
 });
+
 ?>

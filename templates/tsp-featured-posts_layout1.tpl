@@ -24,11 +24,7 @@
       		{/if}
 		</div>
 		<div id="full">	 
-			{if $first_img }
-				<img align="left" src="{$first_img}" alt="{$long_title}" width="{$thumb_width}" height="{$thumb_height}"/>
-			{elseif $first_video}
-				<code>{$first_video}</code>
-			{/if}
+			{$media}
 			<span class="entry-summary">
 				By: {$author_first_name}&nbsp;{$author_last_name}<br>
 				{$full_preview}&nbsp;&nbsp;<a target="{$target}" href='{$permalink}'>Continue Reading <span class="meta-nav">&rarr;</span></a>

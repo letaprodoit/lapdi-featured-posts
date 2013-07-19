@@ -9,11 +9,7 @@
 			<div class="entry-title"><a target="{$target}" href="{$permalink}" title="{$long_title}">{$long_title}</a></div>
 		</div>
 		<div id="left">
-			{if $first_img }
-				<img align="left" src="{$first_img}" alt="{$long_title}" width="{$thumb_width}" height="{$thumb_height}"/>
-			{elseif $first_video}
-				<code>{$first_video}</code>
-			{/if}
+			{$media}
 		</div>
 		<div id="right">
 			{if $has_header_data}

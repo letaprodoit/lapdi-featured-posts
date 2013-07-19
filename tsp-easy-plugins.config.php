@@ -31,13 +31,11 @@ $plugin_globals['file']	 				= TSPFP_PLUGIN_FILE;
 $plugin_globals['widget_width']	 		= 300;
 $plugin_globals['widget_height'] 		= 350;
 
-$plugin_globals['easy_templates'] 		= TSP_EASY_PLUGINS_ASSETS_TEMPLATES_PATH;
-
-$plugin_globals['smarty_compiled']  	= TSP_EASY_PLUGINS_TMP_PATH . TSPFP_PLUGIN_NAME . DS . 'compiled';
-$plugin_globals['smarty_cache'] 		= TSP_EASY_PLUGINS_TMP_PATH . TSPFP_PLUGIN_NAME . DS . 'cache';
+$plugin_globals['smarty_template_dirs']	= array( TSPFP_PLUGIN_PATH . 'templates', TSP_EASY_PLUGINS_ASSETS_TEMPLATES_PATH );
+$plugin_globals['smarty_compiled_dir']  = TSP_EASY_PLUGINS_TMP_PATH . TSPFP_PLUGIN_NAME . DS . 'compiled';
+$plugin_globals['smarty_cache_dir'] 	= TSP_EASY_PLUGINS_TMP_PATH . TSPFP_PLUGIN_NAME . DS . 'cache';
 
 //* Custom globals *//
-$plugin_globals['templates'] 			= TSPFP_PLUGIN_PATH . 'templates';
 $plugin_globals['title_short']			= preg_replace("/TSP/","",$plugin_globals['Name']);
 $plugin_globals['store_url']	 		= 'http://www.thesoftwarepeople.com/software/plugins/wordpress';
 $plugin_globals['wp_query'] 			= '/wp-admin/plugin-install.php?tab=search&type=term&s';
@@ -45,19 +43,24 @@ $plugin_globals['contact_url'] 			= 'http://www.thesoftwarepeople.com/about-us/c
 $plugin_globals['plugin_list']			= 'http://www.thesoftwarepeople.com/plugins/wordpress/plugin_list.txt';
 //* Custom globals *//
 
-$plugin_globals['post_fields']			= array(		
-		'insert_quote_post' => array( 
+$plugin_globals['plugin_data']			= array(
+	'post_fields'						=> array(		
+		'quote' 		=> array( 
 			'type' 			=> 'TEXTAREA', 
 			'label' 		=> 'Intro Post Quote?', 
-			'value' 		=> '',
-		),		
-	);
-	
-$plugin_globals['widget_fields']		= array(		
+			'value' 		=> ''
+		),
+	),
+	'widget_fields'						=> array(		
 		'title' 		=> array( 
 			'type' 			=> 'INPUT', 
 			'label' 		=> 'Title', 
 			'value' 		=> 'TSP Featured Posts',
+		),		
+		'max_words' 	=> array( 
+			'type' 			=> 'INPUT', 
+			'label' 		=> 'Max Number of Words in the Title', 
+			'value' 		=>  7,
 		),		
 		'show_quotes' 	=> array( 
 			'type' 			=> 'SELECT', 
@@ -79,9 +82,14 @@ $plugin_globals['widget_fields']		= array(
 			'value' 		=> 5,
 			'old_labels'	=> array ('numberposts'),
 		),		
-		'excerpt_length' 	=> array( 
+		'excerpt_min' 	=> array( 
 			'type' 			=> 'INPUT', 
-			'label' 		=> 'Excerpt length (Layouts #1 & #4)', 
+			'label' 		=> 'Excerpt length (Layouts #0 & #3)', 
+			'value' 		=> 60,
+		),		
+		'excerpt_max' 	=> array( 
+			'type' 			=> 'INPUT', 
+			'label' 		=> 'Excerpt length (Layouts #1, #2 & #4)', 
 			'value' 		=> 100,
 		),		
 		'post_ids' 		=> array( 
@@ -157,5 +165,6 @@ $plugin_globals['widget_fields']		= array(
 			'html'			=> true,
 			'old_labels'	=> array ('aftertitle'),
 		)
-	); //end array
+	),
+);
 ?>

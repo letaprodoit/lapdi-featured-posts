@@ -105,11 +105,10 @@ class TSP_Easy_Plugins_Settings_Featured_Posts extends TSP_Easy_Plugins_Settings
 		$pro_total											= $pro_active_count + $pro_installed_count + $pro_recommend_count;
 				
 		// Display settings to screen
-		$template_dirs = array( $this->plugin_globals['templates'], $this->plugin_globals['easy_templates'] );
-		$cache_dir = $this->plugin_globals['smarty_cache'];
-		$compiled_dir = $this->plugin_globals['smarty_compiled'];
-		
-		$smarty = TSP_Easy_Plugins_Smarty::get_smarty( $template_dirs, $cache_dir, $compiled_dir );
+		$smarty = new TSP_Easy_Plugins_Smarty( $this->plugin_globals['smarty_template_dirs'], 
+			$this->plugin_globals['smarty_cache_dir'], 
+			$this->plugin_globals['smarty_compiled_dir'], true );
+
 		$smarty->assign( 'free_active_count',		$free_active_count);
 		$smarty->assign( 'free_installed_count',	$free_installed_count);
 		$smarty->assign( 'free_recommend_count',	$free_recommend_count);
@@ -151,8 +150,8 @@ class TSP_Easy_Plugins_Settings_Featured_Posts extends TSP_Easy_Plugins_Settings
 		$error = "";
 		
 		// get settings from database
-		$database_options = get_option( $this->plugin_globals['option_name'] );
-		$defaults = new TSP_Easy_Plugins_Data ( $database_options['widget_fields'] );
+		$plugin_data = get_option( $this->plugin_globals['option_name'] );
+		$defaults = new TSP_Easy_Plugins_Data ( $plugin_data['widget_fields'] );
 
 		$form = null;
 		if ( array_key_exists( $this->plugin_globals['name'] . '_form_submit', $_REQUEST ))
@@ -164,9 +163,9 @@ class TSP_Easy_Plugins_Settings_Featured_Posts extends TSP_Easy_Plugins_Settings
 		if( isset( $form ) && check_admin_referer( $this->plugin_globals['name'], $this->plugin_globals['name'] . '_nonce_name' ) ) 
 		{
 			$defaults->set_values( $_POST );
-			$database_options['widget_fields'] = $defaults->get();
+			$plugin_data['widget_fields'] = $defaults->get();
 			
-			update_option( $this->plugin_globals['option_name'], $database_options );
+			update_option( $this->plugin_globals['option_name'], $plugin_data );
 			
 			$message = __( "Options saved.", $this->plugin_globals['name'] );
 		}
@@ -174,11 +173,10 @@ class TSP_Easy_Plugins_Settings_Featured_Posts extends TSP_Easy_Plugins_Settings
 		$form_fields = $defaults->get_values( true );
 
 		// Display settings to screen
-		$template_dirs = array( $this->plugin_globals['templates'], $this->plugin_globals['easy_templates'] );
-		$cache_dir = $this->plugin_globals['smarty_cache'];
-		$compiled_dir = $this->plugin_globals['smarty_compiled'];
-		
-		$smarty = TSP_Easy_Plugins_Smarty::get_smarty( $template_dirs, $cache_dir, $compiled_dir, true );
+		$smarty = new TSP_Easy_Plugins_Smarty( $this->plugin_globals['smarty_template_dirs'], 
+			$this->plugin_globals['smarty_cache_dir'], 
+			$this->plugin_globals['smarty_compiled_dir'], true );
+
 		$smarty->assign( 'form_fields',				$form_fields);
 		$smarty->assign( 'message',					$message);
 		$smarty->assign( 'error',					$error);
@@ -211,26 +209,31 @@ class TSP_Easy_Plugins_Settings_Featured_Posts extends TSP_Easy_Plugins_Settings
 class TSP_Easy_Plugins_Widget_Featured_Posts extends TSP_Easy_Plugins_Widget
 {
 	/**
-	 * PHP4 constructor
-	 */
-	public function TSP_Easy_Plugins_Widget_Featured_Posts() 
-	{
-		TSP_Easy_Plugins_Widget_Featured_Posts::__construct();
-	}//end TSP_Plugin_Widget
-
-	/**
-	 * PHP5 constructor
-	 */
+	 * Constructor
+	 */	
 	public function __construct() 
 	{
-		// TODO: figure out a way to set globals without doing it directly
-		$this->plugin_globals 		= get_option ( 'tsp-featured-posts-option' );
-		
-        // Create the widget
-		parent::__construct( $this->plugin_globals );
+		add_filter( 'TSP_Easy_Plugins_Widget_Featured_Posts-init', array($this, 'init'), 10, 1 );
 	}//end __construct
 
 	
+	/**
+	 * Function added to filter to allow initialization of widget
+	 *
+	 * @since 1.1.0
+	 *
+	 * @param array $globals Required - array of global variables
+	 *
+	 * @return none
+	 */
+	public function init( $globals )
+	{
+		$this->plugin_globals = $globals;
+		
+        // Create the widget
+		parent::__construct( $this->plugin_globals );
+	}
+
 	/**
 	 * Override required of form function to display widget information
 	 *
@@ -251,14 +254,13 @@ class TSP_Easy_Plugins_Widget_Featured_Posts extends TSP_Easy_Plugins_Widget
 			$fields[$key]['name'] 		= $this->get_field_name($key);
 		}//end foreach
 
-		$template_dirs = array( $this->plugin_globals['templates'], $this->plugin_globals['easy_templates'] );
-		$cache_dir = $this->plugin_globals['smarty_cache'];
-		$compiled_dir = $this->plugin_globals['smarty_compiled'];
-		
-		$smarty = TSP_Easy_Plugins_Smarty::get_smarty( $template_dirs, $cache_dir, $compiled_dir, true );
-    	$smarty->assign('form_fields', $fields);
-    	$smarty->assign('class', 'widefat');
-		$smarty->display( 'default_form.tpl');
+		$smarty = new TSP_Easy_Plugins_Smarty( $this->plugin_globals['smarty_template_dirs'], 
+			$this->plugin_globals['smarty_cache_dir'], 
+			$this->plugin_globals['smarty_compiled_dir'], true );
+
+    	$smarty->assign( 'form_fields', $fields );
+    	$smarty->assign( 'class', 'widefat' );
+		$smarty->display( 'default_form.tpl' );
 	}//end form
 	
 	/**
@@ -291,47 +293,27 @@ class TSP_Easy_Plugins_Widget_Featured_Posts extends TSP_Easy_Plugins_Widget
 		    $post_cnt = 0;
 		    $num_posts = sizeof( $queried_posts );
 		
-		    // Process Featured Posts
-		    global $post;
-
-		    foreach ( $queried_posts as $post )
+		    foreach ( $queried_posts as $a_post )
 		    {    
-		        setup_postdata( $post );
+		        $ID = $a_post->ID;
 		        
-		        $comments_popup_link = "";
+		        // get the first image or video
+		        $media = $this->get_media ( $a_post, $thumb_width, $thumb_height );
+		
+		        // get the fields stored in the database for this post
+		        $post_fields = $this->get_post_fields( $ID );
+		        
+		        // get determine if the link is external if so set target to blank window
+		        // TODO: I don't like passing that entire post object by value
+		        $target = "_self";
+		        
+		        if ( get_post_format( $a_post ) == 'link')
+		        	$target = "_blank";
 		        
 		        $text = "";
 		        $full_preview = "";        
-		                        
-		        // get the first image
-		        $first_img     = $this->get_thumbnail($post);
-		        $first_video = null;
-		        
-		        if ( empty( $first_img ) )
-		        {
-		        	$first_video = $this->get_video( $post );
-		        
-			       	if ( !empty( $first_video ) )
-			       	{
-			       		$first_video = $this->adjust_video( $first_video, $thumb_width, $thumb_height);
-			       	}//end if
-			    }//endif
-		
-		        // get the quote for the post
-		        $quote_arr = get_post_custom_values('quote');
-		        $quote = "";
 		        $content_bottom = "";
-		        
-		        if ( !empty ( $quote_arr ) )
-		        {
-		        	$quote     = $quote_arr[0]; //There should only be one quote dont loop
-		        }//end if
-		
-		        $target = "_self";
-		        
-		        if ( get_post_format() == 'link')
-		        	$target = "_blank";
-		        
+
 		        if ( in_array( $layout, array( 1, 2, 4 ) ) )
 		        {
 			        // get the bottom content
@@ -339,7 +321,7 @@ class TSP_Easy_Plugins_Widget_Featured_Posts extends TSP_Easy_Plugins_Widget
 			        $content_bottom  = preg_replace('/<p>(.*?)<\/p>/m', "$1", $content_bottom);
 			        	
 			        // get the content to <!--more--> tag
-			        $extended_post = get_extended( $post->post_content );
+			        $extended_post = get_extended( $a_post->post_content );
 			        
 			        // add in formatting
 			        $full_preview  = apply_filters( 'the_content', $extended_post['main'] );
@@ -347,60 +329,48 @@ class TSP_Easy_Plugins_Widget_Featured_Posts extends TSP_Easy_Plugins_Widget
 			        // remove bottom content from fullpreview to prevent it from displaying twice
 			        $full_preview = str_replace( $content_bottom, "", $full_preview );
 			        
-		        	if ($quote)
-		         	{
-		         		$excerpt_length -= 10;
-		         	}//end if
-		         			       		
 		        	$full_preview  	= strip_tags($full_preview);
 			        $full_preview  	= preg_replace('/\[youtube=(.*?)\]/m', "", $full_preview);
 		        	        	
-			        $words          = explode(' ', $full_preview, $excerpt_length + 1);
+			        $words          = explode(' ', $full_preview, $excerpt_max + 1);
 			        
-			        if ( count( $words ) > $excerpt_length ) 
+			        if ( count( $words ) > $excerpt_max ) 
 			        {
 			            array_pop($words);
-			            array_push($words, '…');
+			            array_push($words, '...');
 			            
 			            $full_preview          = implode(' ', $words);
 			        }//end if
 		        }
 		        else
 		        {
-			        $text           = get_the_excerpt();
-			        
-		        	//$text  			= strip_tags($text);
+			        $content       	= get_extended( $a_post->post_content );
+			        $text			= $content['main'];
+		        	$text  			= strip_tags($text);
 			        $text           = strip_shortcodes($text);
-			        $text           = apply_filters('the_content', $text);
 			        $text           = str_replace(']]>', ']]&gt;', $text);
 			        $text           = str_replace('<[[', '&lt;[[', $text);
 			        $text 		 	= preg_replace('/\[youtube=(.*?)\]/m', "", $text);
+			        $text			= preg_replace("/\n/", " ", $text);
+			        $text			= preg_replace("/\s+/", " ", $text);
 			        	        	        
-			        $words          = explode(' ', $text, $excerpt_length + 1);
+			        $words          = explode(' ', $text, $excerpt_min + 1);
 			        
-			        if ( count( $words ) > $excerpt_length ) 
+			        if ( count( $words ) > $excerpt_min ) 
 			        {
 			            array_pop($words);
 			            array_push($words, '…');
+			            
 			            $text       = implode(' ', $words);
 			        }//end if
 		        }//end foreach
-		        
-		        $media_found = false;
-		        
-		        if ( !empty ( $first_img ) || !empty( $first_video ) )
-		        {
-		        	$media_found = true;
-		        }//end if
-		        
+		        		        
 		        // Only show articles that have associated images if $show_text_posts is set to 'Y' and
 		        // $show_text_posts is 'N' and there are at least a video or image
-		        if ( $show_text_posts == 'Y' || ( $show_text_posts == 'N' && $media_found == true ) ) 
+		        if ( $show_text_posts == 'Y' || ( $show_text_posts == 'N' && !empty( $media ) ) ) 
 		        {
-		        	$title = get_the_title();
-		        	$ID = get_the_ID();
+		        	$title = $a_post->post_title;
 		        	
-		        	$max_words = 7;
 		        	$words          = explode(' ', $title, $max_words + 1);
 		 	        
 		 	        if ( count( $words ) > $max_words ) 
@@ -410,79 +380,69 @@ class TSP_Easy_Plugins_Widget_Featured_Posts extends TSP_Easy_Plugins_Widget
 			            
 			            $title          = implode(' ', $words);
 			        }//end if
-		           	           		
-					$template_dirs = array( $this->plugin_globals['templates'], $this->plugin_globals['easy_templates'] );
-					$cache_dir = $this->plugin_globals['smarty_cache'];
-					$compiled_dir = $this->plugin_globals['smarty_compiled'];
-					
-					$smarty = TSP_Easy_Plugins_Smarty::get_smarty( $template_dirs, $cache_dir, $compiled_dir );
-				    
-				    // Store values into Smarty
-				    foreach ($fields as $key => $val)
-				    {
-				    	$smarty->assign("$key", $val, true);
-				    }
-		
+		           	           				
 			        $post_cnt++;
-			
-					if ($post_cnt == 1)
-					{
-						$smarty->assign("first_post", true, true);
-					}//end if
-					else
-					{
-						$smarty->assign("first_post", null, true);
-					}//end else
-		
+					
 					$comments_popup_link = "";
 					/*
 					$comments_popup_link = comments_popup_link( 
 						'<span class="leave-reply">' . __( 'Reply', $this->plugin_globals['name'] ) . '</span>', 
 						_x( '1', 'comments number', $this->plugin_globals['name'] ), 
 						_x( '%', 'comments number', $this->plugin_globals['name'] ) );*/
-
-					$smarty->assign("ID", $ID, true);
-					$smarty->assign("post_class", implode( " ", get_post_class() ), true);
-					$smarty->assign("comments_open", comments_open(), true);
-					$smarty->assign("post_password_required", post_password_required(), true);
-					$smarty->assign("long_title", get_the_title(), true);
-					$smarty->assign("wp_link_pages", wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', $this->plugin_globals['name'] ), 'after' => '</div>', 'echo' => 0 ) ), true);
-					$smarty->assign("edit_post_link", get_edit_post_link( __( 'Edit', $this->plugin_globals['name'] ), '<div class="edit-link">', '</div>', $ID ), true);
-					$smarty->assign("author_first_name", get_the_author_meta('first_name'), true);
-					$smarty->assign("author_last_name", get_the_author_meta('last_name'), true);
-					$smarty->assign("sticky", is_sticky($ID), true);
-					$smarty->assign("permalink", get_permalink( $ID ), true);
 					
-					$smarty->assign("featured", __( 'Featured', $this->plugin_globals['name'] ), true);
-					$smarty->assign("title", $title, true);
-					$smarty->assign("first_img", $first_img, true);
-					$smarty->assign("first_video", $first_video, true);
-					$smarty->assign("target", $target, true);
-					$smarty->assign("text", $text, true);
-					$smarty->assign("quote", $quote, true);
-					$smarty->assign("full_preview", $full_preview, true);
-					$smarty->assign("content_bottom", $content_bottom, true);
-					$smarty->assign("comments_popup_link", $comments_popup_link, true);
-					$smarty->assign("plugin_key", $this->plugin_globals['TextDomain'], true);
+					$comments_open = 							comments_open( $ID );
+					$private = 									post_password_required( $a_post );
 					
 					$has_header_data = false;
 					
-					if ( ( $show_quotes == 'Y' && !empty($quote)  ) ||  ( comments_open() && !post_password_required() && $comments_popup_link ) )
+					if ( ( $show_quotes == 'Y' && !empty($quote)  ) ||  ( $comments_open && !$private && !empty( $comments_popup_link ) ) )
 					{
 						$has_header_data = true;
 					}//endif
+
+					$smarty = new TSP_Easy_Plugins_Smarty( $this->plugin_globals['smarty_template_dirs'], 
+						$this->plugin_globals['smarty_cache_dir'], 
+						$this->plugin_globals['smarty_compiled_dir'], true );
+				    
+				    // Store values into Smarty
+				    foreach ( $fields as $key => $val )
+				    {
+				    	$smarty->assign( $key, $val, true);
+				    }//end foreach
+
+				   	if (!empty ( $post_fields ))
+				   	{
+					    foreach ( $post_fields as $key => $val )
+					    {
+					    	$smarty->assign( $key, $val, true);
+					    }//end foreach
+				   	}//endif
+
+					$smarty->assign("ID", 						$ID, true);
+					$smarty->assign("post_class", 				implode( " ", get_post_class( null, $ID ) ), true);
+					$smarty->assign("long_title", 				get_the_title( $a_post ), true);
+					$smarty->assign("wp_link_pages", 			wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', $this->plugin_globals['name'] ), 'after' => '</div>', 'echo' => 0 ) ), true);
+					$smarty->assign("edit_post_link", 			get_edit_post_link( __( 'Edit', $this->plugin_globals['name'] ), '<div class="edit-link">', '</div>', $ID ), true);
+					$smarty->assign("author_first_name", 		get_the_author_meta( 'first_name', $a_post->post_author ), true );
+					$smarty->assign("author_last_name", 		get_the_author_meta( 'last_name', $a_post->post_author ), true );
+					$smarty->assign("sticky", 					is_sticky( $ID ), true);
+					$smarty->assign("permalink", 				get_permalink( $ID ), true);
 					
-					$smarty->assign("has_header_data", $has_header_data, true);
+					$smarty->assign("featured",					__( 'Featured', $this->plugin_globals['name'] ), true);
+					$smarty->assign("title", 					$title, true);
+					$smarty->assign("media", 					$media, true);
+					$smarty->assign("target", 					$target, true);
+					$smarty->assign("text", 					$text, true);
+					$smarty->assign("full_preview", 			$full_preview, true);
+					$smarty->assign("content_bottom", 			$content_bottom, true);
+					$smarty->assign("comments_popup_link", 		$comments_popup_link, true);
+					$smarty->assign("comments_open", 			$comments_open, true);
+					$smarty->assign("post_password_required", 	$private, true);
+					$smarty->assign("plugin_key",				$this->plugin_globals['TextDomain'], true);
+					$smarty->assign("has_header_data", 			$has_header_data, true);
+					$smarty->assign("last_post", 				($post_cnt == $num_posts) ? true : null, true);
+					$smarty->assign("first_post", 				($post_cnt == 1) ? true : null, true);
 		            
-					if ($post_cnt == $num_posts)
-					{
-						$smarty->assign("last_post", true, true);
-					}//end if
-					else
-					{
-						$smarty->assign("last_post", null, true);
-					}//end else
-					
 		            $return_HTML .= $smarty->fetch( $this->plugin_globals['name'] . '_layout'.$layout.'.tpl' );
 		        }
 		    } //endforeach;
@@ -499,20 +459,89 @@ class TSP_Easy_Plugins_Widget_Featured_Posts extends TSP_Easy_Plugins_Widget
 	 *
 	 * @since 1.1.0
 	 *
-	 * @param object $post  - the post to parse
+	 * @param object $a_post  - the post to parse
+	 * @param int $thumb_width  - the width to set the image to
+	 * @param int $thumb_height  - the height to set the image to
+	 *
+	 * @return string $media return the the first media item found
+	 */
+	private function get_media( &$a_post, $thumb_width, $thumb_height )
+	{
+       	$media 		= null;
+        $img     	= $this->get_thumbnail( $a_post );
+        
+        if ( empty( $img ) )
+        {
+        	$video = $this->get_video( $a_post );
+        
+	       	if ( !empty( $video ) )
+	       	{
+	       		$video = $this->adjust_video( $video, $thumb_width, $thumb_height);
+	       		$media = "<code>$video</code>";
+	       	}//end if
+	    }//endif
+	    else
+	    {
+			$media = "<img align='left' src='$img' alt='{$a_post->post_title}' width='$thumb_width' height='$thumb_height'/>";
+	    }//end else
+	    
+	    return $media;
+	}//end get_media
+
+	/**
+	 * Return an array of the post fields
+	 *
+	 * @since 1.1.0
+	 *
+	 * @param int $ID  - the post's ID
+	 *
+	 * @return array $post_fields return an array of fiels stored in the post
+	 */
+	private function get_post_fields( $ID )
+	{
+		$post_fields = array();
+		       
+		$plugin_data = get_option( $this->plugin_globals['option_name'] );
+		$defaults = new TSP_Easy_Plugins_Data ( $plugin_data['post_fields'] );
+		
+		$fields = $defaults->get_values();
+
+        if (!empty ( $fields ))
+        {
+	        foreach ( $fields as $key => $default_value )
+	        {
+		        // get the quote for the post
+		        $value_arr = get_post_custom_values( $key, $ID );
+		        
+		        if (!empty( $value_arr ))
+		        	$post_fields[$key] = $value_arr[0];
+		        else
+		        	$post_fields[$key] = "";
+	        }//end foreach
+        }//endif
+        		
+		return $post_fields;
+	}//end get_post_fields
+
+	/**
+	 * Find and return an image from the post
+	 *
+	 * @since 1.1.0
+	 *
+	 * @param object $a_post  - the post to parse
 	 *
 	 * @return string $img return the the first image found
 	 */
-	function get_thumbnail( $post )
+	private function get_thumbnail( &$a_post )
 	{
 	   	$img = null;
 	   
-	   	if ( !empty( $post ))
+	   	if ( !empty( $a_post ))
 	   	{
 			ob_start();
 			ob_end_clean();
 			
-			$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
+			$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $a_post->post_content, $matches);
 			
 			if ( !empty( $matches[1] ))
 			{
@@ -528,21 +557,21 @@ class TSP_Easy_Plugins_Widget_Featured_Posts extends TSP_Easy_Plugins_Widget
 	 *
 	 * @since 1.1.0
 	 *
-	 * @param object $post  - the post to parse
+	 * @param object $a_post  - the post to parse
 	 *
 	 * @return string $video return the the first video found
 	 */
-	function get_video( $post )
+	private function get_video( &$a_post )
 	{
 	    $video = null;
 	    
 	    
-	   	if ( !empty( $post ))
+	   	if ( !empty( $a_post ))
 	   	{
 		    ob_start();
 		    ob_end_clean();
 		    
-		    $output = preg_match_all('/<code>(.*?)<\/code>/i', $post->post_content, $matches);
+		    $output = preg_match_all('/<code>(.*?)<\/code>/i', $a_post->post_content, $matches);
 			if ( !empty( $matches[1] ))
 			{
 				$video    = $matches[1][0];
@@ -552,7 +581,7 @@ class TSP_Easy_Plugins_Widget_Featured_Posts extends TSP_Easy_Plugins_Widget
 		    if ( empty( $video ) )
 		    {
 			    //if its not wrapped in the code tags find the other methods of viewing videos
-			    $output = preg_match_all('/<iframe (.*?)>(.*?)<\/iframe>/i', $post->post_content, $matches);
+			    $output = preg_match_all('/<iframe (.*?)>(.*?)<\/iframe>/i', $a_post->post_content, $matches);
 				if ( !empty ( $matches[0] ))
 				{
 					$video    = $matches[0][0];
@@ -563,7 +592,7 @@ class TSP_Easy_Plugins_Widget_Featured_Posts extends TSP_Easy_Plugins_Widget
 		    if ( empty( $video ) )
 		    {
 			    //if its not wrapped in the code tags find the other methods of viewing videos
-			    $output = preg_match_all('/<object (.*?)>(.*?)<\/object>/i', $post->post_content, $matches);
+			    $output = preg_match_all('/<object (.*?)>(.*?)<\/object>/i', $a_post->post_content, $matches);
 				if ( !empty ( $matches[0] ))
 				{
 					$video    = $matches[0][0];
@@ -585,7 +614,7 @@ class TSP_Easy_Plugins_Widget_Featured_Posts extends TSP_Easy_Plugins_Widget
 	 *
 	 * @return string $video return the the updated video string
 	 */
-	function adjust_video($video, $width, $height)
+	private function adjust_video($video, $width, $height)
 	{
 		$video = preg_replace('/width="(.*?)"/i', 'width="'.$width.'"', $video);
 		$video = preg_replace('/height="(.*?)"/i', 'height="'.$height.'"', $video);
