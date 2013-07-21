@@ -2,7 +2,7 @@
 /*
 Plugin Name: 	TSP Featured Posts
 Plugin URI: 	http://www.thesoftwarepeople.com/software/plugins/wordpress/featured-posts-for-wordpress.html
-Description: 	Featured Posts allows you to add featured posts to your blog's website via widget or on pages and posts using shortcodes. Featured Posts has five (5) layouts and can include thumbnails and quotes.
+Description: 	Featured Posts allows you to add featured posts to your blog's website via widgets, pages and/or posts.
 Author: 		The Software People
 Author URI: 	http://www.thesoftwarepeople.com/
 Version: 		1.0.1
