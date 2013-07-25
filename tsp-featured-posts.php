@@ -36,14 +36,14 @@ if (!class_exists('TSP_Easy_Plugins'))
 	return;
 }//endif
 
-global $plugin_globals;
+global $easy_plugin_settings;
 
 require( TSPFP_PLUGIN_PATH . 'tsp-easy-plugins.config.php');
 require( TSPFP_PLUGIN_PATH . 'tsp-easy-plugins.extend.php');
 //--------------------------------------------------------
 // initialize the Facepile plugin
 //--------------------------------------------------------
-$featured_posts 								= new TSP_Easy_Plugins_Pro( $plugin_globals );
+$featured_posts 								= new TSP_Easy_Plugins_Pro( $easy_plugin_settings );
 
 $featured_posts->uses_smarty 					= true;
 
@@ -53,9 +53,9 @@ $featured_posts->uses_shortcodes 				= true;
 
 $featured_posts->required_wordpress_version 	= "3.5.1";
 
-$featured_posts->settings						= new TSP_Easy_Plugins_Settings_Featured_Posts();
+$featured_posts->set_settings_handler( new TSP_Easy_Plugins_Settings_Featured_Posts() );
 
-$featured_posts->widget_class					= 'TSP_Easy_Plugins_Widget_Featured_Posts';
+$featured_posts->set_widget_handler( 'TSP_Easy_Plugins_Widget_Featured_Posts');
 
 // Quueue User styles
 $featured_posts->add_css( TSPFP_PLUGIN_URL . 'css' . DS . 'movingboxes.css' );
@@ -94,8 +94,7 @@ $featured_posts->run( __FILE__ );
 add_action('widgets_init', function () {
 	global $featured_posts;
 	
-	register_widget ( $featured_posts->widget_class ); 
-	apply_filters( $featured_posts->widget_class.'-init', $featured_posts->get_globals() );
+	register_widget ( $featured_posts->get_widget_handler() ); 
+	apply_filters( $featured_posts->get_widget_handler().'-init', $featured_posts->get_settings() );
 });
-
 ?>

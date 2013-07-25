@@ -13,37 +13,37 @@ if (!defined('DS')) {
     else define('DS', '/');
 }//endif
 
-$plugin_globals = get_plugin_data( TSPFP_PLUGIN_FILE, false, false );
-$plugin_globals['parent_name']			= TSP_PARENT_NAME;
-$plugin_globals['parent_title']			= TSP_PARENT_TITLE;
-$plugin_globals['parent_menu'] 			= TSP_PARENT_MENU_POS;
+$easy_plugin_settings = get_plugin_data( TSPFP_PLUGIN_FILE, false, false );
+$easy_plugin_settings['parent_name']			= TSP_PARENT_NAME;
+$easy_plugin_settings['parent_title']			= TSP_PARENT_TITLE;
+$easy_plugin_settings['menu_pos'] 				= TSP_PARENT_MENU_POS;
 
-$plugin_globals['name'] 				= TSPFP_PLUGIN_NAME;
-$plugin_globals['key'] 					= $plugin_globals['TextDomain'];
-$plugin_globals['title']				= $plugin_globals['Name'];
-$plugin_globals['title_short']			= $plugin_globals['Name'];
+$easy_plugin_settings['name'] 					= TSPFP_PLUGIN_NAME;
+$easy_plugin_settings['key'] 					= $easy_plugin_settings['TextDomain'];
+$easy_plugin_settings['title']					= $easy_plugin_settings['Name'];
+$easy_plugin_settings['title_short']			= $easy_plugin_settings['Name'];
 
-$plugin_globals['option_name']			= TSPFP_PLUGIN_NAME . "-option";
-$plugin_globals['option_name_old']		= $plugin_globals['TextDomain']."_options";
+$easy_plugin_settings['option_name']			= TSPFP_PLUGIN_NAME . "-option";
+$easy_plugin_settings['option_name_old']		= $easy_plugin_settings['TextDomain']."_options";
 
-$plugin_globals['file']	 				= TSPFP_PLUGIN_FILE;
+$easy_plugin_settings['file']	 				= TSPFP_PLUGIN_FILE;
 
-$plugin_globals['widget_width']	 		= 300;
-$plugin_globals['widget_height'] 		= 350;
+$easy_plugin_settings['widget_width']	 		= 300;
+$easy_plugin_settings['widget_height'] 			= 350;
 
-$plugin_globals['smarty_template_dirs']	= array( TSPFP_PLUGIN_PATH . 'templates', TSP_EASY_PLUGINS_ASSETS_TEMPLATES_PATH );
-$plugin_globals['smarty_compiled_dir']  = TSP_EASY_PLUGINS_TMP_PATH . TSPFP_PLUGIN_NAME . DS . 'compiled';
-$plugin_globals['smarty_cache_dir'] 	= TSP_EASY_PLUGINS_TMP_PATH . TSPFP_PLUGIN_NAME . DS . 'cache';
+$easy_plugin_settings['smarty_template_dirs']	= array( TSPFP_PLUGIN_PATH . 'templates', TSP_EASY_PLUGINS_ASSETS_TEMPLATES_PATH );
+$easy_plugin_settings['smarty_compiled_dir']  	= TSP_EASY_PLUGINS_TMP_PATH . TSPFP_PLUGIN_NAME . DS . 'compiled';
+$easy_plugin_settings['smarty_cache_dir'] 		= TSP_EASY_PLUGINS_TMP_PATH . TSPFP_PLUGIN_NAME . DS . 'cache';
 
 //* Custom globals *//
-$plugin_globals['title_short']			= preg_replace("/TSP/","",$plugin_globals['Name']);
-$plugin_globals['store_url']	 		= 'http://www.thesoftwarepeople.com/software/plugins/wordpress';
-$plugin_globals['wp_query'] 			= '/wp-admin/plugin-install.php?tab=search&type=term&s';
-$plugin_globals['contact_url'] 			= 'http://www.thesoftwarepeople.com/about-us/contact-us.html';
-$plugin_globals['plugin_list']			= 'http://www.thesoftwarepeople.com/plugins/wordpress/plugin_list.txt';
+$easy_plugin_settings['title_short']			= preg_replace("/TSP/","",$easy_plugin_settings['Name']);
+$easy_plugin_settings['store_url']	 			= 'http://www.thesoftwarepeople.com/software/plugins/wordpress';
+$easy_plugin_settings['wp_query'] 				= '/wp-admin/plugin-install.php?tab=search&type=term&s';
+$easy_plugin_settings['contact_url'] 			= 'http://www.thesoftwarepeople.com/about-us/contact-us.html';
+$easy_plugin_settings['plugin_list']			= 'http://www.thesoftwarepeople.com/plugins/wordpress/plugins.json';
 //* Custom globals *//
 
-$plugin_globals['plugin_data']			= array(
+$easy_plugin_settings['plugin_data']			= array(
 	'post_fields'						=> array(		
 		'quote' 		=> array( 
 			'type' 			=> 'TEXTAREA', 
