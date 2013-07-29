@@ -1,7 +1,7 @@
 <?php				
 /**
- * TSP_Easy_Plugins_Settings_Featured_Posts - Extends the TSP_Plugin_Settings Class
- * @package TSP_Easy_Plugins
+ * TSP_Easy_Dev_Settings_Featured_Posts - Extends the TSP_Plugin_Settings Class
+ * @package TSP_Easy_Dev
  * @author sharrondenice, thesoftwarepeople
  * @author Sharron Denice, The Software People
  * @copyright 2013 The Software People
@@ -10,11 +10,11 @@
  */
 
 /**
- * Extends the TSP_Easy_Plugins_Settings_Facepile Class
+ * Extends the TSP_Easy_Dev_Settings_Facepile Class
  *
  * original author: Sharron Denice
  */
-class TSP_Easy_Plugins_Settings_Featured_Posts extends TSP_Easy_Plugins_Settings
+class TSP_Easy_Dev_Settings_Featured_Posts extends TSP_Easy_Dev_Settings
 {
 	/**
 	 * Display all the plugins that The Software People has released
@@ -88,7 +88,7 @@ class TSP_Easy_Plugins_Settings_Featured_Posts extends TSP_Easy_Plugins_Settings
 		$pro_total											= $pro_active_count + $pro_installed_count + $pro_recommend_count;
 				
 		// Display settings to screen
-		$smarty = new TSP_Easy_Plugins_Smarty( $this->settings['smarty_template_dirs'], 
+		$smarty = new TSP_Easy_Dev_Smarty( $this->settings['smarty_template_dirs'], 
 			$this->settings['smarty_cache_dir'], 
 			$this->settings['smarty_compiled_dir'], true );
 
@@ -134,7 +134,7 @@ class TSP_Easy_Plugins_Settings_Featured_Posts extends TSP_Easy_Plugins_Settings
 		
 		// get settings from database
 		$plugin_data = get_option( $this->settings['option_name'] );
-		$defaults = new TSP_Easy_Plugins_Data ( $plugin_data['widget_fields'] );
+		$defaults = new TSP_Easy_Dev_Data ( $plugin_data['widget_fields'] );
 
 		$form = null;
 		if ( array_key_exists( $this->settings['name'] . '_form_submit', $_REQUEST ))
@@ -156,7 +156,7 @@ class TSP_Easy_Plugins_Settings_Featured_Posts extends TSP_Easy_Plugins_Settings
 		$form_fields = $defaults->get_values( true );
 
 		// Display settings to screen
-		$smarty = new TSP_Easy_Plugins_Smarty( $this->settings['smarty_template_dirs'], 
+		$smarty = new TSP_Easy_Dev_Smarty( $this->settings['smarty_template_dirs'], 
 			$this->settings['smarty_cache_dir'], 
 			$this->settings['smarty_compiled_dir'], true );
 
@@ -171,11 +171,11 @@ class TSP_Easy_Plugins_Settings_Featured_Posts extends TSP_Easy_Plugins_Settings
 				
 	}//end settings_page
 	
-}//end TSP_Easy_Plugins_Settings_Featured_Posts
+}//end TSP_Easy_Dev_Settings_Featured_Posts
 
 
 /**
- * TSP_Easy_Plugins_Widget_Featured_Posts - Extends the TSP_Easy_Plugins_Widget Class
+ * TSP_Easy_Dev_Widget_Featured_Posts - Extends the TSP_Easy_Dev_Widget Class
  * @package TSPEasyPlugin
  * @author sharrondenice, thesoftwarepeople
  * @author Sharron Denice, The Software People
@@ -185,18 +185,18 @@ class TSP_Easy_Plugins_Settings_Featured_Posts extends TSP_Easy_Plugins_Settings
  */
 
 /**
- * Extends the TSP_Easy_Plugins_Widget_Facepile Class
+ * Extends the TSP_Easy_Dev_Widget_Facepile Class
  *
  * original author: Sharron Denice
  */
-class TSP_Easy_Plugins_Widget_Featured_Posts extends TSP_Easy_Plugins_Widget
+class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 {
 	/**
 	 * Constructor
 	 */	
 	public function __construct() 
 	{
-		add_filter( 'TSP_Easy_Plugins_Widget_Featured_Posts-init', array($this, 'init'), 10, 1 );
+		add_filter( 'TSP_Easy_Dev_Widget_Featured_Posts-init', array($this, 'init'), 10, 1 );
 	}//end __construct
 
 	
@@ -237,7 +237,7 @@ class TSP_Easy_Plugins_Widget_Featured_Posts extends TSP_Easy_Plugins_Widget
 			$fields[$key]['name'] 		= $this->get_field_name($key);
 		}//end foreach
 
-		$smarty = new TSP_Easy_Plugins_Smarty( $this->settings['smarty_template_dirs'], 
+		$smarty = new TSP_Easy_Dev_Smarty( $this->settings['smarty_template_dirs'], 
 			$this->settings['smarty_cache_dir'], 
 			$this->settings['smarty_compiled_dir'], true );
 
@@ -383,7 +383,7 @@ class TSP_Easy_Plugins_Widget_Featured_Posts extends TSP_Easy_Plugins_Widget
 						$has_header_data = true;
 					}//endif
 
-					$smarty = new TSP_Easy_Plugins_Smarty( $this->settings['smarty_template_dirs'], 
+					$smarty = new TSP_Easy_Dev_Smarty( $this->settings['smarty_template_dirs'], 
 						$this->settings['smarty_cache_dir'], 
 						$this->settings['smarty_compiled_dir'], true );
 				    
@@ -485,7 +485,7 @@ class TSP_Easy_Plugins_Widget_Featured_Posts extends TSP_Easy_Plugins_Widget
 		$post_fields = array();
 		       
 		$plugin_data = get_option( $this->settings['option_name'] );
-		$defaults = new TSP_Easy_Plugins_Data ( $plugin_data['post_fields'] );
+		$defaults = new TSP_Easy_Dev_Data ( $plugin_data['post_fields'] );
 		
 		$fields = $defaults->get_values();
 
@@ -608,5 +608,5 @@ class TSP_Easy_Plugins_Widget_Featured_Posts extends TSP_Easy_Plugins_Widget
 		return $video;
 	}//end adjust_video
 	
-}//end TSP_Easy_Plugins_Widget_Featured_Posts
+}//end TSP_Easy_Dev_Widget_Featured_Posts
 ?>

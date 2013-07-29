@@ -55,7 +55,7 @@
 	<form method="post" action="admin.php?page={$plugin_name}.php">
 		<fieldset>
 		{foreach $form_fields as $field}
-			{include file="$EASY_PLUGIN_FORM_FIELDS" field=$field}
+			{include file="$EASY_DEV_FORM_FIELDS" field=$field}
 		{/foreach}
 		</fieldset>
 		<input type="hidden" name="{$plugin_name}_form_submit" value="submit" />

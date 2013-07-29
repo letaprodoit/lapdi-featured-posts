@@ -1,5 +1,5 @@
 <?php									
-/* @group Easy Plugins Package settings, all plugins use the same settings, DO NOT EDIT */
+/* @group Easy Dev Package settings, all plugins use the same settings, DO NOT EDIT */
 if ( !defined( 'TSP_PARENT_NAME' )) define('TSP_PARENT_NAME', 			'tsp_plugins');
 if ( !defined( 'TSP_PARENT_TITLE' )) define('TSP_PARENT_TITLE', 		'TSP Plugins');
 if ( !defined( 'TSP_PARENT_MENU_POS' )) define('TSP_PARENT_MENU_POS', 	2617638);
@@ -13,37 +13,37 @@ if (!defined('DS')) {
     else define('DS', '/');
 }//endif
 
-$easy_plugin_settings = get_plugin_data( TSPFP_PLUGIN_FILE, false, false );
-$easy_plugin_settings['parent_name']			= TSP_PARENT_NAME;
-$easy_plugin_settings['parent_title']			= TSP_PARENT_TITLE;
-$easy_plugin_settings['menu_pos'] 				= TSP_PARENT_MENU_POS;
+$easy_dev_settings = get_plugin_data( TSPFP_PLUGIN_FILE, false, false );
+$easy_dev_settings['parent_name']			= TSP_PARENT_NAME;
+$easy_dev_settings['parent_title']			= TSP_PARENT_TITLE;
+$easy_dev_settings['menu_pos'] 				= TSP_PARENT_MENU_POS;
 
-$easy_plugin_settings['name'] 					= TSPFP_PLUGIN_NAME;
-$easy_plugin_settings['key'] 					= $easy_plugin_settings['TextDomain'];
-$easy_plugin_settings['title']					= $easy_plugin_settings['Name'];
-$easy_plugin_settings['title_short']			= $easy_plugin_settings['Name'];
+$easy_dev_settings['name'] 					= TSPFP_PLUGIN_NAME;
+$easy_dev_settings['key'] 					= $easy_dev_settings['TextDomain'];
+$easy_dev_settings['title']					= $easy_dev_settings['Name'];
+$easy_dev_settings['title_short']			= $easy_dev_settings['Name'];
 
-$easy_plugin_settings['option_name']			= TSPFP_PLUGIN_NAME . "-option";
-$easy_plugin_settings['option_name_old']		= $easy_plugin_settings['TextDomain']."_options";
+$easy_dev_settings['option_name']			= TSPFP_PLUGIN_NAME . "-option";
+$easy_dev_settings['option_name_old']		= $easy_dev_settings['TextDomain']."_options";
 
-$easy_plugin_settings['file']	 				= TSPFP_PLUGIN_FILE;
+$easy_dev_settings['file']	 				= TSPFP_PLUGIN_FILE;
 
-$easy_plugin_settings['widget_width']	 		= 300;
-$easy_plugin_settings['widget_height'] 			= 350;
+$easy_dev_settings['widget_width']	 		= 300;
+$easy_dev_settings['widget_height'] 			= 350;
 
-$easy_plugin_settings['smarty_template_dirs']	= array( TSPFP_PLUGIN_PATH . 'templates', TSP_EASY_PLUGINS_ASSETS_TEMPLATES_PATH );
-$easy_plugin_settings['smarty_compiled_dir']  	= TSP_EASY_PLUGINS_TMP_PATH . TSPFP_PLUGIN_NAME . DS . 'compiled';
-$easy_plugin_settings['smarty_cache_dir'] 		= TSP_EASY_PLUGINS_TMP_PATH . TSPFP_PLUGIN_NAME . DS . 'cache';
+$easy_dev_settings['smarty_template_dirs']	= array( TSPFP_PLUGIN_PATH . 'templates', TSP_EASY_DEV_ASSETS_TEMPLATES_PATH );
+$easy_dev_settings['smarty_compiled_dir']  	= TSP_EASY_DEV_TMP_PATH . TSPFP_PLUGIN_NAME . DS . 'compiled';
+$easy_dev_settings['smarty_cache_dir'] 		= TSP_EASY_DEV_TMP_PATH . TSPFP_PLUGIN_NAME . DS . 'cache';
 
 //* Custom globals *//
-$easy_plugin_settings['title_short']			= preg_replace("/TSP/","",$easy_plugin_settings['Name']);
-$easy_plugin_settings['store_url']	 			= 'http://www.thesoftwarepeople.com/software/plugins/wordpress';
-$easy_plugin_settings['wp_query'] 				= '/wp-admin/plugin-install.php?tab=search&type=term&s';
-$easy_plugin_settings['contact_url'] 			= 'http://www.thesoftwarepeople.com/about-us/contact-us.html';
-$easy_plugin_settings['plugin_list']			= 'http://www.thesoftwarepeople.com/plugins/wordpress/plugins.json';
+$easy_dev_settings['title_short']			= preg_replace("/TSP/","",$easy_dev_settings['Name']);
+$easy_dev_settings['store_url']	 			= 'http://www.thesoftwarepeople.com/software/plugins/wordpress';
+$easy_dev_settings['wp_query'] 				= '/wp-admin/plugin-install.php?tab=search&type=term&s';
+$easy_dev_settings['contact_url'] 			= 'http://www.thesoftwarepeople.com/about-us/contact-us.html';
+$easy_dev_settings['plugin_list']			= 'http://www.thesoftwarepeople.com/plugins/wordpress/plugins.json';
 //* Custom globals *//
 
-$easy_plugin_settings['plugin_data']			= array(
+$easy_dev_settings['plugin_data']			= array(
 	'post_fields'						=> array(		
 		'quote' 		=> array( 
 			'type' 			=> 'TEXTAREA', 

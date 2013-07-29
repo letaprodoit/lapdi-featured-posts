@@ -50,7 +50,7 @@ Add a `Featured Posts` to posts and pages by using a shortcode inside your text 
 == Changelog ==
 
 = 1.1.0 =
-* Now uses Easy Plugins for easy plugin modification, embracing OOD
+* Now uses Easy Dev for easy plugin modification, embracing OOD
 
 = 1.0.1 =
 * Checks for existence of parent settings menu before overwriting it
@@ -61,7 +61,7 @@ Add a `Featured Posts` to posts and pages by using a shortcode inside your text 
 == Upgrade notice ==
 
 = 1.1.0 =
-Plugin now requires TSP Easy Plugins.
+Plugin now requires TSP Easy Dev.
 
 = 1.0.1 =
 Menu fix.
