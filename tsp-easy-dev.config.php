@@ -23,13 +23,14 @@ $easy_dev_settings['key'] 					= $easy_dev_settings['TextDomain'];
 $easy_dev_settings['title']					= $easy_dev_settings['Name'];
 $easy_dev_settings['title_short']			= $easy_dev_settings['Name'];
 
-$easy_dev_settings['option_name']			= TSPFP_PLUGIN_NAME . "-option";
-$easy_dev_settings['option_name_old']		= $easy_dev_settings['TextDomain']."_options";
+$easy_dev_settings['option_prefix']			= TSPFP_PLUGIN_NAME . "-option";
+$easy_dev_settings['option_prefix_old']		= $easy_dev_settings['TextDomain']."_options";
 
 $easy_dev_settings['file']	 				= TSPFP_PLUGIN_FILE;
+$easy_dev_settings['base_name']	 			= TSPFP_PLUGIN_BASE_NAME;
 
 $easy_dev_settings['widget_width']	 		= 300;
-$easy_dev_settings['widget_height'] 			= 350;
+$easy_dev_settings['widget_height'] 		= 350;
 
 $easy_dev_settings['smarty_template_dirs']	= array( TSPFP_PLUGIN_PATH . 'templates', TSP_EASY_DEV_ASSETS_TEMPLATES_PATH );
 $easy_dev_settings['smarty_compiled_dir']  	= TSP_EASY_DEV_TMP_PATH . TSPFP_PLUGIN_NAME . DS . 'compiled';
@@ -43,7 +44,7 @@ $easy_dev_settings['contact_url'] 			= 'http://www.thesoftwarepeople.com/about-u
 $easy_dev_settings['plugin_list']			= 'http://www.thesoftwarepeople.com/plugins/wordpress/plugins.json';
 //* Custom globals *//
 
-$easy_dev_settings['plugin_data']			= array(
+$easy_dev_settings['plugin_options']		= array(
 	'post_fields'						=> array(		
 		'quote' 		=> array( 
 			'type' 			=> 'TEXTAREA', 
@@ -167,4 +168,6 @@ $easy_dev_settings['plugin_data']			= array(
 		)
 	),
 );
+
+$easy_dev_settings['plugin_options']['settings_fields'] = $easy_dev_settings['plugin_options']['widget_fields'];		
 ?>

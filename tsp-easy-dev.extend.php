@@ -1,6 +1,6 @@
 <?php				
 /**
- * TSP_Easy_Dev_Settings_Featured_Posts - Extends the TSP_Plugin_Settings Class
+ * TSP_Easy_Dev_Options_Featured_Posts - Extends the TSP_Plugin_Settings Class
  * @package TSP_Easy_Dev
  * @author sharrondenice, thesoftwarepeople
  * @author Sharron Denice, The Software People
@@ -10,11 +10,11 @@
  */
 
 /**
- * Extends the TSP_Easy_Dev_Settings_Facepile Class
+ * Extends the TSP_Easy_Dev_Options_Facepile Class
  *
  * original author: Sharron Denice
  */
-class TSP_Easy_Dev_Settings_Featured_Posts extends TSP_Easy_Dev_Settings
+class TSP_Easy_Dev_Options_Featured_Posts extends TSP_Easy_Dev_Options
 {
 	/**
 	 * Display all the plugins that The Software People has released
@@ -38,7 +38,7 @@ class TSP_Easy_Dev_Settings_Featured_Posts extends TSP_Easy_Dev_Settings
 		$pro_installed_plugins 	= array();
 		$pro_recommend_plugins 	= array();
 		
-		$json 					= file_get_contents( $this->settings['plugin_list'] );
+		$json 					= file_get_contents( $this->get_value('plugin_list') );
 		$tsp_plugins 			= json_decode($json);
 		
 		foreach ( $tsp_plugins->{'plugins'} as $plugin_data )
@@ -88,10 +88,10 @@ class TSP_Easy_Dev_Settings_Featured_Posts extends TSP_Easy_Dev_Settings
 		$pro_total											= $pro_active_count + $pro_installed_count + $pro_recommend_count;
 				
 		// Display settings to screen
-		$smarty = new TSP_Easy_Dev_Smarty( $this->settings['smarty_template_dirs'], 
-			$this->settings['smarty_cache_dir'], 
-			$this->settings['smarty_compiled_dir'], true );
-
+		$smarty = new TSP_Easy_Dev_Smarty( $this->get_value('smarty_template_dirs'), 
+			$this->get_value('smarty_cache_dir'), 
+			$this->get_value('smarty_compiled_dir'), true );
+			
 		$smarty->assign( 'free_active_count',		$free_active_count);
 		$smarty->assign( 'free_installed_count',	$free_installed_count);
 		$smarty->assign( 'free_recommend_count',	$free_recommend_count);
@@ -112,7 +112,7 @@ class TSP_Easy_Dev_Settings_Featured_Posts extends TSP_Easy_Dev_Settings
 		$smarty->assign( 'pro_total',				$pro_total);
 
 		$smarty->assign( 'title',					"WordPress Plugins by The Software People");
-		$smarty->assign( 'contact_url',				$this->settings['contact_url']);
+		$smarty->assign( 'contact_url',				$this->get_value('contact_url'));
 
 		$smarty->display( 'default_admin_menu.tpl');
 	}//end ad_menu
@@ -133,45 +133,46 @@ class TSP_Easy_Dev_Settings_Featured_Posts extends TSP_Easy_Dev_Settings
 		$error = "";
 		
 		// get settings from database
-		$plugin_data = get_option( $this->settings['option_name'] );
-		$defaults = new TSP_Easy_Dev_Data ( $plugin_data['widget_fields'] );
+		$settings_fields = get_option( $this->get_value('settings-fields-option-name') );
+		
+		$defaults = new TSP_Easy_Dev_Data ( $settings_fields );
 
 		$form = null;
-		if ( array_key_exists( $this->settings['name'] . '_form_submit', $_REQUEST ))
+		if ( array_key_exists( $this->get_value('name') . '_form_submit', $_REQUEST ))
 		{
-			$form = $_REQUEST[ $this->settings['name'] . '_form_submit'];
+			$form = $_REQUEST[ $this->get_value('name') . '_form_submit'];
 		}//endif
 				
 		// Save data for settings page
-		if( isset( $form ) && check_admin_referer( $this->settings['name'], $this->settings['name'] . '_nonce_name' ) ) 
+		if( isset( $form ) && check_admin_referer( $this->get_value('name'), $this->get_value('name') . '_nonce_name' ) ) 
 		{
 			$defaults->set_values( $_POST );
-			$plugin_data['widget_fields'] = $defaults->get();
+			$settings_fields = $defaults->get();
 			
-			update_option( $this->settings['option_name'], $plugin_data );
+			update_option( $this->get_value('settings-fields-option-name'), $settings_fields );
 			
-			$message = __( "Options saved.", $this->settings['name'] );
+			$message = __( "Options saved.", $this->get_value('name') );
 		}
-
+		
 		$form_fields = $defaults->get_values( true );
 
 		// Display settings to screen
-		$smarty = new TSP_Easy_Dev_Smarty( $this->settings['smarty_template_dirs'], 
-			$this->settings['smarty_cache_dir'], 
-			$this->settings['smarty_compiled_dir'], true );
+		$smarty = new TSP_Easy_Dev_Smarty( $this->get_value('smarty_template_dirs'), 
+			$this->get_value('smarty_cache_dir'), 
+			$this->get_value('smarty_compiled_dir'), true );
 
 		$smarty->assign( 'form_fields',				$form_fields);
 		$smarty->assign( 'message',					$message);
 		$smarty->assign( 'error',					$error);
 		$smarty->assign( 'form',					$form);
-		$smarty->assign( 'plugin_name',				$this->settings['name']);
-		$smarty->assign( 'nonce_name',				wp_nonce_field( $this->settings['name'], $this->settings['name'].'_nonce_name' ));
+		$smarty->assign( 'plugin_name',				$this->get_value('name'));
+		$smarty->assign( 'nonce_name',				wp_nonce_field( $this->get_value('name'), $this->get_value('name').'_nonce_name' ));
 		
-		$smarty->display( $this->settings['name'] . '_shortcode_settings.tpl');
+		$smarty->display( $this->get_value('name') . '_shortcode_settings.tpl');
 				
 	}//end settings_page
 	
-}//end TSP_Easy_Dev_Settings_Featured_Posts
+}//end TSP_Easy_Dev_Options_Featured_Posts
 
 
 /**
@@ -196,26 +197,23 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 	 */	
 	public function __construct() 
 	{
-		add_filter( 'TSP_Easy_Dev_Widget_Featured_Posts-init', array($this, 'init'), 10, 1 );
+		add_filter( get_class()  .'-init', array($this, 'init'), 10, 1 );
 	}//end __construct
 
-	
 	/**
 	 * Function added to filter to allow initialization of widget
 	 *
 	 * @since 1.1.0
 	 *
-	 * @param array $globals Required - array of global variables
+	 * @param object $options Required - pass in reference to options class
 	 *
 	 * @return none
 	 */
-	public function init( $globals )
+	public function init( $options )
 	{
-		$this->settings = $globals;
-		
         // Create the widget
-		parent::__construct( $this->settings );
-	}
+		parent::__construct( $options );
+	}//end init
 
 	/**
 	 * Override required of form function to display widget information
@@ -237,9 +235,9 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 			$fields[$key]['name'] 		= $this->get_field_name($key);
 		}//end foreach
 
-		$smarty = new TSP_Easy_Dev_Smarty( $this->settings['smarty_template_dirs'], 
-			$this->settings['smarty_cache_dir'], 
-			$this->settings['smarty_compiled_dir'], true );
+		$smarty = new TSP_Easy_Dev_Smarty( $this->options->get_value('smarty_template_dirs'), 
+			$this->options->get_value('smarty_cache_dir'), 
+			$this->options->get_value('smarty_compiled_dir'), true );
 
     	$smarty->assign( 'form_fields', $fields );
     	$smarty->assign( 'class', 'widefat' );
@@ -369,9 +367,9 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 					$comments_popup_link = "";
 					/*
 					$comments_popup_link = comments_popup_link( 
-						'<span class="leave-reply">' . __( 'Reply', $this->settings['name'] ) . '</span>', 
-						_x( '1', 'comments number', $this->settings['name'] ), 
-						_x( '%', 'comments number', $this->settings['name'] ) );*/
+						'<span class="leave-reply">' . __( 'Reply', $this->options->get_value('name') ) . '</span>', 
+						_x( '1', 'comments number', $this->options->get_value('name') ), 
+						_x( '%', 'comments number', $this->options->get_value('name') ) );*/
 					
 					$comments_open = 							comments_open( $ID );
 					$private = 									post_password_required( $a_post );
@@ -383,9 +381,9 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 						$has_header_data = true;
 					}//endif
 
-					$smarty = new TSP_Easy_Dev_Smarty( $this->settings['smarty_template_dirs'], 
-						$this->settings['smarty_cache_dir'], 
-						$this->settings['smarty_compiled_dir'], true );
+					$smarty = new TSP_Easy_Dev_Smarty( $this->options->get_value('smarty_template_dirs'), 
+						$this->options->get_value('smarty_cache_dir'), 
+						$this->options->get_value('smarty_compiled_dir'), true );
 				    
 				    // Store values into Smarty
 				    foreach ( $fields as $key => $val )
@@ -404,14 +402,14 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 					$smarty->assign("ID", 						$ID, true);
 					$smarty->assign("post_class", 				implode( " ", get_post_class( null, $ID ) ), true);
 					$smarty->assign("long_title", 				get_the_title( $a_post ), true);
-					$smarty->assign("wp_link_pages", 			wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', $this->settings['name'] ), 'after' => '</div>', 'echo' => 0 ) ), true);
-					$smarty->assign("edit_post_link", 			get_edit_post_link( __( 'Edit', $this->settings['name'] ), '<div class="edit-link">', '</div>', $ID ), true);
+					$smarty->assign("wp_link_pages", 			wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', $this->options->get_value('name') ), 'after' => '</div>', 'echo' => 0 ) ), true);
+					$smarty->assign("edit_post_link", 			get_edit_post_link( __( 'Edit', $this->options->get_value('name') ), '<div class="edit-link">', '</div>', $ID ), true);
 					$smarty->assign("author_first_name", 		get_the_author_meta( 'first_name', $a_post->post_author ), true );
 					$smarty->assign("author_last_name", 		get_the_author_meta( 'last_name', $a_post->post_author ), true );
 					$smarty->assign("sticky", 					is_sticky( $ID ), true);
 					$smarty->assign("permalink", 				get_permalink( $ID ), true);
 					
-					$smarty->assign("featured",					__( 'Featured', $this->settings['name'] ), true);
+					$smarty->assign("featured",					__( 'Featured', $this->options->get_value('name') ), true);
 					$smarty->assign("title", 					$title, true);
 					$smarty->assign("media", 					$media, true);
 					$smarty->assign("target", 					$target, true);
@@ -421,12 +419,12 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 					$smarty->assign("comments_popup_link", 		$comments_popup_link, true);
 					$smarty->assign("comments_open", 			$comments_open, true);
 					$smarty->assign("post_password_required", 	$private, true);
-					$smarty->assign("plugin_key",				$this->settings['TextDomain'], true);
+					$smarty->assign("plugin_key",				$this->options->get_value('TextDomain'), true);
 					$smarty->assign("has_header_data", 			$has_header_data, true);
 					$smarty->assign("last_post", 				($post_cnt == $num_posts) ? true : null, true);
 					$smarty->assign("first_post", 				($post_cnt == 1) ? true : null, true);
 		            
-		            $return_HTML .= $smarty->fetch( $this->settings['name'] . '_layout'.$layout.'.tpl' );
+		            $return_HTML .= $smarty->fetch( $this->options->get_value('name') . '_layout'.$layout.'.tpl' );
 		        }
 		    } //endforeach;
 	    }//end if
@@ -482,10 +480,10 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 	 */
 	private function get_post_fields( $ID )
 	{
-		$post_fields = array();
+		$new_post_fields = array();
 		       
-		$plugin_data = get_option( $this->settings['option_name'] );
-		$defaults = new TSP_Easy_Dev_Data ( $plugin_data['post_fields'] );
+		$post_fields = get_option( $this->options->get_value('post-fields-option-name') );
+		$defaults = new TSP_Easy_Dev_Data ( $post_fields );
 		
 		$fields = $defaults->get_values();
 
@@ -497,13 +495,13 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 		        $value_arr = get_post_custom_values( $key, $ID );
 		        
 		        if (!empty( $value_arr ))
-		        	$post_fields[$key] = $value_arr[0];
+		        	$new_post_fields[$key] = $value_arr[0];
 		        else
-		        	$post_fields[$key] = "";
+		        	$new_post_fields[$key] = "";
 	        }//end foreach
         }//endif
         		
-		return $post_fields;
+		return $new_post_fields;
 	}//end get_post_fields
 
 	/**
