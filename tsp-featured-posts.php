@@ -18,7 +18,7 @@ define('TSPFP_PLUGIN_PATH',					plugin_dir_path( __FILE__ ) );
 define('TSPFP_PLUGIN_URL', 					plugin_dir_url( __FILE__ ) );
 define('TSPFP_PLUGIN_NAME', 				'tsp-featured-posts');
 define('TSPFP_PLUGIN_TITLE', 				'TSP Featured Posts');
-define('TSPFP_REQ_VERSION', 				"3.5.1");
+define('TSPFP_PLUGIN_REQ_VERSION', 			"3.5.1");
 define('TSPFP_PLUGIN_BASE_NAME', 			TSPFP_PLUGIN_NAME . '/'. TSPFP_PLUGIN_NAME . '.php' );
 
 if (!class_exists('TSP_Easy_Dev'))
@@ -45,7 +45,7 @@ require( TSPFP_PLUGIN_PATH . 'tsp-easy-dev.extend.php');
 //--------------------------------------------------------
 // initialize the Facepile plugin
 //--------------------------------------------------------
-$featured_posts 								= new TSP_Easy_Dev_Pro( __FILE__, TSPFP_REQ_VERSION );
+$featured_posts 								= new TSP_Easy_Dev_Pro( __FILE__, TSPFP_PLUGIN_REQ_VERSION );
 
 $featured_posts->set_options_handler( new TSP_Easy_Dev_Options_Featured_Posts( $easy_dev_settings ), true );
 
@@ -54,8 +54,6 @@ $featured_posts->set_widget_handler( 'TSP_Easy_Dev_Widget_Featured_Posts');
 $featured_posts->uses_smarty 					= true;
 
 $featured_posts->uses_shortcodes 				= true;
-
-$featured_posts->required_wordpress_version 	= "3.5.1";
 
 // Quueue User styles
 $featured_posts->add_css( TSPFP_PLUGIN_URL . 'css' . DS . 'movingboxes.css' );
