@@ -16,16 +16,16 @@ require_once(ABSPATH . 'wp-admin/includes/plugin.php' );
 define('TSPFP_PLUGIN_FILE', 				__FILE__ );
 define('TSPFP_PLUGIN_PATH',					plugin_dir_path( __FILE__ ) );
 define('TSPFP_PLUGIN_URL', 					plugin_dir_url( __FILE__ ) );
+define('TSPFP_PLUGIN_BASE_NAME', 			plugin_basename( __FILE__ ) );
 define('TSPFP_PLUGIN_NAME', 				'tsp-featured-posts');
 define('TSPFP_PLUGIN_TITLE', 				'TSP Featured Posts');
 define('TSPFP_PLUGIN_REQ_VERSION', 			"3.5.1");
-define('TSPFP_PLUGIN_BASE_NAME', 			TSPFP_PLUGIN_NAME . '/'. TSPFP_PLUGIN_NAME . '.php' );
 
 if (!class_exists('TSP_Easy_Dev'))
 {
 	add_action( 'admin_notices', function (){
 		
-		$message = TSPFP_PLUGIN_TITLE . ' <strong>was not installed</strong>, plugin requires the installation and activation of <a href="plugin-install.php?tab=search&type=term&s=TSP+Easy+Dev">TSP Easy Dev</a> or <a href="plugin-install.php?tab=search&type=term&s=TSP+Easy+Dev+Pro">TSP Easy Dev Pro</a>.';
+		$message = TSPFP_PLUGIN_TITLE . ' <strong>was not installed</strong>, plugin requires the installation and activation of <strong><a href="plugin-install.php?tab=search&type=term&s=TSP+Easy+Dev">TSP Easy Dev</a></strong> or <strong><a href="plugin-install.php?tab=search&type=term&s=TSP+Easy+Dev+Pro">TSP Easy Dev Pro</a></strong>.';
 	    ?>
 	    <div class="error">
 	        <p><?php echo $message; ?></p>
@@ -40,8 +40,8 @@ if (!class_exists('TSP_Easy_Dev'))
 
 global $easy_dev_settings;
 
-require( TSPFP_PLUGIN_PATH . 'tsp-easy-dev.config.php');
-require( TSPFP_PLUGIN_PATH . 'tsp-easy-dev.extend.php');
+require( TSPFP_PLUGIN_PATH . 'TSP_Easy_Dev.config.php');
+require( TSPFP_PLUGIN_PATH . 'TSP_Easy_Dev.extend.php');
 //--------------------------------------------------------
 // initialize the Facepile plugin
 //--------------------------------------------------------

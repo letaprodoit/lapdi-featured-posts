@@ -1,6 +1,6 @@
 <?php				
 /**
- * TSP_Easy_Dev_Options_Featured_Posts - Extends the TSP_Plugin_Settings Class
+ * TSP_Easy_Dev_Options_Featured_Posts - Extends the TSP_Easy_Dev_Pro_Options Class
  * @package TSP_Easy_Dev
  * @author sharrondenice, thesoftwarepeople
  * @author Sharron Denice, The Software People
@@ -10,11 +10,10 @@
  */
 
 /**
- * Extends the TSP_Easy_Dev_Options_Pro Class
- *
- * original author: Sharron Denice
+ * @method void display_parent_page()
+ * @method void display_plugin_settings_page()
  */
-class TSP_Easy_Dev_Options_Featured_Posts extends TSP_Easy_Dev_Options_Pro
+class TSP_Easy_Dev_Options_Featured_Posts extends TSP_Easy_Dev_Pro_Options
 {
 	/**
 	 * Display all the plugins that The Software People has released
