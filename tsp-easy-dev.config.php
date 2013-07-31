@@ -169,5 +169,5 @@ $easy_dev_settings['plugin_options']		= array(
 	),
 );
 
-$easy_dev_settings['plugin_options']['settings_fields'] = $easy_dev_settings['plugin_options']['widget_fields'];		
+$easy_dev_settings['plugin_options']['shortcode_fields'] = $easy_dev_settings['plugin_options']['widget_fields'];		
 ?>

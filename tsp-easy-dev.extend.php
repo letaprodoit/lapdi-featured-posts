@@ -10,11 +10,11 @@
  */
 
 /**
- * Extends the TSP_Easy_Dev_Options_Facepile Class
+ * Extends the TSP_Easy_Dev_Options_Pro Class
  *
  * original author: Sharron Denice
  */
-class TSP_Easy_Dev_Options_Featured_Posts extends TSP_Easy_Dev_Options
+class TSP_Easy_Dev_Options_Featured_Posts extends TSP_Easy_Dev_Options_Pro
 {
 	/**
 	 * Display all the plugins that The Software People has released
@@ -133,9 +133,9 @@ class TSP_Easy_Dev_Options_Featured_Posts extends TSP_Easy_Dev_Options
 		$error = "";
 		
 		// get settings from database
-		$settings_fields = get_option( $this->get_value('settings-fields-option-name') );
+		$shortcode_fields = get_option( $this->get_value('shortcode-fields-option-name') );
 		
-		$defaults = new TSP_Easy_Dev_Data ( $settings_fields );
+		$defaults = new TSP_Easy_Dev_Data ( $shortcode_fields );
 
 		$form = null;
 		if ( array_key_exists( $this->get_value('name') . '_form_submit', $_REQUEST ))
@@ -147,9 +147,9 @@ class TSP_Easy_Dev_Options_Featured_Posts extends TSP_Easy_Dev_Options
 		if( isset( $form ) && check_admin_referer( $this->get_value('name'), $this->get_value('name') . '_nonce_name' ) ) 
 		{
 			$defaults->set_values( $_POST );
-			$settings_fields = $defaults->get();
+			$shortcode_fields = $defaults->get();
 			
-			update_option( $this->get_value('settings-fields-option-name'), $settings_fields );
+			update_option( $this->get_value('shortcode-fields-option-name'), $shortcode_fields );
 			
 			$message = __( "Options saved.", $this->get_value('name') );
 		}
@@ -269,6 +269,8 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 	    
 	    $queried_posts = get_posts($args);
 	    
+	    $pro_post = $this->options->get_pro_post();
+	    
 	    if (!empty ( $queried_posts ))
 	    {
 		    $post_cnt = 0;
@@ -279,10 +281,10 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 		        $ID = $a_post->ID;
 		        
 		        // get the first image or video
-		        $media = $this->get_media ( $a_post, $thumb_width, $thumb_height );
+		        $media = $pro_post->get_post_media ( $a_post, $thumb_width, $thumb_height );
 		
 		        // get the fields stored in the database for this post
-		        $post_fields = $this->get_post_fields( $ID );
+		        $post_fields = $pro_post->get_post_fields( $ID );
 		        
 		        // get determine if the link is external if so set target to blank window
 		        // TODO: I don't like passing that entire post object by value
@@ -434,177 +436,5 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 		
 		return $return_HTML;
 	}//end display
-
-	/**
-	 * Find and return an image from the post
-	 *
-	 * @since 1.1.0
-	 *
-	 * @param object $a_post  - the post to parse
-	 * @param int $thumb_width  - the width to set the image to
-	 * @param int $thumb_height  - the height to set the image to
-	 *
-	 * @return string $media return the the first media item found
-	 */
-	private function get_media( &$a_post, $thumb_width, $thumb_height )
-	{
-       	$media 		= null;
-        $img     	= $this->get_thumbnail( $a_post );
-        
-        if ( empty( $img ) )
-        {
-        	$video = $this->get_video( $a_post );
-        
-	       	if ( !empty( $video ) )
-	       	{
-	       		$video = $this->adjust_video( $video, $thumb_width, $thumb_height);
-	       		$media = "<code>$video</code>";
-	       	}//end if
-	    }//endif
-	    else
-	    {
-			$media = "<img align='left' src='$img' alt='{$a_post->post_title}' width='$thumb_width' height='$thumb_height'/>";
-	    }//end else
-	    
-	    return $media;
-	}//end get_media
-
-	/**
-	 * Return an array of the post fields
-	 *
-	 * @since 1.1.0
-	 *
-	 * @param int $ID  - the post's ID
-	 *
-	 * @return array $post_fields return an array of fiels stored in the post
-	 */
-	private function get_post_fields( $ID )
-	{
-		$new_post_fields = array();
-		       
-		$post_fields = get_option( $this->options->get_value('post-fields-option-name') );
-		$defaults = new TSP_Easy_Dev_Data ( $post_fields );
-		
-		$fields = $defaults->get_values();
-
-        if (!empty ( $fields ))
-        {
-	        foreach ( $fields as $key => $default_value )
-	        {
-		        // get the quote for the post
-		        $value_arr = get_post_custom_values( $key, $ID );
-		        
-		        if (!empty( $value_arr ))
-		        	$new_post_fields[$key] = $value_arr[0];
-		        else
-		        	$new_post_fields[$key] = "";
-	        }//end foreach
-        }//endif
-        		
-		return $new_post_fields;
-	}//end get_post_fields
-
-	/**
-	 * Find and return an image from the post
-	 *
-	 * @since 1.1.0
-	 *
-	 * @param object $a_post  - the post to parse
-	 *
-	 * @return string $img return the the first image found
-	 */
-	private function get_thumbnail( &$a_post )
-	{
-	   	$img = null;
-	   
-	   	if ( !empty( $a_post ))
-	   	{
-			ob_start();
-			ob_end_clean();
-			
-			$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $a_post->post_content, $matches);
-			
-			if ( !empty( $matches[1] ))
-			{
-				$img    = $matches[1][0];
-			}//end if
-		}//end if
-	    
-	   	return $img;
-	}//end get_thumbnail
-	
-	/**
-	 * Find and return a video from the post
-	 *
-	 * @since 1.1.0
-	 *
-	 * @param object $a_post  - the post to parse
-	 *
-	 * @return string $video return the the first video found
-	 */
-	private function get_video( &$a_post )
-	{
-	    $video = null;
-	    
-	    
-	   	if ( !empty( $a_post ))
-	   	{
-		    ob_start();
-		    ob_end_clean();
-		    
-		    $output = preg_match_all('/<code>(.*?)<\/code>/i', $a_post->post_content, $matches);
-			if ( !empty( $matches[1] ))
-			{
-				$video    = $matches[1][0];
-			}//end if
-		    
-		   	// if video wasn't found look for iframes
-		    if ( empty( $video ) )
-		    {
-			    //if its not wrapped in the code tags find the other methods of viewing videos
-			    $output = preg_match_all('/<iframe (.*?)>(.*?)<\/iframe>/i', $a_post->post_content, $matches);
-				if ( !empty ( $matches[0] ))
-				{
-					$video    = $matches[0][0];
-				}//endif
-		    }
-		    
-		    // if iframes weren't found look for flash
-		    if ( empty( $video ) )
-		    {
-			    //if its not wrapped in the code tags find the other methods of viewing videos
-			    $output = preg_match_all('/<object (.*?)>(.*?)<\/object>/i', $a_post->post_content, $matches);
-				if ( !empty ( $matches[0] ))
-				{
-					$video    = $matches[0][0];
-				}//endif
-		    }
-	   	}//end if
-	    
-	    return $video;
-	}//end get_video
-	
-	/**
-	 * Set the width and height in the the video string
-	 *
-	 * @since 1.1.0
-	 *
-	 * @param string $video  - the video to parse
-	 * @param string $width  - the width of the video
-	 * @param string $height  - the height of the video
-	 *
-	 * @return string $video return the the updated video string
-	 */
-	private function adjust_video($video, $width, $height)
-	{
-		$video = preg_replace('/width="(.*?)"/i', 'width="'.$width.'"', $video);
-		$video = preg_replace('/height="(.*?)"/i', 'height="'.$height.'"', $video);
-		
-		$video = preg_replace('/width=\'(.*?)\'/i', 'width=\''.$width.'\'', $video);
-		$video = preg_replace('/height=\'(.*?)\'/i', 'height=\''.$height.'\'', $video);
-		
-		return $video;
-	}//end adjust_video
-	
 }//end TSP_Easy_Dev_Widget_Featured_Posts
 ?>

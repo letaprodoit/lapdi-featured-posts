@@ -25,7 +25,7 @@ if (!class_exists('TSP_Easy_Dev'))
 {
 	add_action( 'admin_notices', function (){
 		
-		$message = TSPFP_PLUGIN_TITLE . ' <strong>was not installed</strong>, plugin requires the installation and activation of <a href="plugin-install.php?tab=search&type=term&s=TSP+Easy+Plugins">TSP Easy Dev</a> or <a href="plugin-install.php?tab=search&type=term&s=TSP+Easy+Plugins+Pro">TSP Easy Dev Pro</a>.';
+		$message = TSPFP_PLUGIN_TITLE . ' <strong>was not installed</strong>, plugin requires the installation and activation of <a href="plugin-install.php?tab=search&type=term&s=TSP+Easy+Dev">TSP Easy Dev</a> or <a href="plugin-install.php?tab=search&type=term&s=TSP+Easy+Dev+Pro">TSP Easy Dev Pro</a>.';
 	    ?>
 	    <div class="error">
 	        <p><?php echo $message; ?></p>

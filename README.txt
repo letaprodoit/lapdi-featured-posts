@@ -3,7 +3,7 @@ Contributors: thesoftwarepeople,sharrondenice
 Donate link: http://www.thesoftwarepeople.com/software/plugins/wordpress/featured-posts-for-wordpress.html
 Tags: featured posts display gallery slider jquery moving boxes the software people
 Requires at least: 3.5.1
-Tested up to: 3.5.2
+Tested up to: 3.5.6
 Stable tag: 1.0.1
 License: Apache v2.0
 License URI: http://www.apache.org/licenses/LICENSE-2.0
@@ -50,7 +50,7 @@ Add a `Featured Posts` to posts and pages by using a shortcode inside your text 
 == Changelog ==
 
 = 1.1.0 =
-* Now uses Easy Dev for easy plugin modification, embracing OOD
+* Now uses Easy Dev Pro for easy plugin development, #embraceOOD
 
 = 1.0.1 =
 * Checks for existence of parent settings menu before overwriting it
@@ -61,7 +61,7 @@ Add a `Featured Posts` to posts and pages by using a shortcode inside your text 
 == Upgrade notice ==
 
 = 1.1.0 =
-Plugin now requires TSP Easy Dev.
+Plugin now uses TSP Easy Dev Pro.
 
 = 1.0.1 =
 Menu fix.
