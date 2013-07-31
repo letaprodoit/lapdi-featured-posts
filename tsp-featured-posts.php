@@ -45,7 +45,7 @@ require( TSPFP_PLUGIN_PATH . 'TSP_Easy_Dev.extend.php');
 //--------------------------------------------------------
 // initialize the Facepile plugin
 //--------------------------------------------------------
-$featured_posts 								= new TSP_Easy_Dev_Pro( __FILE__, TSPFP_PLUGIN_REQ_VERSION );
+$featured_posts 								= new TSP_Easy_Dev_Pro( TSPFP_PLUGIN_FILE, TSPFP_PLUGIN_REQ_VERSION );
 
 $featured_posts->set_options_handler( new TSP_Easy_Dev_Options_Featured_Posts( $easy_dev_settings ), true );
 
@@ -86,7 +86,7 @@ $featured_posts->set_plugin_icon( TSPFP_PLUGIN_URL . 'images' . DS . 'tsp_icon_1
 $featured_posts->add_shortcode ( TSPFP_PLUGIN_NAME );
 $featured_posts->add_shortcode ( 'tsp_featured_posts' ); //backwards compatibility
 
-$featured_posts->run( __FILE__ );
+$featured_posts->run( TSPFP_PLUGIN_FILE );
 
 // Initialize widget - Required by WordPress
 add_action('widgets_init', function () {

@@ -11,7 +11,7 @@
 
 /**
  * @method void display_parent_page()
- * @method void display_plugin_settings_page()
+ * @method void display_plugin_options_page()
  */
 class TSP_Easy_Dev_Options_Featured_Posts extends TSP_Easy_Dev_Pro_Options
 {
@@ -125,7 +125,7 @@ class TSP_Easy_Dev_Options_Featured_Posts extends TSP_Easy_Dev_Pro_Options
 	 *
 	 * @return output to screen
 	 */
-	function display_plugin_settings_page() 
+	function display_plugin_options_page() 
 	{
 		$message = "";
 		
