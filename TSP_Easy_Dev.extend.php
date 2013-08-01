@@ -113,7 +113,7 @@ class TSP_Easy_Dev_Options_Featured_Posts extends TSP_Easy_Dev_Pro_Options
 		$smarty->assign( 'title',					"WordPress Plugins by The Software People");
 		$smarty->assign( 'contact_url',				$this->get_value('contact_url'));
 
-		$smarty->display( 'default_admin_menu.tpl');
+		$smarty->display( 'easy-dev-parent-page.tpl');
 	}//end ad_menu
 	
 	/**
