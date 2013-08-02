@@ -1,6 +1,6 @@
-Featured Posts (WordPress Plugin) 1.0
+Featured Posts for WordPress
 -------
-Featured Posts (WordPress Plugin) plugin allows you to add featured posts to your blog's website via widget or on pages and posts using shortcodes. Featured Posts has five (5) layouts and can include thumbnails and quotes.
+Featured Posts for WordPress allows you to add featured posts to your blog's website via widget or on pages and posts using shortcodes. Featured Posts has five (5) layouts and can include thumbnails and quotes.
 
 For up-to-date installation and setup notes, visit the FAQ:
 [http://lab.thesoftwarepeople.com/tracker/wiki/wordpress-fp:MainPage](http://lab.thesoftwarepeople.com/tracker/wiki/wordpress-fp:MainPage)

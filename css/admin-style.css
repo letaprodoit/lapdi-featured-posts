@@ -1,0 +1,5 @@
+.tsp_container #tsp_icon {
+	 background: url("../images/tsp_icon.png") no-repeat scroll left top transparent;
+	 background-size: 35px 35px;
+	 margin-top: -10px;
+}
