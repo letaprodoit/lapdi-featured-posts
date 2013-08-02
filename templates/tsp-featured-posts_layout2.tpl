@@ -20,6 +20,7 @@
 				<div id="clear"></div>
 			</header>
 			<div class="entry-summary">
+				{if $show_author == 'Y'}By: {$author_first_name}&nbsp;{$author_last_name}<br>{/if}
 				{$full_preview}&nbsp;&nbsp;<a target="{$target}" href='{$permalink}'>Continue Reading <span class="meta-nav">&rarr;</span></a>
 			</div>
 		</div>

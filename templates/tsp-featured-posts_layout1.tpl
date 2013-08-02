@@ -26,7 +26,7 @@
 		<div id="full">	 
 			{$media}
 			<span class="entry-summary">
-				By: {$author_first_name}&nbsp;{$author_last_name}<br>
+				{if $show_author == 'Y'}By: {$author_first_name}&nbsp;{$author_last_name}<br>{/if}
 				{$full_preview}&nbsp;&nbsp;<a target="{$target}" href='{$permalink}'>Continue Reading <span class="meta-nav">&rarr;</span></a>
 			</span>
 		</div>

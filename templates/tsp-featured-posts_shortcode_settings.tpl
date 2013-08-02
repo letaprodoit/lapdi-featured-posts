@@ -10,11 +10,12 @@
 					<ul style="padding-left: 30px;">
 						<li>Title: <strong>title="Title of Posts"</strong></li>
 						<li>Max Words in Title: <strong>max_words=10</strong></li>
+						<li>Show Author: <strong>show_author="Y"</strong>(Options: Y, N)</li>
 						<li>Show Quotes: <strong>show_quotes="Y"</strong>(Options: Y, N)</li>
 						<li>Show Posts with No Media Content: <strong>show_text_posts="N"</strong>(Options: Y, N)</li>
 						<li>Number Posts: <strong>number_posts="5"</strong></li>
 						<li>Excerpt Length (Layouts #0 & #3): <strong>excerpt_min="60"</strong></li>
-						<li>Excerpt Length (Layouts #1, #2 & #4): <strong>excerpt_max="100"</strong></li>
+						<li>Excerpt Length (Layouts #1, #2 & #4[Slider]): <strong>excerpt_max="100"</strong></li>
 						<li>Post IDs: <strong>post_ids="5,3,4"</strong></li>
 						<li>Category: <strong>category="0"</strong>(Any category ID, 0 returns all categories)</li>
 						<li>Slider Width: <strong>slider_width="865"</strong></li>
@@ -39,7 +40,7 @@
 			</ul>
 			<hr>
 			A shortcode with all the options will look like the following:<br><br>
-			<strong>[tsp-featured-posts title="Title of Posts" max_words=10 show_quotes="N" show_text_posts="N" number_posts="5" excerpt_min="60" excerpt_max="100" post_ids="5,3,4" category="0" slider_width="865" slider_height="365 layout="0" order_by="DESC" thumb_width="80" thumb_height="80" before_title="" after_title=""]</strong>
+			<strong>[tsp-featured-posts title="Title of Posts" max_words=10 show_quotes="N" show_author="Y" show_text_posts="N" number_posts="5" excerpt_min="60" excerpt_max="100" post_ids="5,3,4" category="0" slider_width="865" slider_height="365 layout="0" order_by="DESC" thumb_width="80" thumb_height="80" before_title="" after_title=""]</strong>
 		</div>
 	
 	</div>

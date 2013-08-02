@@ -3,8 +3,8 @@ Contributors: thesoftwarepeople,sharrondenice
 Donate link: http://www.thesoftwarepeople.com/software/plugins/wordpress/featured-posts-for-wordpress.html
 Tags: featured posts display gallery slider jquery moving boxes the software people
 Requires at least: 3.5.1
-Tested up to: 3.5.6
-Stable tag: 1.0.1
+Tested up to: 3.6
+Stable tag: 1.1.0
 License: Apache v2.0
 License URI: http://www.apache.org/licenses/LICENSE-2.0
 
@@ -19,7 +19,7 @@ The Software People's (TSP) Featured Posts plugin allows you to add featured pos
 Add a `Featured Posts` to posts and pages by using a shortcode inside your text or evaluated from within your theme. You may override page/post `Featured Posts` options with shortcode attributes defined on the plugin's settings page.
 
 * `[tsp-featured-posts]` - Will display posts with the default options defined in the plugin's settings page.
-* `[tsp-featured-posts title="Title of Posts" max_words=10 show_quotes="N" show_text_posts="N" number_posts="5"excerpt_max=100 excerpt_min=60 post_ids="5,3,4" category="0" slider_width="865" slider_height="365 layout="0" order_by="DESC" thumb_width="80" thumb_height="80" before_title="" after_title=""]` - Will override all attributes defined on the plugin's settings page.
+* `[tsp-featured-posts title="Title of Posts" max_words=10 show_quotes="N" show_author="Y" show_text_posts="N" number_posts="5" excerpt_max=100 excerpt_min=60 post_ids="5,3,4" category="0" slider_width="865" slider_height="365 layout="0" order_by="DESC" thumb_width="80" thumb_height="80" before_title="" after_title=""]` - Will override all attributes defined on the plugin's settings page.
 
 == Installation ==
 
@@ -50,7 +50,13 @@ Add a `Featured Posts` to posts and pages by using a shortcode inside your text 
 == Changelog ==
 
 = 1.1.0 =
-* Now uses Easy Dev Pro for easy plugin development, #embraceOOD
+* Now uses Easy Dev Pro for easy plugin development, <a href="https://twitter.com/#bringbackOOD">#bringbackOOD</a>
+* Handled all PHP notices
+* Added new attributes max_words (control post title lengths)
+* Added new attributes excerpt_min, excerpt_max (control post content lengths)
+* Added new attributes show_author (choose to show/hide the author of a post)
+* Renamed attributes to prevent red spell checks when editing (old attributes still supported)
+* Decreased plugin size by using Easy Dev
 
 = 1.0.1 =
 * Checks for existence of parent settings menu before overwriting it
@@ -61,7 +67,7 @@ Add a `Featured Posts` to posts and pages by using a shortcode inside your text 
 == Upgrade notice ==
 
 = 1.1.0 =
-Plugin now uses TSP Easy Dev Pro.
+Plugin now requires TSP Easy Dev. Uses TSP Easy Dev Pro. New features.
 
 = 1.0.1 =
 Menu fix.

@@ -6,7 +6,10 @@
 			<header class="entry-header">
 				<span class="entry-title"><a target="{$target}" href="{$permalink}" title="{$long_title}">{$long_title}</a></span>
 			</header><!-- .entry-header -->
-			<span class="entry-summary">{$text}</span>
+			<span class="entry-summary">
+				{if $show_author == 'Y'}By: {$author_first_name}&nbsp;{$author_last_name}<br>{/if}
+				{$text}
+			</span>
 		</div>
 		<footer class="entry-meta">
 			{$wp_link_pages}

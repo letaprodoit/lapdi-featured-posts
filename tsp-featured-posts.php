@@ -2,7 +2,7 @@
 /*
 Plugin Name: 	TSP Featured Posts
 Plugin URI: 	http://www.thesoftwarepeople.com/software/plugins/wordpress/featured-posts-for-wordpress.html
-Description: 	Featured Posts allows you to add featured posts to your blog's website via widgets, pages and/or posts.
+Description: 	Featured Posts allows you to <strong>add featured posts with quotes to your blog</strong>'s website. Powered by <strong><a href="http://wordpress.org/plugins/tsp-easy-dev/">TSP Easy Dev</a></strong>.
 Author: 		The Software People
 Author URI: 	http://www.thesoftwarepeople.com/
 Version: 		1.1.0
@@ -21,30 +21,36 @@ define('TSPFP_PLUGIN_NAME', 				'tsp-featured-posts');
 define('TSPFP_PLUGIN_TITLE', 				'TSP Featured Posts');
 define('TSPFP_PLUGIN_REQ_VERSION', 			"3.5.1");
 
-// If either of the plugins exist then inlude the register script to register all the classes
-// else deactivaet this plugin and do not allow installation
-if ( !file_exists( WP_PLUGIN_DIR . "/tsp-easy-dev-pro/TSP_Easy_Dev.register.php" ) )
+// The recommended option would be to require the installation of the standard version and
+// bundle the Pro classes into your plugin if needed, this plugin requires both the Easy Dev plugin installation
+// and looks for the existence of the Easy Dev Pro libraries
+if ( !file_exists ( WP_PLUGIN_DIR . "/tsp-easy-dev/TSP_Easy_Dev.register.php" ) || !file_exists( TSPFP_PLUGIN_PATH . "/lib//TSP_Easy_Dev_Pro/TSP_Easy_Dev_Pro.register.php" ) )
 {
-	add_action( 'admin_notices', function (){
-		
-		$message = TSPFP_PLUGIN_TITLE . ' <strong>was not installed</strong>, plugin requires the installation and activation of <strong><a href="plugin-install.php?tab=search&type=term&s=TSP+Easy+Dev+Pro">TSP Easy Dev Pro</a></strong>.';
+	function display_tspfp_notice()
+	{
+		$message = TSPFP_PLUGIN_TITLE . ' <strong>was not installed</strong>, plugin requires the installation of <strong><a href="plugin-install.php?tab=search&type=term&s=TSP+Easy+Dev">TSP Easy Dev</a></strong>.';
 	    ?>
 	    <div class="error">
 	        <p><?php echo $message; ?></p>
 	    </div>
 	    <?php
-	} );
-	
+	}//end display_tspfp_notice
+
+	add_action( 'admin_notices', 'display_tspfp_notice' );
 	deactivate_plugins( TSPFP_PLUGIN_BASE_NAME );
-	
 	return;
 }//endif
 else
 {
-    if (file_exists( WP_PLUGIN_DIR . "/tsp-easy-dev-pro/TSP_Easy_Dev.register.php" ))
+    if (file_exists( WP_PLUGIN_DIR . "/tsp-easy-dev/TSP_Easy_Dev.register.php" ))
     {
-    	include_once WP_PLUGIN_DIR . "/tsp-easy-dev-pro/TSP_Easy_Dev.register.php";
-    }//end if
+    	include_once WP_PLUGIN_DIR . "/tsp-easy-dev/TSP_Easy_Dev.register.php";
+    }//end else
+
+    if (file_exists( TSPFP_PLUGIN_PATH . "/lib//TSP_Easy_Dev_Pro/TSP_Easy_Dev_Pro.register.php" ))
+    {
+    	include_once TSPFP_PLUGIN_PATH . "/lib//TSP_Easy_Dev_Pro/TSP_Easy_Dev_Pro.register.php";
+    }//end else
 }//end else
 
 global $easy_dev_settings;
@@ -52,13 +58,17 @@ global $easy_dev_settings;
 require( TSPFP_PLUGIN_PATH . 'TSP_Easy_Dev.config.php');
 require( TSPFP_PLUGIN_PATH . 'TSP_Easy_Dev.extend.php');
 //--------------------------------------------------------
-// initialize the Facepile plugin
+// initialize the plugin
 //--------------------------------------------------------
-$featured_posts 								= new TSP_Easy_Dev_Pro( TSPFP_PLUGIN_FILE, TSPFP_PLUGIN_REQ_VERSION );
+$featured_posts 						= new TSP_Easy_Dev_Pro( TSPFP_PLUGIN_FILE, TSPFP_PLUGIN_REQ_VERSION );
 
 $featured_posts->set_options_handler( new TSP_Easy_Dev_Options_Featured_Posts( $easy_dev_settings ), true );
 
 $featured_posts->set_widget_handler( 'TSP_Easy_Dev_Widget_Featured_Posts');
+
+$featured_posts->add_link ( 'FAQ',		'http://wordpress.org/extend/plugins/tsp-featured-posts/faq/' );
+$featured_posts->add_link ( 'Rate Me',	'http://wordpress.org/support/view/plugin-reviews/tsp-featured-posts' );
+$featured_posts->add_link ( 'Support',	'http://wordpress.org/support/plugin/tsp-featured-posts' );
 
 $featured_posts->uses_smarty 					= true;
 

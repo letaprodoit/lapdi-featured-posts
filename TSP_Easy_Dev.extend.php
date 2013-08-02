@@ -225,15 +225,6 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 	 */
 	public function display_form( $fields )
 	{
-		foreach ( $fields as $key => $value )
-		{
-			// since there are multiple widgets on a page it is important
-			// to make sure the id and name are unique to this particular
-			// instance of the plugin so override the id and name
-			$fields[$key]['id'] 		= $this->get_field_id($key);
-			$fields[$key]['name'] 		= $this->get_field_name($key);
-		}//end foreach
-
 		$smarty = new TSP_Easy_Dev_Smarty( $this->options->get_value('smarty_template_dirs'), 
 			$this->options->get_value('smarty_cache_dir'), 
 			$this->options->get_value('smarty_compiled_dir'), true );
