@@ -66,7 +66,13 @@ $easy_dev_settings['plugin_options']		= array(
 		'show_author' 	=> array( 
 			'type' 			=> 'SELECT', 
 			'label' 		=> 'Display Author?', 
-			'value' 		=> 'Y',
+			'value' 		=> 'N',
+			'options'		=> array ('Yes' => 'Y', 'No' => 'N'),
+		),		
+		'show_date' 	=> array( 
+			'type' 			=> 'SELECT', 
+			'label' 		=> 'Display Publish Date?', 
+			'value' 		=> 'N',
 			'options'		=> array ('Yes' => 'Y', 'No' => 'N'),
 		),		
 		'show_quotes' 	=> array( 

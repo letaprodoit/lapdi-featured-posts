@@ -270,6 +270,8 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 		    {    
 		        $ID = $a_post->ID;
 		        
+		        $publish_date = date( get_option('date_format'), strtotime( $a_post->post_date ) );
+
 		        // get the first image or video
 		        $media = $pro_post->get_post_media ( $a_post, $thumb_width, $thumb_height );
 		
@@ -402,6 +404,7 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 					$smarty->assign("permalink", 				get_permalink( $ID ), true);
 					
 					$smarty->assign("featured",					__( 'Featured', $this->options->get_value('name') ), true);
+					$smarty->assign("publish_date", 			$publish_date, true);
 					$smarty->assign("title", 					$title, true);
 					$smarty->assign("media", 					$media, true);
 					$smarty->assign("target", 					$target, true);

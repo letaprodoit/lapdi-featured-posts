@@ -4,7 +4,7 @@ Donate link: http://www.thesoftwarepeople.com/software/plugins/wordpress/feature
 Tags: featured posts display gallery slider jquery moving boxes the software people
 Requires at least: 3.5.1
 Tested up to: 3.6
-Stable tag: 1.1.2
+Stable tag: 1.1.3
 License: Apache v2.0
 License URI: http://www.apache.org/licenses/LICENSE-2.0
 
@@ -19,7 +19,7 @@ The Software People's (TSP) Featured Posts plugin allows you to add featured pos
 Add a `Featured Posts` to posts and pages by using a shortcode inside your text or evaluated from within your theme. You may override page/post `Featured Posts` options with shortcode attributes defined on the plugin's settings page.
 
 * `[tsp-featured-posts]` - Will display posts with the default options defined in the plugin's settings page.
-* `[tsp-featured-posts title="Title of Posts" max_words=10 show_quotes="N" show_author="Y" show_text_posts="N" number_posts="5" excerpt_max=100 excerpt_min=60 post_ids="5,3,4" category="0" slider_width="865" slider_height="365 layout="0" order_by="DESC" thumb_width="80" thumb_height="80" before_title="" after_title=""]` - Will override all attributes defined on the plugin's settings page.
+* `[tsp-featured-posts title="Title of Posts" max_words=10 show_quotes="N" show_author="Y" show_date"N" show_text_posts="N" number_posts="5" excerpt_max=100 excerpt_min=60 post_ids="5,3,4" category="0" slider_width="865" slider_height="365 layout="0" order_by="DESC" thumb_width="80" thumb_height="80" before_title="" after_title=""]` - Will override all attributes defined on the plugin's settings page.
 
 == Installation ==
 
@@ -49,6 +49,11 @@ Add a `Featured Posts` to posts and pages by using a shortcode inside your text 
 
 == Changelog ==
 
+= 1.1.3 =
+* Required fix to properly store new widget/shortcode attributes into database. (Update to Easy Dev 1.2.2).
+* Added a `show_date` attribute to widget and shortcodes.
+* Make `show_author` No by default
+
 = 1.1.2 =
 * Added back in assets folder
 
@@ -71,6 +76,10 @@ Add a `Featured Posts` to posts and pages by using a shortcode inside your text 
 * Launch
 
 == Upgrade notice ==
+
+= 1.1.3 =
+* Required fix to properly store new widget/shortcode attributes into database. (Update to Easy Dev 1.2.2).
+* New widget/shortcode attribute.
 
 = 1.1.2 =
 Required Bug Fixes.
