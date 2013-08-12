@@ -81,7 +81,7 @@ Add a `Featured Posts` to posts and pages by using a shortcode inside your text 
 == Upgrade notice ==
 
 = 1.1.4 =
-Required fix to properly load media upload script.
+Required fix to properly initialize widgets for older versions of PHP.
 
 = 1.1.3 =
 Required fix to properly store new widget/shortcode attributes into database. (Update to Easy Dev 1.2.2).
