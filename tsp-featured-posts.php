@@ -5,9 +5,9 @@ Plugin URI: 	http://www.thesoftwarepeople.com/software/plugins/wordpress/feature
 Description: 	Featured Posts allows you to <strong>add featured posts with quotes to your blog</strong>'s website. Powered by <strong><a href="http://wordpress.org/plugins/tsp-easy-dev/">TSP Easy Dev</a></strong>.
 Author: 		The Software People
 Author URI: 	http://www.thesoftwarepeople.com/
-Version: 		1.1.3
+Version: 		1.1.4
 Text Domain: 	tspfp
-Copyright: 		Copyright Â© 2013 The Software People, LLC (www.thesoftwarepeople.com). All rights reserved
+Copyright: 		Copyright © 2013 The Software People, LLC (www.thesoftwarepeople.com). All rights reserved
 License: 		APACHE v2.0 (http://www.apache.org/licenses/LICENSE-2.0)
 */
 
@@ -107,11 +107,14 @@ $featured_posts->add_shortcode ( 'tsp_featured_posts' ); //backwards compatibili
 
 $featured_posts->run( TSPFP_PLUGIN_FILE );
 
-// Initialize widget - Required by WordPress
-add_action('widgets_init', function () {
+function tspfp_widgets_init()
+{
 	global $featured_posts;
 	
 	register_widget ( $featured_posts->get_widget_handler() ); 
 	apply_filters( $featured_posts->get_widget_handler().'-init', $featured_posts->get_options_handler() );
-});
+}// end tspfp_widgets_init
+
+// Initialize widget - Required by WordPress
+add_action('widgets_init', 'tspfp_widgets_init');
 ?>
