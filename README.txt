@@ -49,6 +49,9 @@ Add a `Featured Posts` to posts and pages by using a shortcode inside your text 
 
 == Changelog ==
 
+= 1.1.7 =
+* Enhancement. Removed font size from moving boxes stylesheet
+
 = 1.1.6 =
 * Enhancement. Post images are now be pulled from featured thumbnail as well as content.
 
@@ -85,6 +88,9 @@ Add a `Featured Posts` to posts and pages by using a shortcode inside your text 
 * Launch
 
 == Upgrade notice ==
+
+= 1.1.7 =
+Enhancement. Removed font size from moving boxes stylesheet
 
 = 1.1.6 =
 Enhancement. Post images are now be pulled from featured thumbnail as well as content.
