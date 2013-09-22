@@ -307,8 +307,13 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 		        	$full_preview  	= strip_tags($full_preview);
 			        $full_preview  	= preg_replace('/\[youtube=(.*?)\]/m', "", $full_preview);
 		        	        	
-			        $words          = explode(' ', $full_preview, $excerpt_max + 1);
+			        if ( post_password_required($ID) )
+			        {
+			        	$full_preview = __( 'There is no excerpt because this is a protected post.' );
+			        }//end if
 			        
+			        $words          = explode(' ', $full_preview, $excerpt_max + 1);
+			        			        
 			        if ( count( $words ) > $excerpt_max ) 
 			        {
 			            array_pop($words);
@@ -327,8 +332,13 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 			        $text           = str_replace('<[[', '&lt;[[', $text);
 			        $text 		 	= preg_replace('/\[youtube=(.*?)\]/m', "", $text);
 			        $text			= preg_replace("/\n/", " ", $text);
-			        $text			= preg_replace("/\s+/", " ", $text);
-			        	        	        
+			        $text			= preg_replace("/\s+/", " ", $text);			        	        	        
+		        	        	
+			        if ( post_password_required($ID) )
+			        {
+			        	$text = __( 'There is no excerpt because this is a protected post.' );
+			        }//end if
+			        
 			        $words          = explode(' ', $text, $excerpt_min + 1);
 			        
 			        if ( count( $words ) > $excerpt_min ) 

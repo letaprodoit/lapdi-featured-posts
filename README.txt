@@ -4,7 +4,7 @@ Donate link: http://www.thesoftwarepeople.com/software/plugins/wordpress/feature
 Tags: featured posts display gallery slider jquery moving boxes the software people
 Requires at least: 3.5.1
 Tested up to: 3.6
-Stable tag: 1.1.7
+Stable tag: 1.1.8
 License: Apache v2.0
 License URI: http://www.apache.org/licenses/LICENSE-2.0
 
@@ -49,6 +49,9 @@ Add a `Featured Posts` to posts and pages by using a shortcode inside your text 
 
 == Changelog ==
 
+= 1.1.8 =
+* Fixed bug. Prevent excerpts of protected posts from being displayed.
+
 = 1.1.7 =
 * Enhancement. Removed font size from moving boxes stylesheet
 
@@ -88,6 +91,9 @@ Add a `Featured Posts` to posts and pages by using a shortcode inside your text 
 * Launch
 
 == Upgrade notice ==
+
+= 1.1.8 =
+Fixed bug. Prevent excerpts of protected posts from being displayed.
 
 = 1.1.7 =
 Enhancement. Removed font size from moving boxes stylesheet
