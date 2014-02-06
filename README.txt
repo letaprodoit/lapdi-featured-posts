@@ -23,6 +23,8 @@ Add a `Featured Posts` to posts and pages by using a shortcode inside your text 
 
 == Installation ==
 
+BEFORE YOU BEGIN: Requires the installation and activation of [TSP Easy Dev Latest Version](http://wordpress.org/plugins/tsp-easy-dev)
+
 1. Upload `tsp-featured-posts` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the `Plugins` menu in WordPress
 3. After installation, refer to the `TSP Featured Posts` settings page for more detailed instructions on setting up your shortcodes.
