@@ -255,7 +255,15 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 	        $return_HTML .= $before_title . $title . $after_title;
 	    }
 	    	    
-	    $args                  = 'category=' . $category . '&numberposts=' . $number_posts . '&orderby=' . $order_by . '&include=' . $post_ids;
+			// remove unnecessary spaces from cat_ids #FP-13
+		if (!empty($post_ids))
+		{
+			$post_ids = preg_replace( "/\s+/", " ", $post_ids ); //remove extra spaces
+			$post_ids = preg_replace( "/\,(\s+)/", ",", $post_ids ); // remove comma's with extra spaces
+			$post_ids = preg_replace( "/(\s+)/", ",", $post_ids ); // replace spaces with commas
+		}		
+	    
+		$args                  = 'category=' . $category . '&numberposts=' . $number_posts . '&orderby=' . $order_by . '&include=' . $post_ids;
 	    
 	    $queried_posts = get_posts($args);
 	    

@@ -4,7 +4,7 @@ Donate link: http://www.thesoftwarepeople.com/software/plugins/wordpress/feature
 Tags: featured posts display gallery slider jquery moving boxes the software people
 Requires at least: 3.5.1
 Tested up to: 3.8
-Stable tag: 1.1.9
+Stable tag: 1.2.0
 License: Apache v2.0
 License URI: http://www.apache.org/licenses/LICENSE-2.0
 
@@ -51,6 +51,9 @@ BEFORE YOU BEGIN: Requires the installation and activation of [TSP Easy Dev Late
 
 == Changelog ==
 
+= 1.2.0 =
+* Enhancement: Allow spaces between commas when listing post IDs
+
 = 1.1.9 =
 * Fixed bug. Correctly locates TSP Easy Dev.
 
@@ -96,6 +99,9 @@ BEFORE YOU BEGIN: Requires the installation and activation of [TSP Easy Dev Late
 * Launch
 
 == Upgrade notice ==
+
+= 1.2.0 =
+Enhancement. Allow spaces between commas when listing post IDs
 
 = 1.1.9 =
 Fixed bug. Correctly locates TSP Easy Dev.
