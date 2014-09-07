@@ -297,6 +297,9 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 		        $full_preview = "";        
 		        $content_bottom = "";
 
+				$permalink = get_permalink( $ID );
+				$long_title = get_the_title( $a_post );
+				
 		        if ( in_array( $layout, array( 1, 2, 4 ) ) )
 		        {
 			        // get the bottom content
@@ -325,7 +328,7 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 			        if ( count( $words ) > $excerpt_max ) 
 			        {
 			            array_pop($words);
-			            array_push($words, '...');
+			            array_push($words, "<a target='{$target}' href='{$permalink}' title='{$long_title}'>{$read_more_text}</a>");
 			            
 			            $full_preview          = implode(' ', $words);
 			        }//end if
@@ -352,7 +355,7 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 			        if ( count( $words ) > $excerpt_min ) 
 			        {
 			            array_pop($words);
-			            array_push($words, '[…]');
+			            array_push($words, "<a target='{$target}' href='{$permalink}' title='{$long_title}'>{$read_more_text}</a>");
 			            
 			            $text       = implode(' ', $words);
 			        }//end if
@@ -398,6 +401,8 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 						$this->options->get_value('smarty_compiled_dir'), true );
 				    
 				    // Store values into Smarty
+				    // values like slider_width, slider_height that do not
+				    // need to be maniuplated are stored in smarty here
 				    foreach ( $fields as $key => $val )
 				    {
 				    	$smarty->assign( $key, $val, true);
@@ -413,13 +418,13 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 
 					$smarty->assign("ID", 						$ID, true);
 					$smarty->assign("post_class", 				implode( " ", get_post_class( null, $ID ) ), true);
-					$smarty->assign("long_title", 				get_the_title( $a_post ), true);
+					$smarty->assign("long_title", 				$long_title, true);
 					$smarty->assign("wp_link_pages", 			wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', $this->options->get_value('name') ), 'after' => '</div>', 'echo' => 0 ) ), true);
 					$smarty->assign("edit_post_link", 			get_edit_post_link( __( 'Edit', $this->options->get_value('name') ), '<div class="edit-link">', '</div>', $ID ), true);
 					$smarty->assign("author_first_name", 		get_the_author_meta( 'first_name', $a_post->post_author ), true );
 					$smarty->assign("author_last_name", 		get_the_author_meta( 'last_name', $a_post->post_author ), true );
 					$smarty->assign("sticky", 					is_sticky( $ID ), true);
-					$smarty->assign("permalink", 				get_permalink( $ID ), true);
+					$smarty->assign("permalink", 				$permalink, true);
 					
 					$smarty->assign("featured",					__( 'Featured', $this->options->get_value('name') ), true);
 					$smarty->assign("publish_date", 			$publish_date, true);
@@ -437,6 +442,7 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 					$smarty->assign("last_post", 				($post_cnt == $num_posts) ? true : null, true);
 					$smarty->assign("first_post", 				($post_cnt == 1) ? true : null, true);
 		            
+					$smarty->assign("show_thumb", 				($show_thumb == 'Y') ? true : null, true);						
 		            $return_HTML .= $smarty->fetch( $this->options->get_value('name') . '_layout'.$layout.'.tpl' );
 		        }
 		    } //endforeach;

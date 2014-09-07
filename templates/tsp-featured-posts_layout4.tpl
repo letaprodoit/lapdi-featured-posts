@@ -8,10 +8,14 @@
 		<div id="full">
 			<div class="entry-title"><a target="{$target}" href="{$permalink}" title="{$long_title}">{$long_title}</a></div>
 		</div>
+		{if $show_thumb}
 		<div id="left">
-			{$media}
+			<a target="{$target}" href="{$permalink}" title="{$long_title}">{$media}</a>
 		</div>
 		<div id="right">
+		{else}
+		<div id="full">
+		{/if}
 			{if $has_header_data}
 				<header class="entry-header">
 					<div class="comments-link">
@@ -27,10 +31,11 @@
 			{/if}
 			<div class="entry-summary">
 				{if $show_author == 'Y' || $show_date == 'Y'}
-					{if $show_author == 'Y'}By: {$author_first_name}&nbsp;{$author_last_name}&nbsp;{/if} {if $show_date == 'Y'}Published On: {$publish_date}{/if}
-					<br>
+					<div id="article_about">
+						{if $show_author == 'Y'}By: {$author_first_name}&nbsp;{$author_last_name}&nbsp;{/if} {if $show_date == 'Y'}Published On: {$publish_date}{/if}
+					</div>
 				{/if}
-				{$full_preview}&nbsp;&nbsp;<a target="{$target}" href='{$permalink}'>Continue Reading <span class="meta-nav">&rarr;</span></a>
+				{$full_preview}
 			</div>
 		</div>
 		<div id="clear"></div>

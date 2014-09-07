@@ -5,6 +5,10 @@
 	width: 100%;
 }
 
+#tspfp_article #article_about {
+	padding-bottom: 10px;
+}
+
 /* Image Formatting */
 #tspfp_article img,
 #tspfp_article object,

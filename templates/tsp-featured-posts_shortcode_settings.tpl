@@ -15,6 +15,7 @@
 						<li>Show Quotes: <strong>show_quotes="Y"</strong>(Options: Y, N)</li>
 						<li>Show Posts with No Media Content: <strong>show_text_posts="N"</strong>(Options: Y, N)</li>
 						<li>Number Posts: <strong>number_posts="5"</strong></li>
+						<li>Read More Text: <strong>read_more_text="Continue Reading <span class="meta-nav">&rarr;</span>"</strong></li>
 						<li>Excerpt Length (Layouts #0 & #3): <strong>excerpt_min="60"</strong></li>
 						<li>Excerpt Length (Layouts #1, #2 & #4[Slider]): <strong>excerpt_max="100"</strong></li>
 						<li>Post IDs: <strong>post_ids="5,3,4"</strong></li>
@@ -31,6 +32,7 @@
 							</ul>
 						</li>
 						<li>Order By: <strong>order_by="DESC"</strong>(Options: rand,title,date,author,modified,ID)</li>
+						<li>Show Thumbnails: <strong>show_thumb="Y"</strong>(Options: Y, N)</li>
 						<li>Thumbnail Width: <strong>thumb_width="80"</strong></li>
 						<li>Thumbnail Height: <strong>thumb_height="80"</strong></li>
 						<li>HTML Tag Before Title: <strong>before_title="&lt;h3&gt;"</strong></li>
@@ -41,7 +43,7 @@
 			</ul>
 			<hr>
 			A shortcode with all the options will look like the following:<br><br>
-			<strong>[tsp-featured-posts title="Title of Posts" max_words=10 show_quotes="N" show_author="Y" show_date="N" show_text_posts="N" number_posts="5" excerpt_min="60" excerpt_max="100" post_ids="5,3,4" category="0" slider_width="865" slider_height="365 layout="0" order_by="DESC" thumb_width="80" thumb_height="80" before_title="" after_title=""]</strong>
+			<strong>[tsp-featured-posts title="Title of Posts" max_words=10 show_quotes="N" show_thumb="Y" show_author="Y" show_date"N" show_text_posts="N" number_posts="5" excerpt_max=100 excerpt_min=60 post_ids="5,3,4" category="0" slider_width="865" slider_height="365 layout="0" order_by="DESC" thumb_width="80" thumb_height="80" read_more_text="more..." before_title="" after_title=""]</strong>
 		</div>
 	
 	</div>

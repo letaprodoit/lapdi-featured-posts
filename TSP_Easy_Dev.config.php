@@ -69,6 +69,12 @@ $easy_dev_settings['plugin_options']		= array(
 			'value' 		=> 'N',
 			'options'		=> array ('Yes' => 'Y', 'No' => 'N'),
 		),		
+		'read_more_text'=> array( 
+			'type' 			=> 'INPUT', 
+			'label' 		=> 'Read More Text',
+			'html'			=> true,
+			'value' 		=> '<small>Continue Reading <span class="meta-nav">&rarr;</span></small>',
+		),		
 		'show_date' 	=> array( 
 			'type' 			=> 'SELECT', 
 			'label' 		=> 'Display Publish Date?', 
@@ -151,6 +157,12 @@ $easy_dev_settings['plugin_options']		= array(
 									'Author'	=>	'author',
 									'Modified'	=>	'modified',
 									'ID'		=>	'ID'),
+		),
+		'show_thumb' 	=> array(
+			'type' 			=> 'SELECT',
+			'label' 		=> 'Show Thumbnails?',
+			'value' 		=> 'Y',
+			'options'		=> array ('Yes' => 'Y', 'No' => 'N'),
 		),		
 		'thumb_width' 	=> array( 
 			'type' 			=> 'INPUT', 

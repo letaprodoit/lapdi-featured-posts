@@ -5,7 +5,9 @@
 			<header class="entry-header">
 				<div class="entry-title"><a target="{$target}" href="{$permalink}" title="{$title}">{$title}</a></div>
       		</header>
-			{$media}
+			{if $show_thumb}
+				<a target="{$target}" href="{$permalink}" title="{$long_title}">{$media}</a>
+			{/if}
 		</div>
 		<div id="right">
 			<header class="entry-header">
@@ -21,10 +23,11 @@
 			</header>
 			<div class="entry-summary">
 				{if $show_author == 'Y' || $show_date == 'Y'}
-					{if $show_author == 'Y'}By: {$author_first_name}&nbsp;{$author_last_name}&nbsp;{/if} {if $show_date == 'Y'}Published On: {$publish_date}{/if}
-					<br>
+					<div id="article_about">
+						{if $show_author == 'Y'}By: {$author_first_name}&nbsp;{$author_last_name}&nbsp;{/if} {if $show_date == 'Y'}Published On: {$publish_date}{/if}
+					</div>
 				{/if}
-				{$full_preview}&nbsp;&nbsp;<a target="{$target}" href='{$permalink}'>Continue Reading <span class="meta-nav">&rarr;</span></a>
+				{$full_preview}
 			</div>
 		</div>
 		<div id="clear"></div>
