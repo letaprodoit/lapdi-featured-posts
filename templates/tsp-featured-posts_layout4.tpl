@@ -4,7 +4,7 @@
 {/if}
 <!--  // Top post on home page slider -->
 <article id="post-{$ID}" style="height:{$slider_height}px; ">
-	<div id="{$plugin_key}_article" class="layout4">
+	<div id="{$plugin_key}_article" class="layout4" style="{$style}">
 		<div id="full">
 			<div class="entry-title"><a target="{$target}" href="{$permalink}" title="{$long_title}">{$long_title}</a></div>
 		</div>

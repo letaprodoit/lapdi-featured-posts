@@ -314,9 +314,11 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 			
 			        // remove bottom content from fullpreview to prevent it from displaying twice
 			        $full_preview = str_replace( $content_bottom, "", $full_preview );
+			        		        	
+		        	if ($keep_formatting != 'Y')
+		        		$full_preview  	= strip_tags($full_preview);
 			        
-		        	$full_preview  	= strip_tags($full_preview);
-			        $full_preview  	= preg_replace('/\[youtube=(.*?)\]/m', "", $full_preview);
+		        	$full_preview  	= preg_replace('/\[youtube=(.*?)\]/m', "", $full_preview);
 		        	        	
 			        if ( post_password_required($ID) )
 			        {
@@ -337,7 +339,10 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 		        {
 			        $content       	= get_extended( $a_post->post_content );
 			        $text			= $content['main'];
-		        	$text  			= strip_tags($text);
+		        	
+		        	if ($keep_formatting != 'Y')
+			        	$text  			= strip_tags($text);
+		        	
 			        $text           = strip_shortcodes($text);
 			        $text           = str_replace(']]>', ']]&gt;', $text);
 			        $text           = str_replace('<[[', '&lt;[[', $text);
@@ -432,6 +437,7 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 					$smarty->assign("media", 					$media, true);
 					$smarty->assign("target", 					$target, true);
 					$smarty->assign("text", 					$text, true);
+					$smarty->assign("style", 					$style, true);
 					$smarty->assign("full_preview", 			$full_preview, true);
 					$smarty->assign("content_bottom", 			$content_bottom, true);
 					$smarty->assign("comments_popup_link", 		$comments_popup_link, true);

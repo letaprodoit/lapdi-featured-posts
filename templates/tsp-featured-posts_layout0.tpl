@@ -1,6 +1,6 @@
 <!-- // Side bar featured item with title -->
 <article id="post-{$ID}" class="{$post_class}">
-	<div id="{$plugin_key}_article" class="layout_default layout0">
+	<div id="{$plugin_key}_article" class="layout_default layout0" style="{$style}">
 		<div id="full">
 			{if $show_thumb}
 				<a target="{$target}" href="{$permalink}" title="{$long_title}">{$media}</a>

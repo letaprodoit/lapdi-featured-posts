@@ -1,6 +1,6 @@
 <!-- // Center articles on home page -->
 <article id="post-{$ID}" class="{$post_class}">
-	<div id="{$plugin_key}_article" class="layout1">
+	<div id="{$plugin_key}_article" class="layout1" style="{$style}">
 		<div id="top">
 			<header class="entry-header">
 				{if $sticky}

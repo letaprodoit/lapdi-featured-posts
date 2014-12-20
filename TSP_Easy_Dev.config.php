@@ -95,6 +95,17 @@ $easy_dev_settings['plugin_options']		= array(
 			'old_labels'	=> array ('showtextposts'),
 			'options'		=> array ('Yes' => 'Y', 'No' => 'N'),
 		),		
+		'keep_formatting'	=> array( 
+			'type'			=> 'SELECT', 
+			'label'			=> 'Keep HTML Formatting?', 
+			'value'			=> 'N',
+			'options'		=> array ('Yes' => 'Y', 'No' => 'N'),
+		),		
+		'style'				=> array( 
+			'type'			=> 'INPUT', 
+			'label'			=> 'CSS style tags', 
+			'value'			=> '',
+		),		
 		'number_posts' 		=> array( 
 			'type' 			=> 'INPUT', 
 			'label' 		=> 'How many posts do you want to display?', 

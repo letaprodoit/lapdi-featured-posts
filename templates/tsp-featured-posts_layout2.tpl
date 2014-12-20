@@ -1,6 +1,6 @@
 <!-- // Top post on home page with full excerpt -->
 <article id="post-{$ID}" class="{$post_class}">
-	<div id="{$plugin_key}_article" class="layout2">
+	<div id="{$plugin_key}_article" class="layout2" style="{$style}">
 		<div id="left">
 			<header class="entry-header">
 				<div class="entry-title"><a target="{$target}" href="{$permalink}" title="{$title}">{$title}</a></div>
