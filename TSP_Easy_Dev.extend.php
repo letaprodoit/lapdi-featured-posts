@@ -264,6 +264,9 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 		}		
 	    
 		$args                  = 'category=' . $category . '&numberposts=' . $number_posts . '&orderby=' . $order_by . '&include=' . $post_ids;
+		
+		if ($show_private == 'Y')
+			$args .= "&post_status=publish,private";
 	    
 	    $queried_posts = get_posts($args);
 	    
@@ -316,7 +319,9 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 			        $full_preview = str_replace( $content_bottom, "", $full_preview );
 			        		        	
 		        	if ($keep_formatting != 'Y')
+		        	{
 		        		$full_preview  	= strip_tags($full_preview);
+		        	}//endif
 			        
 		        	$full_preview  	= preg_replace('/\[youtube=(.*?)\]/m', "", $full_preview);
 		        	        	
@@ -341,7 +346,9 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 			        $text			= $content['main'];
 		        	
 		        	if ($keep_formatting != 'Y')
-			        	$text  			= strip_tags($text);
+		        	{
+		        		$text  			= strip_tags($text);
+		        	}//endif
 		        	
 			        $text           = strip_shortcodes($text);
 			        $text           = str_replace(']]>', ']]&gt;', $text);

@@ -69,6 +69,12 @@ $easy_dev_settings['plugin_options']		= array(
 			'value' 		=> 'N',
 			'options'		=> array ('Yes' => 'Y', 'No' => 'N'),
 		),		
+		'show_private' 	=> array( 
+			'type' 			=> 'SELECT', 
+			'label' 		=> 'Show Private Posts?', 
+			'value' 		=> 'N',
+			'options'		=> array ('Yes' => 'Y', 'No' => 'N'),
+		),		
 		'read_more_text'=> array( 
 			'type' 			=> 'INPUT', 
 			'label' 		=> 'Read More Text',
