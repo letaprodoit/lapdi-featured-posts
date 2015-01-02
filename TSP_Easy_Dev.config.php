@@ -113,11 +113,6 @@ $easy_dev_settings['plugin_options']		= array(
 			'value'			=> 'N',
 			'options'		=> array ('Yes' => 'Y', 'No' => 'N'),
 		),		
-		'post_class'		=> array( 
-			'type'			=> 'INPUT', 
-			'label'			=> 'Post Class', 
-			'value'			=> '',
-		),		
 		'style'				=> array( 
 			'type'			=> 'INPUT', 
 			'label'			=> 'CSS style tags', 
@@ -138,6 +133,11 @@ $easy_dev_settings['plugin_options']		= array(
 			'type' 			=> 'INPUT', 
 			'label' 		=> 'Excerpt length (Layouts #1, #2, #4, #5)', 
 			'value' 		=> 100,
+		),		
+		'post_class'		=> array( 
+			'type'			=> 'INPUT', 
+			'label'			=> 'Post Class', 
+			'value'			=> '',
 		),		
 		'post_type' 		=> array( 
 			'type' 			=> 'INPUT', 

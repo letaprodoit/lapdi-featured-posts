@@ -22,6 +22,7 @@
 						<li>Read More Text: <strong>read_more_text="Continue Reading <span class="meta-nav">&rarr;</span>"</strong></li>
 						<li>Excerpt Length (Layouts #0 & #3): <strong>excerpt_min="60"</strong></li>
 						<li>Excerpt Length (Layouts #1, #2, #4[Slider], #5): <strong>excerpt_max="100"</strong></li>
+						<li>Post Class: <strong>post_class=""</strong>(Example: columns1_3, columns1_2)</li>
 						<li>Post Type: <strong>post_type="post"</strong>(Options: post, varies)</li>
 						<li>Post IDs: <strong>post_ids="5,3,4"</strong></li>
 						<li>Category: <strong>category="0"</strong>(Any category ID, 0 returns all categories)</li>
@@ -49,7 +50,7 @@
 			</ul>
 			<hr>
 			A shortcode with all the options will look like the following:<br><br>
-			<strong>[tsp-featured-posts title="Title of Posts" keep_formatting="N" style="color: red;" max_words=10 show_quotes="N" show_thumb="Y" show_event_data="N" show_author="Y" show_date"N" show_private="N" show_text_posts="N" number_posts="5" excerpt_max=100 excerpt_min=60 post_type="post" post_ids="5,3,4" category="0" slider_width="865" slider_height="365 layout="0" order_by="DESC" thumb_width="80" thumb_height="80" read_more_text="more..." before_title="" after_title=""]</strong>
+			<strong>[tsp-featured-posts title="Title of Posts" keep_formatting="N" style="color: red;" max_words=10 show_quotes="N" show_thumb="Y" show_event_data="N" show_author="Y" show_date"N" show_private="N" show_text_posts="N" number_posts="5" excerpt_max=100 excerpt_min=60 post_class="" post_type="post" post_ids="5,3,4" category="0" slider_width="865" slider_height="365 layout="0" order_by="DESC" thumb_width="80" thumb_height="80" read_more_text="more..." before_title="" after_title=""]</strong>
 		</div>
 	
 	</div>
