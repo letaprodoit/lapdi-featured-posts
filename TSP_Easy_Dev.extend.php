@@ -263,10 +263,28 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 			$post_ids = preg_replace( "/(\s+)/", ",", $post_ids ); // replace spaces with commas
 		}		
 	    
-		$args                  = 'post_type=' . $post_type  . '&category=' . $category . '&numberposts=' . $number_posts . '&orderby=' . $order_by . '&include=' . $post_ids;
+		$args = array(
+			'post_type' 	=> $post_type,
+			'category'		=> $category,
+			'numberposts'	=> $number_posts,
+			'orderby'		=> $order_by,
+			'include'		=> $post_ids,
+		);
 		
 		if ($show_private == 'Y')
-			$args .= "&post_status=publish,private";
+			$args['post_status'] = "publish,private";
+		
+		if ($post_type == 'tribe_events')
+		{
+			$args['meta_query'] = array(
+				array(
+					'key' => '_EventEndDate',
+					'value' => date('Y-m-d'),
+					'compare' => '>=',
+					'type' => 'DATETIME'
+				)
+			);
+		}
 	    
 	    $queried_posts = get_posts($args);
 	    
@@ -277,14 +295,18 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 		    $post_cnt = 0;
 		    $num_posts = sizeof( $queried_posts );
 		
-		    foreach ( $queried_posts as $a_post )
+		    global $post;
+		    
+		    foreach ( $queried_posts as $post )
 		    {    
-		        $ID = $a_post->ID;
+			    setup_postdata( $post );
+		    	
+			    $ID = $post->ID;
 		        
-		        $publish_date = date( get_option('date_format'), strtotime( $a_post->post_date ) );
+		        $publish_date = date( get_option('date_format'), strtotime( $post->post_date ) );
 
 		        // get the first image or video
-		        $media = $pro_post->get_post_media ( $a_post, $thumb_width, $thumb_height );
+		        $media = $pro_post->get_post_media ( $post, $thumb_width, $thumb_height );
 		
 		        // get the fields stored in the database for this post
 		        $post_fields = $pro_post->get_post_fields( $ID );
@@ -293,7 +315,7 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 		        // TODO: I don't like passing that entire post object by value
 		        $target = "_self";
 		        
-		        if ( get_post_format( $a_post ) == 'link')
+		        if ( get_post_format( $post ) == 'link')
 		        	$target = "_blank";
 		        
 		        $text = "";
@@ -301,7 +323,7 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 		        $content_bottom = "";
 
 				$permalink = get_permalink( $ID );
-				$long_title = get_the_title( $a_post );
+				$long_title = get_the_title( $post );
 				
 		        if ( in_array( $layout, array( 1, 2, 4, 5 ) ) )
 		        {
@@ -310,7 +332,7 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 			        $content_bottom  = preg_replace('/<p>(.*?)<\/p>/m', "$1", $content_bottom);
 			        	
 			        // get the content to <!--more--> tag
-			        $extended_post = get_extended( $a_post->post_content );
+			        $extended_post = get_extended( $post->post_content );
 			        
 			        // add in formatting
 			        $full_preview  = apply_filters( 'the_content', $extended_post['main'] );
@@ -325,9 +347,12 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 			        
 		        	$full_preview  	= preg_replace('/\[youtube=(.*?)\]/m', "", $full_preview);
 		        	        	
+			        $protected = false;
+			        
 			        if ( post_password_required($ID) )
 			        {
 			        	$full_preview = __( 'There is no excerpt because this is a protected post.' );
+			        	$protected = true;
 			        }//end if
 			        
 			        $words          = explode(' ', $full_preview, $excerpt_max + 1);
@@ -339,10 +364,17 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 			            
 			            $full_preview          = implode(' ', $words);
 			        }//end if
+			        
+			        if (!$protected && $post_type == 'tribe_events' && $show_event_data == 'Y')
+			        {
+			        	$venue = '<div class="duration venue">'.tribe_get_venue().'</div>';
+			        	$schedule = '<div class="duration time">'.tribe_events_event_schedule_details().'</div>';
+			        	$full_preview = "{$venue}{$schedule}{$full_preview}";
+			        }
 		        }
 		        else
 		        {
-			        $content       	= get_extended( $a_post->post_content );
+			        $content       	= get_extended( $post->post_content );
 			        $text			= $content['main'];
 		        	
 		        	if ($keep_formatting != 'Y')
@@ -357,9 +389,12 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 			        $text			= preg_replace("/\n/", " ", $text);
 			        $text			= preg_replace("/\s+/", " ", $text);			        	        	        
 		        	        	
+			        $protected = false;
+			        
 			        if ( post_password_required($ID) )
 			        {
 			        	$text = __( 'There is no excerpt because this is a protected post.' );
+			        	$protected = true;
 			        }//end if
 			        
 			        $words          = explode(' ', $text, $excerpt_min + 1);
@@ -371,13 +406,20 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 			            
 			            $text       = implode(' ', $words);
 			        }//end if
+		        	
+		        	if (!$protected && $post_type == 'tribe_events' && $show_event_data == 'Y')
+			        {
+			        	$venue = '<div class="duration venue">'.tribe_get_venue().'</div>';
+			        	$schedule = '<div class="duration time">'.tribe_events_event_schedule_details().'</div>';
+			        	$text = "{$venue}{$schedule}{$text}";
+			        }
 		        }//end foreach
 		        		        
 		        // Only show articles that have associated images if $show_text_posts is set to 'Y' and
 		        // $show_text_posts is 'N' and there are at least a video or image
 		        if ( $show_text_posts == 'Y' || ( $show_text_posts == 'N' && !empty( $media ) ) ) 
 		        {
-		        	$title = $a_post->post_title;
+		        	$title = $post->post_title;
 		        	
 		        	$words          = explode(' ', $title, $max_words + 1);
 		 	        
@@ -399,7 +441,7 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 						_x( '%', 'comments number', $this->options->get_value('name') ) );*/
 					
 					$comments_open = 							comments_open( $ID );
-					$private = 									post_password_required( $a_post );
+					$private = 									post_password_required( $post );
 					
 					$has_header_data = false;
 					
@@ -433,8 +475,8 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 					$smarty->assign("long_title", 				$long_title, true);
 					$smarty->assign("wp_link_pages", 			wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', $this->options->get_value('name') ), 'after' => '</div>', 'echo' => 0 ) ), true);
 					$smarty->assign("edit_post_link", 			get_edit_post_link( __( 'Edit', $this->options->get_value('name') ), '<div class="edit-link">', '</div>', $ID ), true);
-					$smarty->assign("author_first_name", 		get_the_author_meta( 'first_name', $a_post->post_author ), true );
-					$smarty->assign("author_last_name", 		get_the_author_meta( 'last_name', $a_post->post_author ), true );
+					$smarty->assign("author_first_name", 		get_the_author_meta( 'first_name', $post->post_author ), true );
+					$smarty->assign("author_last_name", 		get_the_author_meta( 'last_name', $post->post_author ), true );
 					$smarty->assign("sticky", 					is_sticky( $ID ), true);
 					$smarty->assign("permalink", 				$permalink, true);
 					

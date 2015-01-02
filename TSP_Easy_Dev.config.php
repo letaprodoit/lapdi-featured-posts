@@ -69,6 +69,12 @@ $easy_dev_settings['plugin_options']		= array(
 			'value' 		=> 'N',
 			'options'		=> array ('Yes' => 'Y', 'No' => 'N'),
 		),		
+		'show_event_data' 	=> array( 
+			'type' 			=> 'SELECT', 
+			'label' 		=> 'Display Event Data (Requires The Events Calendar)?', 
+			'value' 		=> 'N',
+			'options'		=> array ('Yes' => 'Y', 'No' => 'N'),
+		),		
 		'show_private' 	=> array( 
 			'type' 			=> 'SELECT', 
 			'label' 		=> 'Show Private Posts?', 
@@ -125,7 +131,7 @@ $easy_dev_settings['plugin_options']		= array(
 		),		
 		'excerpt_max' 	=> array( 
 			'type' 			=> 'INPUT', 
-			'label' 		=> 'Excerpt length (Layouts #1, #2 & #4)', 
+			'label' 		=> 'Excerpt length (Layouts #1, #2, #4, #5)', 
 			'value' 		=> 100,
 		),		
 		'post_type' 		=> array( 
