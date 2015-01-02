@@ -20,18 +20,20 @@
 						<li>Number Posts: <strong>number_posts="5"</strong></li>
 						<li>Read More Text: <strong>read_more_text="Continue Reading <span class="meta-nav">&rarr;</span>"</strong></li>
 						<li>Excerpt Length (Layouts #0 & #3): <strong>excerpt_min="60"</strong></li>
-						<li>Excerpt Length (Layouts #1, #2 & #4[Slider]): <strong>excerpt_max="100"</strong></li>
+						<li>Excerpt Length (Layouts #1, #2, #4[Slider], #5): <strong>excerpt_max="100"</strong></li>
+						<li>Post Type: <strong>post_type="post"</strong>(Options: post, varies)</li>
 						<li>Post IDs: <strong>post_ids="5,3,4"</strong></li>
 						<li>Category: <strong>category="0"</strong>(Any category ID, 0 returns all categories)</li>
 						<li>Slider Width: <strong>slider_width="865"</strong></li>
 						<li>Slider Height: <strong>slider_height="365"</strong></li>
-						<li>Layout: <strong>layout="0"</strong>(Options: 0, 1, 2, 3, 4)
+						<li>Layout: <strong>layout="0"</strong>(Options: 0, 1, 2, 3, 4, 5)
 							<ul style="padding-left: 30px;">
 								<li>0: Left: Image - Right: Title, Text (Thumbnail)</li>
 								<li>1: Top: Title - Left: Image - Right: Text (Featured-Medium)</li>
 								<li>2: Left: Title, Image - Right: Text (Featured-Large)</li>
 								<li>3: Left: Image - Right: Text (Thumbnail/No title)</li>
 								<li>4: Slider: Title, Image - Right: Text (Featured-Large)</li>
+								<li>5: Top: Image, Bottom: Title, Bottom-Last: Text</li>
 							</ul>
 						</li>
 						<li>Order By: <strong>order_by="DESC"</strong>(Options: rand,title,date,author,modified,ID)</li>
@@ -46,7 +48,7 @@
 			</ul>
 			<hr>
 			A shortcode with all the options will look like the following:<br><br>
-			<strong>[tsp-featured-posts title="Title of Posts" keep_formatting="N" style="color: red;" max_words=10 show_quotes="N" show_thumb="Y" show_author="Y" show_date"N" show_private="N" show_text_posts="N" number_posts="5" excerpt_max=100 excerpt_min=60 post_ids="5,3,4" category="0" slider_width="865" slider_height="365 layout="0" order_by="DESC" thumb_width="80" thumb_height="80" read_more_text="more..." before_title="" after_title=""]</strong>
+			<strong>[tsp-featured-posts title="Title of Posts" keep_formatting="N" style="color: red;" max_words=10 show_quotes="N" show_thumb="Y" show_author="Y" show_date"N" show_private="N" show_text_posts="N" number_posts="5" excerpt_max=100 excerpt_min=60 post_type="post" post_ids="5,3,4" category="0" slider_width="865" slider_height="365 layout="0" order_by="DESC" thumb_width="80" thumb_height="80" read_more_text="more..." before_title="" after_title=""]</strong>
 		</div>
 	
 	</div>

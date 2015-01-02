@@ -263,7 +263,7 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 			$post_ids = preg_replace( "/(\s+)/", ",", $post_ids ); // replace spaces with commas
 		}		
 	    
-		$args                  = 'category=' . $category . '&numberposts=' . $number_posts . '&orderby=' . $order_by . '&include=' . $post_ids;
+		$args                  = 'post_type=' . $post_type  . '&category=' . $category . '&numberposts=' . $number_posts . '&orderby=' . $order_by . '&include=' . $post_ids;
 		
 		if ($show_private == 'Y')
 			$args .= "&post_status=publish,private";
@@ -289,7 +289,7 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 		        // get the fields stored in the database for this post
 		        $post_fields = $pro_post->get_post_fields( $ID );
 		        
-		        // get determine if the link is external if so set target to blank window
+		        // determine if the link is external if so set target to blank window
 		        // TODO: I don't like passing that entire post object by value
 		        $target = "_self";
 		        
@@ -303,7 +303,7 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 				$permalink = get_permalink( $ID );
 				$long_title = get_the_title( $a_post );
 				
-		        if ( in_array( $layout, array( 1, 2, 4 ) ) )
+		        if ( in_array( $layout, array( 1, 2, 4, 5 ) ) )
 		        {
 			        // get the bottom content
 			        $content_bottom = apply_filters('the_content','');

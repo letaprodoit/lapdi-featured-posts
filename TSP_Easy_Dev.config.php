@@ -128,6 +128,11 @@ $easy_dev_settings['plugin_options']		= array(
 			'label' 		=> 'Excerpt length (Layouts #1, #2 & #4)', 
 			'value' 		=> 100,
 		),		
+		'post_type' 		=> array( 
+			'type' 			=> 'INPUT', 
+			'label' 		=> 'Post Type', 
+			'value' 		=> 'post',
+		),		
 		'post_ids' 		=> array( 
 			'type' 			=> 'INPUT', 
 			'label' 		=> 'Post IDs to display', 
@@ -160,7 +165,8 @@ $easy_dev_settings['plugin_options']		= array(
 									'Title (top), Image (below,left), Text (right)'	=> 1,
 									'Title, Image (left) - Text (right)'			=> 2,
 									'Image (left) - Text (right)'					=> 3,
-									'Slider'										=> 4),
+									'Slider'										=> 4,
+									'Image (top), Title (below), Text (below-last)'	=> 5),
 		),		
 		'order_by' 		=> array( 
 			'type' 			=> 'SELECT', 
