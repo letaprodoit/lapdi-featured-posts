@@ -470,8 +470,13 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 					    }//end foreach
 				   	}//endif
 
+				   	$current_post_class = implode( " ", get_post_class( null, $ID ) );
+				   	
+				   	if (!empty($post_class))
+				   		$current_post_class .= " $post_class";
+				   	
 					$smarty->assign("ID", 						$ID, true);
-					$smarty->assign("post_class", 				implode( " ", get_post_class( null, $ID ) ), true);
+					$smarty->assign("post_class", 				$current_post_class, true);
 					$smarty->assign("long_title", 				$long_title, true);
 					$smarty->assign("wp_link_pages", 			wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', $this->options->get_value('name') ), 'after' => '</div>', 'echo' => 0 ) ), true);
 					$smarty->assign("edit_post_link", 			get_edit_post_link( __( 'Edit', $this->options->get_value('name') ), '<div class="edit-link">', '</div>', $ID ), true);

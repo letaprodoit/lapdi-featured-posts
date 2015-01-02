@@ -113,6 +113,11 @@ $easy_dev_settings['plugin_options']		= array(
 			'value'			=> 'N',
 			'options'		=> array ('Yes' => 'Y', 'No' => 'N'),
 		),		
+		'post_class'		=> array( 
+			'type'			=> 'INPUT', 
+			'label'			=> 'Post Class', 
+			'value'			=> '',
+		),		
 		'style'				=> array( 
 			'type'			=> 'INPUT', 
 			'label'			=> 'CSS style tags', 
