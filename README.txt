@@ -4,7 +4,7 @@ Donate link: http://www.thesoftwarepeople.com/software/plugins/wordpress/feature
 Tags: featured posts display gallery slider jquery moving boxes the software people
 Requires at least: 3.5.1
 Tested up to: 4.1
-Stable tag: 1.2.6
+Stable tag: 1.2.7
 License: Apache v2.0
 License URI: http://www.apache.org/licenses/LICENSE-2.0
 
@@ -19,7 +19,7 @@ The Software People's (TSP) Featured Posts plugin allows you to add featured pos
 Add a `Featured Posts` to posts and pages by using a shortcode inside your text or evaluated from within your theme. You may override page/post `Featured Posts` options with shortcode attributes defined on the plugin's settings page.
 
 * `[tsp-featured-posts]` - Will display posts with the default options defined in the plugin's settings page.
-* `[tsp-featured-posts title="Title of Posts" keep_formatting="N" style="color: red;" max_words=10 show_quotes="N" show_thumb="Y" show_event_data="N" show_author="Y" show_date"N" show_private="N" show_text_posts="N" number_posts="5" excerpt_max=100 excerpt_min=60 post_class="" post_type="post" post_ids="5,3,4" category="0" slider_width="865" slider_height="365 layout="0" order_by="DESC" thumb_width="80" thumb_height="80" read_more_text="more..." before_title="" after_title=""]` - Will override all attributes defined on the plugin's settings page.
+* `[tsp-featured-posts title="Title of Posts" keep_formatting="N" style="color: red;" max_words=10 show_quotes="N" show_thumb="Y" show_event_data="N" show_author="Y" show_date"N" show_private="N" show_text_posts="N" number_posts="5" excerpt_max=100 excerpt_min=60 post_class="" fpost_type="post" post_ids="5,3,4" category="0" slider_width="865" slider_height="365 layout="0" order_by="DESC" thumb_width="80" thumb_height="80" read_more_text="more..." before_title="" after_title=""]` - Will override all attributes defined on the plugin's settings page.
 
 == Installation ==
 
@@ -37,6 +37,18 @@ BEFORE YOU BEGIN: Requires the installation and activation of [TSP Easy Dev Late
 
 == Frequently asked questions ==
 
+= I've installed the plugin but when I save I get the message "Cannot load tsp-featured-posts.php."? =
+1. We sincerely apologize this was a bug introduced in versions 1.2.4 - 1.2.6 and fixed in 1.2.7+
+2. A quick fix would be to set "Post Type" to an empty string on the settings page to get past the error
+3. The best solution would be to download version 1.2.7 and follow the instructions in the next steps.
+4. Navigate to the plugins page and click "Update Now" under "TSP Featured Posts" to get version 1.2.7 (or newer versions)
+5. Once activated go back to the TSP Plugins->Featured Posts settings page and set all "Post Type" fields to empty (There will be 2 fields)
+6. Save Changes & Refresh Page
+7. Again, Save Changes & Refresh Page
+8. You should only see one "Post Type" field now, set it to "post" or any post type you'd like, Save Changes
+9. Please update your shortcodes to use `fpost_type` instead of `post_type` (Note: `post_type` is a reserved WP keyword and was the cause of the issue)
+10. Bug fixed. Apologies for the inconvenience.
+
 = I've installed the plugin but my posts are not displaying? =
 
 1. Make sure the folder `/wp-content/uploads/` has recursive, 777 permissions
@@ -50,6 +62,9 @@ BEFORE YOU BEGIN: Requires the installation and activation of [TSP Easy Dev Late
 4. Admin area shortcode settings area.
 
 == Changelog ==
+
+= 1.2.7 =
+* Fixed bug: Fixed issue FP-22 Unable to save settings in admin area (See: [FIX INSTRUCTIONS](https://wordpress.org/plugins/tsp-featured-posts/faq/))
 
 = 1.2.6 =
 * Enhancement: Allow user to add additional post classes
@@ -123,6 +138,9 @@ BEFORE YOU BEGIN: Requires the installation and activation of [TSP Easy Dev Late
 * Launch
 
 == Upgrade notice ==
+
+= 1.2.7 =
+Fixed bug: Fixed issue FP-22 Unable to save settings in admin area  (See: [FIX INSTRUCTIONS](https://wordpress.org/plugins/tsp-featured-posts/faq/))
 
 = 1.2.6 =
 Enhancement: Allow user to add additional post classes

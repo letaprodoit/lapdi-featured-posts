@@ -139,10 +139,11 @@ $easy_dev_settings['plugin_options']		= array(
 			'label'			=> 'Post Class', 
 			'value'			=> '',
 		),		
-		'post_type' 		=> array( 
+		'fpost_type' 		=> array( 
 			'type' 			=> 'INPUT', 
 			'label' 		=> 'Post Type', 
 			'value' 		=> 'post',
+			'old_labels'	=> array ('post_type'),
 		),		
 		'post_ids' 		=> array( 
 			'type' 			=> 'INPUT', 

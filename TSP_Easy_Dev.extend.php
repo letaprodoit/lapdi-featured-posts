@@ -264,7 +264,7 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 		}		
 	    
 		$args = array(
-			'post_type' 	=> $post_type,
+			'post_type' 	=> $fpost_type,
 			'category'		=> $category,
 			'numberposts'	=> $number_posts,
 			'orderby'		=> $order_by,
@@ -274,7 +274,7 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 		if ($show_private == 'Y')
 			$args['post_status'] = "publish,private";
 		
-		if ($post_type == 'tribe_events')
+		if ($fpost_type == 'tribe_events')
 		{
 			$args['meta_query'] = array(
 				array(
@@ -365,7 +365,7 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 			            $full_preview          = implode(' ', $words);
 			        }//end if
 			        
-			        if (!$protected && $post_type == 'tribe_events' && $show_event_data == 'Y')
+			        if (!$protected && $fpost_type == 'tribe_events' && $show_event_data == 'Y')
 			        {
 			        	$venue = '<div class="duration venue">'.tribe_get_venue().'</div>';
 			        	$schedule = '<div class="duration time">'.tribe_events_event_schedule_details().'</div>';
@@ -407,7 +407,7 @@ class TSP_Easy_Dev_Widget_Featured_Posts extends TSP_Easy_Dev_Widget
 			            $text       = implode(' ', $words);
 			        }//end if
 		        	
-		        	if (!$protected && $post_type == 'tribe_events' && $show_event_data == 'Y')
+		        	if (!$protected && $fpost_type == 'tribe_events' && $show_event_data == 'Y')
 			        {
 			        	$venue = '<div class="duration venue">'.tribe_get_venue().'</div>';
 			        	$schedule = '<div class="duration time">'.tribe_events_event_schedule_details().'</div>';
