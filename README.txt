@@ -3,8 +3,8 @@ Contributors: thesoftwarepeople,sharrondenice
 Donate link: http://www.thesoftwarepeople.com/software/plugins/wordpress/featured-posts-for-wordpress.html
 Tags: featured posts display gallery slider jquery moving boxes the software people
 Requires at least: 3.5.1
-Tested up to: 4.3.1
-Stable tag: 1.2.8
+Tested up to: 4.4.2
+Stable tag: 1.2.9
 License: Apache v2.0
 License URI: http://www.apache.org/licenses/LICENSE-2.0
 
@@ -62,6 +62,9 @@ BEFORE YOU BEGIN: Requires the installation and activation of [TSP Easy Dev Late
 4. Admin area shortcode settings area.
 
 == Changelog ==
+
+= 1.2.9 =
+* Enhancement: Using only TSP Easy Dev (Pro version no longer available.)
 
 = 1.2.8 =
 * Fixed bug: Fixed bug to handle null options
@@ -141,6 +144,9 @@ BEFORE YOU BEGIN: Requires the installation and activation of [TSP Easy Dev Late
 * Launch
 
 == Upgrade notice ==
+
+= 1.2.9 =
+Enhancement: Using only TSP Easy Dev (Pro version no longer available.)
 
 = 1.2.8 =
 Fixed bug: Fixed bug to handle null options

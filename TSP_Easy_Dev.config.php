@@ -32,7 +32,7 @@ $easy_dev_settings['base_name']	 			= TSPFP_PLUGIN_BASE_NAME;
 $easy_dev_settings['widget_width']	 		= 300;
 $easy_dev_settings['widget_height'] 		= 350;
 
-$easy_dev_settings['smarty_template_dirs']	= array( TSPFP_PLUGIN_PATH . 'templates', TSP_EASY_DEV_ASSETS_TEMPLATES_PATH, TSP_EASY_DEV_PRO_ASSETS_TEMPLATES_PATH );
+$easy_dev_settings['smarty_template_dirs']	= array( TSPFP_PLUGIN_PATH . 'templates', TSP_EASY_DEV_ASSETS_TEMPLATES_PATH );
 $easy_dev_settings['smarty_compiled_dir']  	= TSP_EASY_DEV_TMP_PATH . TSPFP_PLUGIN_NAME . DS . 'compiled';
 $easy_dev_settings['smarty_cache_dir'] 		= TSP_EASY_DEV_TMP_PATH . TSPFP_PLUGIN_NAME . DS . 'cache';
 

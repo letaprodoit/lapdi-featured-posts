@@ -5,7 +5,7 @@ Plugin URI: 	http://www.thesoftwarepeople.com/software/plugins/wordpress/feature
 Description: 	Featured Posts allows you to <strong>add featured posts with quotes to your blog</strong>'s website. Powered by <strong><a href="http://wordpress.org/plugins/tsp-easy-dev/">TSP Easy Dev</a></strong>.
 Author: 		The Software People
 Author URI: 	http://www.thesoftwarepeople.com/
-Version: 		1.2.7
+Version: 		1.2.9
 Text Domain: 	tspfp
 Copyright: 		Copyright � 2013 The Software People, LLC (www.thesoftwarepeople.com). All rights reserved
 License: 		APACHE v2.0 (http://www.apache.org/licenses/LICENSE-2.0)
@@ -24,7 +24,7 @@ define('TSPFP_PLUGIN_REQ_VERSION', 			"3.5.1");
 // The recommended option would be to require the installation of the standard version and
 // bundle the Pro classes into your plugin if needed, this plugin requires both the Easy Dev plugin installation
 // and looks for the existence of the Easy Dev Pro libraries
-if ( !file_exists ( WP_PLUGIN_DIR . "/tsp-easy-dev/TSP_Easy_Dev.register.php" ) || !file_exists( TSPFP_PLUGIN_PATH . "lib/TSP_Easy_Dev_Pro/TSP_Easy_Dev_Pro.register.php" ) )
+if ( !file_exists ( WP_PLUGIN_DIR . "/tsp-easy-dev/TSP_Easy_Dev.register.php" ) )
 {
 	function display_tspfp_notice()
 	{
@@ -46,11 +46,6 @@ else
     {
     	include_once WP_PLUGIN_DIR . "/tsp-easy-dev/TSP_Easy_Dev.register.php";
     }//end else
-
-    if (file_exists( TSPFP_PLUGIN_PATH . "/lib//TSP_Easy_Dev_Pro/TSP_Easy_Dev_Pro.register.php" ))
-    {
-    	include_once TSPFP_PLUGIN_PATH . "/lib//TSP_Easy_Dev_Pro/TSP_Easy_Dev_Pro.register.php";
-    }//end else
 }//end else
 
 global $easy_dev_settings;
@@ -60,7 +55,7 @@ require( TSPFP_PLUGIN_PATH . 'TSP_Easy_Dev.extend.php');
 //--------------------------------------------------------
 // initialize the plugin
 //--------------------------------------------------------
-$featured_posts 						= new TSP_Easy_Dev_Pro( TSPFP_PLUGIN_FILE, TSPFP_PLUGIN_REQ_VERSION );
+$featured_posts 						= new TSP_Easy_Dev( TSPFP_PLUGIN_FILE, TSPFP_PLUGIN_REQ_VERSION );
 
 $featured_posts->set_options_handler( new TSP_Easy_Dev_Options_Featured_Posts( $easy_dev_settings ), true );
 
@@ -77,12 +72,12 @@ $featured_posts->uses_shortcodes 				= true;
 // Quueue User styles
 $featured_posts->add_css( TSPFP_PLUGIN_URL . 'css' . DS . 'movingboxes.css' );
 
-if ( fn_easy_dev_pro_this_browser( 'IE', 8 ) )
+if ( TSP_Easy_Dev_Tools::this_browser( 'IE', 8 ) )
 {
 	$featured_posts->add_css( TSPFP_PLUGIN_URL . 'css' . DS . 'movingboxes-ie.css' );
 }//endif
 	
-if ( fn_easy_dev_pro_this_browser( 'IE' ) )
+if ( TSP_Easy_Dev_Tools::this_browser( 'IE' ) )
 {
 	$featured_posts->add_css( TSPFP_PLUGIN_URL . TSPFP_PLUGIN_NAME . '.ie.css' );
 }//endif
