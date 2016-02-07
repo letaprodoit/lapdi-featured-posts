@@ -5,7 +5,7 @@ Plugin URI: 	http://www.thesoftwarepeople.com/software/plugins/wordpress/feature
 Description: 	Featured Posts allows you to <strong>add featured posts with quotes to your blog</strong>'s website. Powered by <strong><a href="http://wordpress.org/plugins/tsp-easy-dev/">TSP Easy Dev</a></strong>.
 Author: 		The Software People
 Author URI: 	http://www.thesoftwarepeople.com/
-Version: 		1.2.9
+Version: 		1.3.0
 Text Domain: 	tspfp
 Copyright: 		Copyright � 2013 The Software People, LLC (www.thesoftwarepeople.com). All rights reserved
 License: 		APACHE v2.0 (http://www.apache.org/licenses/LICENSE-2.0)
@@ -86,13 +86,17 @@ else
 	$featured_posts->add_css( TSPFP_PLUGIN_URL . TSPFP_PLUGIN_NAME . '.css' );
 }//endelse
 
-// Quueue User Scripts
+// Queue User Scripts
 $featured_posts->add_script( TSPFP_PLUGIN_URL . 'js' . DS . 'jquery.movingboxes.js', array('jquery') );
 $featured_posts->add_script( TSPFP_PLUGIN_URL . 'js' . DS . 'slider-scripts.js', array('jquery') );
 $featured_posts->add_script( TSPFP_PLUGIN_URL . 'js' . DS . 'scripts.js',  array('jquery') );
 
-// Quueue Admin styles
-$featured_posts->add_css( TSPFP_PLUGIN_URL . 'css' . DS. 'admin-style.css', true );
+// Queue Admin Scripts
+$featured_posts->add_script( TSP_EASY_DEV_ASSETS_JS_URL . 'admin-script.js',  array('jquery','jquery-ui-tabs'), true );
+
+// Queue Admin styles
+$featured_posts->add_css( TSP_EASY_DEV_ASSETS_CSS_URL . 'font-awesome.min.css', true );
+$featured_posts->add_css( TSP_EASY_DEV_ASSETS_CSS_URL . 'admin-style.css', true );
 $featured_posts->add_css( TSP_EASY_DEV_ASSETS_CSS_URL . 'style.css', true );
 
 $featured_posts->set_plugin_icon( TSPFP_PLUGIN_URL . 'images' . DS . 'tsp_icon_16.png' );
