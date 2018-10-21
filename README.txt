@@ -1,10 +1,10 @@
-=== TSP Featured Posts ===
-Contributors: thesoftwarepeople,sharrondenice
-Donate link: http://www.thesoftwarepeople.com/software/plugins/wordpress/featured-posts-for-wordpress.html
+=== LAPDI Featured Posts ===
+Contributors: letaprodoit,sharrondenice
+Donate link: http://www.letaprodoit.com/product/featured-posts-for-wordpress/
 Tags: featured posts display gallery slider jquery moving boxes the software people
 Requires at least: 3.5.1
-Tested up to: 4.4.2
-Stable tag: 1.3.0
+Tested up to: 5.0.0
+Stable tag: 1.3.1
 License: Apache v2.0
 License URI: http://www.apache.org/licenses/LICENSE-2.0
 
@@ -12,7 +12,7 @@ Featured Posts allows you to add featured posts to your blog's website via widge
 
 == Description ==
 
-The Software People's (TSP) Featured Posts plugin allows you to add featured posts to your blog's website via widget or on pages and posts using shortcodes. Featured Posts has five (5) layouts and can include thumbnails, post gallery and quotes.
+Let A Pro Do IT!'s (LAPDI) Featured Posts plugin allows you to add featured posts to your blog's website via widget or on pages and posts using shortcodes. Featured Posts has five (5) layouts and can include thumbnails, post gallery and quotes.
 
 = Shortcodes =
 
@@ -23,16 +23,16 @@ Add a `Featured Posts` to posts and pages by using a shortcode inside your text 
 
 == Installation ==
 
-BEFORE YOU BEGIN: Requires the installation and activation of [TSP Easy Dev Latest Version](http://wordpress.org/plugins/tsp-easy-dev)
+BEFORE YOU BEGIN: Requires the installation and activation of [LAPDI Easy Dev Latest Version](http://wordpress.org/plugins/tsp-easy-dev)
 
 1. Upload `tsp-featured-posts` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the `Plugins` menu in WordPress
-3. After installation, refer to the `TSP Featured Posts` settings page for more detailed instructions on setting up your shortcodes.
-4. `Featured Posts` widgets can be added to the sidemenu bar by visiting `Appearance > Widgets` and dragging the `TSP Featured Posts` widget to your sidebar menu.
+3. After installation, refer to the `LAPDI Featured Posts` settings page for more detailed instructions on setting up your shortcodes.
+4. `Featured Posts` widgets can be added to the sidemenu bar by visiting `Appearance > Widgets` and dragging the `LAPDI Featured Posts` widget to your sidebar menu.
 5. Add some widgets to the sidemenu bar, Add shortcodes to pages and posts (see Instructions)
 6. View your site
 7. Adjust your CSS for your theme by visiting `Appearance > Edit CSS`
-8. Adjust the `Sliding Gallery` settings, if necessary, by visiting `Plugins > Editor`, Select `TSP Featured Posts` and edit the `tsp-featured-posts.css` and `js/slider-scripts.js` files
+8. Adjust the `Sliding Gallery` settings, if necessary, by visiting `Plugins > Editor`, Select `LAPDI Featured Posts` and edit the `tsp-featured-posts.css` and `js/slider-scripts.js` files
 9. Manipulating the CSS for `#postSlider` and `#tspfp_article` entries changes the gallery and article styles respectfully
 
 == Frequently asked questions ==
@@ -41,8 +41,8 @@ BEFORE YOU BEGIN: Requires the installation and activation of [TSP Easy Dev Late
 1. We sincerely apologize this was a bug introduced in versions 1.2.4 - 1.2.6 and fixed in 1.2.7+
 2. A quick fix would be to set "Post Type" to an empty string on the settings page to get past the error
 3. The best solution would be to download version 1.2.7 and follow the instructions in the next steps.
-4. Navigate to the plugins page and click "Update Now" under "TSP Featured Posts" to get version 1.2.7 (or newer versions)
-5. Once activated go back to the TSP Plugins->Featured Posts settings page and set all "Post Type" fields to empty (There will be 2 fields)
+4. Navigate to the plugins page and click "Update Now" under "LAPDI Featured Posts" to get version 1.2.7 (or newer versions)
+5. Once activated go back to the LAPDI Plugins->Featured Posts settings page and set all "Post Type" fields to empty (There will be 2 fields)
 6. Save Changes & Refresh Page
 7. Again, Save Changes & Refresh Page
 8. You should only see one "Post Type" field now, set it to "post" or any post type you'd like, Save Changes
@@ -63,11 +63,16 @@ BEFORE YOU BEGIN: Requires the installation and activation of [TSP Easy Dev Late
 
 == Changelog ==
 
+= 1.3.1 =
+* Enhancement: Requires v2.0.0 of LAPDI Easy Dev
+* Fixed Bug: Adding plugin to page changes page format
+* Fixed Bug: Adding plugin to overrides current post title
+
 = 1.3.0 =
 * Enhancement: Improved settings UI
 
 = 1.2.9 =
-* Enhancement: Using only TSP Easy Dev (Pro version no longer available.)
+* Enhancement: Using only LAPDI Easy Dev (Pro version no longer available.)
 
 = 1.2.8 =
 * Fixed bug: Fixed bug to handle null options
@@ -103,7 +108,7 @@ BEFORE YOU BEGIN: Requires the installation and activation of [TSP Easy Dev Late
 * Enhancement: Allow spaces between commas when listing post IDs
 
 = 1.1.9 =
-* Fixed bug. Correctly locates TSP Easy Dev.
+* Fixed bug. Correctly locates LAPDI Easy Dev.
 
 = 1.1.8 =
 * Fixed bug. Prevent excerpts of protected posts from being displayed.
@@ -148,11 +153,16 @@ BEFORE YOU BEGIN: Requires the installation and activation of [TSP Easy Dev Late
 
 == Upgrade notice ==
 
+= 1.3.1 =
+Enhancement: Requires v2.0.0 of LAPDI Easy Dev
+Fixed Bug: Adding plugin to page changes page format
+Fixed Bug: Adding plugin to overrides current post title
+
 = 1.3.0 =
 Enhancement: Improved settings UI
 
 = 1.2.9 =
-Enhancement: Using only TSP Easy Dev (Pro version no longer available.)
+Enhancement: Using only LAPDI Easy Dev (Pro version no longer available.)
 
 = 1.2.8 =
 Fixed bug: Fixed bug to handle null options
@@ -188,7 +198,7 @@ Enhancement (Blackley): Allow user to control post info using CSS (author/date -
 Enhancement. Allow spaces between commas when listing post IDs
 
 = 1.1.9 =
-Fixed bug. Correctly locates TSP Easy Dev.
+Fixed bug. Correctly locates LAPDI Easy Dev.
 
 = 1.1.8 =
 Fixed bug. Prevent excerpts of protected posts from being displayed.
@@ -216,7 +226,7 @@ Required Bug Fixes.
 Required Bug Fixes.
 
 = 1.1.0 =
-Plugin now requires TSP Easy Dev. Uses TSP Easy Dev Pro. New features.
+Plugin now requires LAPDI Easy Dev. Uses LAPDI Easy Dev Pro. New features.
 
 = 1.0.1 =
 Menu fix.

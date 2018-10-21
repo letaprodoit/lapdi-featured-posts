@@ -3,34 +3,34 @@ Featured Posts for WordPress
 Featured Posts for WordPress allows you to add featured posts to your blog's website via widget or on pages and posts using shortcodes. Featured Posts has five (5) layouts and can include thumbnails and quotes.
 
 For up-to-date installation and setup notes, visit the FAQ:
-[http://lab.thesoftwarepeople.com/tracker/wiki/wordpress-fp:MainPage](http://lab.thesoftwarepeople.com/tracker/wiki/wordpress-fp:MainPage)
+[https://lab.letaprodoit.com/public/wiki/wordpress-fp:MainPage](https://lab.letaprodoit.com/public/wiki/wordpress-fp:MainPage)
 
 
 *GENERAL INSTALLATION NOTES*
 
 - Install Featured Posts either via the WordPress.org plugin directory, or by uploading the files to your server
-- Visit 'Admin Menu > TSP Plugins > TSP Featured Posts' and adjust your shortcode configuration.
+- Visit 'Admin Menu > LAPDI Plugins > LAPDI Featured Posts' and adjust your shortcode configuration.
 - That's it. You're ready to go!
 
 *USING THE MODULE*
 
-- After installation, refer to the TSP Featured Posts settings page for more detailed instructions on setting up your shortcodes.
-- Featured Posts widgets can be added to the sidemenu bar by visiting 'Appearance > Widgets' and dragging the TSP Featured Posts widget to your sidebar menu.
+- After installation, refer to the LAPDI Featured Posts settings page for more detailed instructions on setting up your shortcodes.
+- Featured Posts widgets can be added to the sidemenu bar by visiting 'Appearance > Widgets' and dragging the LAPDI Featured Posts widget to your sidebar menu.
 - Add some widgets to the sidemenu bar, Add shortcodes to pages and posts (see Instructions)
 - View your site
 - Adjust your CSS for your theme by visiting 'Appearance > Edit CSS'
-- Adjust the Sliding Gallery settings, if necessary, by visiting Plugins > Editor, Select TSP Featured Categories and edit the tsp-featured-categories.css and js/gallery-scripts.js files
+- Adjust the Sliding Gallery settings, if necessary, by visiting Plugins > Editor, Select LAPDI Featured Categories and edit the tsp-featured-categories.css and js/gallery-scripts.js files
 - Manipulating the CSS for #makeMeScrollable and #tsp-featured-categories entries changes the gallery and category styles respectfully
 
 *REPORTING ISSUES*
 
 Thank you for downloading the Featured Posts (WordPress Plugin) 1.0
 If you find any issues, please report them in the issue tracker on our website:
-[http://lab.thesoftwarepeople.com/tracker/wordpress-fp](http://lab.thesoftwarepeople.com/tracker/wordpress-fp)
+[https://lab.letaprodoit.com/public/wordpress-fp](https://lab.letaprodoit.com/public/wordpress-fp)
 
 *COPYRIGHT AND LICENSE*
 
-Copyright 2013 The Software People, LLC
+Copyright 2013 Let A Pro Do IT!, LLC
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this work except in compliance with the License.
