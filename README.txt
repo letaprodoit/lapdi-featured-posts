@@ -1,6 +1,6 @@
 === LAPDI Featured Posts ===
 Contributors: letaprodoit,sharrondenice
-Donate link: http://www.letaprodoit.com/product/featured-posts-for-wordpress/
+Donate link: https://www.letaprodoit.com/apps/plugins/wordpress/featured-posts-for-wordpress/
 Tags: featured posts display gallery slider jquery moving boxes the software people
 Requires at least: 3.5.1
 Tested up to: 5.0.0
@@ -72,7 +72,7 @@ BEFORE YOU BEGIN: Requires the installation and activation of [LAPDI Easy Dev La
 * Enhancement: Improved settings UI
 
 = 1.2.9 =
-* Enhancement: Using only LAPDI Easy Dev (Pro version no longer available.)
+* Enhancement: Using only TSP Easy Dev (Pro version no longer available.)
 
 = 1.2.8 =
 * Fixed bug: Fixed bug to handle null options
@@ -108,7 +108,7 @@ BEFORE YOU BEGIN: Requires the installation and activation of [LAPDI Easy Dev La
 * Enhancement: Allow spaces between commas when listing post IDs
 
 = 1.1.9 =
-* Fixed bug. Correctly locates LAPDI Easy Dev.
+* Fixed bug. Correctly locates TSP Easy Dev.
 
 = 1.1.8 =
 * Fixed bug. Prevent excerpts of protected posts from being displayed.
@@ -162,7 +162,7 @@ Fixed Bug: Adding plugin to overrides current post title
 Enhancement: Improved settings UI
 
 = 1.2.9 =
-Enhancement: Using only LAPDI Easy Dev (Pro version no longer available.)
+Enhancement: Using only TSP Easy Dev (Pro version no longer available.)
 
 = 1.2.8 =
 Fixed bug: Fixed bug to handle null options
@@ -198,7 +198,7 @@ Enhancement (Blackley): Allow user to control post info using CSS (author/date -
 Enhancement. Allow spaces between commas when listing post IDs
 
 = 1.1.9 =
-Fixed bug. Correctly locates LAPDI Easy Dev.
+Fixed bug. Correctly locates TSP Easy Dev.
 
 = 1.1.8 =
 Fixed bug. Prevent excerpts of protected posts from being displayed.
@@ -226,7 +226,7 @@ Required Bug Fixes.
 Required Bug Fixes.
 
 = 1.1.0 =
-Plugin now requires LAPDI Easy Dev. Uses LAPDI Easy Dev Pro. New features.
+Plugin now requires TSP Easy Dev. Uses TSP Easy Dev Pro. New features.
 
 = 1.0.1 =
 Menu fix.

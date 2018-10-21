@@ -6,10 +6,11 @@
  
  	<!-- Fileset for all files -->
     <fileset dir="${project.basedir}" id="allfiles">
-        <include name="css/*" />
-        <include name="images/*" />
-        <include name="js/*" />
-        <include name="templates/*" />
+        <include name="assets/*" />
+        <include name="assets/css/*" />
+        <include name="assets/images/*" />
+        <include name="assets/js/*" />
+        <include name="assets/templates/*" />
         <include name="*.php" />
         <include name="*.css" />
         <include name="*.html" />
