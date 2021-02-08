@@ -1,10 +1,10 @@
 === LAPDI Featured Posts ===
 Contributors: letaprodoit,sharrondenice
-Donate link: https://www.letaprodoit.com/apps/plugins/wordpress/featured-posts-for-wordpress/
+Donate link: https://letaprodoitcom/apps/plugins/wordpress/featured-posts-for-wordpress/
 Tags: featured posts display gallery slider jquery moving boxes the software people
 Requires at least: 3.5.1
-Tested up to: 5.0.0
-Stable tag: 1.3.1
+Tested up to: 5.6.1
+Stable tag: 1.3.2
 License: Apache v2.0
 License URI: http://www.apache.org/licenses/LICENSE-2.0
 
@@ -62,6 +62,9 @@ BEFORE YOU BEGIN: Requires the installation and activation of [LAPDI Easy Dev La
 4. Admin area shortcode settings area.
 
 == Changelog ==
+= 1.3.2 =
+* Maintenance 
+* Bug fix - Null exception fix
 
 = 1.3.1 =
 * Enhancement: Requires v2.0.0 of LAPDI Easy Dev
@@ -152,6 +155,10 @@ BEFORE YOU BEGIN: Requires the installation and activation of [LAPDI Easy Dev La
 * Launch
 
 == Upgrade notice ==
+
+= 1.3.2 =
+* Maintenance 
+* Bug fix - Null exception fix
 
 = 1.3.1 =
 Enhancement: Requires v2.0.0 of LAPDI Easy Dev

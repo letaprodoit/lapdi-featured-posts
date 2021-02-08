@@ -4,7 +4,7 @@
      * @package TSP_Easy_Dev
      * @author sharrondenice, letaprodoit
      * @author Sharron Denice, Let A Pro Do IT!
-     * @copyright 2013 Let A Pro Do IT!
+     * @copyright 2021 Let A Pro Do IT!
      * @license APACHE v2.0 (http://www.apache.org/licenses/LICENSE-2.0)
      * @version $Id: [FILE] [] [DATE] [TIME] [USER] $
      */
@@ -82,7 +82,7 @@
      * @package TSPEasyPlugin
      * @author sharrondenice, letaprodoit
      * @author Sharron Denice, Let A Pro Do IT!
-     * @copyright 2013 Let A Pro Do IT!
+     * @copyright 2021 Let A Pro Do IT!
      * @license APACHE v2.0 (http://www.apache.org/licenses/LICENSE-2.0)
      * @version $Id: [FILE] [] [DATE] [TIME] [USER] $
      */
@@ -199,7 +199,7 @@
 
             $pro_post = $this->options->get_pro_post();
 
-            if (!empty ( $queried_posts ))
+            if (!empty ( $queried_posts ) && $pro_post != null)
             {
                 $post_cnt = 0;
                 $num_posts = sizeof( $queried_posts );

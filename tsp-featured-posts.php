@@ -1,13 +1,13 @@
 <?php
     /*
     Plugin Name: 	LAPDI Featured Posts
-    Plugin URI: 	https://www.letaprodoit.com/apps/plugins/wordpress/featured-posts-for-wordpress/
+    Plugin URI: 	https://letaprodoitcom/apps/plugins/wordpress/featured-posts-for-wordpress/
     Description: 	Featured Posts allows you to <strong>add featured posts with quotes to your blog</strong>'s website. Powered by <strong><a href="http://wordpress.org/plugins/tsp-easy-dev/">LAPDI Easy Dev</a></strong>.
     Author: 		Let A Pro Do IT!
-    Author URI: 	http://www.letaprodoit.com/
-    Version: 		1.3.1
+    Author URI: 	https://letaprodoit.com/
+    Version: 		1.3.2
     Text Domain: 	tspfp
-    Copyright: 		Copyright � 2013 Let A Pro Do IT!, LLC (www.letaprodoit.com). All rights reserved
+    Copyright: 		Copyright � 2021 Let A Pro Do IT!, LLC (www.letaprodoit.com). All rights reserved
     License: 		APACHE v2.0 (http://www.apache.org/licenses/LICENSE-2.0)
     */
 
