@@ -143,7 +143,7 @@
             ),
             'post_ids' 		=> array(
                 'type' 			=> 'INPUT',
-                'label' 		=> 'Post IDs to display',
+                'label' 		=> 'Post IDs to display, enter 0 for current post title',
                 'value' 		=> '',
                 'old_labels'	=> array ('postids'),
             ),

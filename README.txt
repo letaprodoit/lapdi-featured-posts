@@ -62,6 +62,9 @@ BEFORE YOU BEGIN: Requires the installation and activation of [LAPDI Easy Dev La
 4. Admin area shortcode settings area.
 
 == Changelog ==
+= 1.3.4 =
+Enhancement. Added new layout to display title only
+
 = 1.3.3 =
 Bug fix. Fixed bug with posts not showing
 
@@ -158,6 +161,10 @@ Bug fix. Fixed bug with posts not showing
 * Launch
 
 == Upgrade notice ==
+= 1.3.4 =
+Enhancement. Added new layout to display title only
+
+
 = 1.3.3 =
 Bug fix. Fixed bug with posts not showing
 

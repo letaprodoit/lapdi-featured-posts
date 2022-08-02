@@ -172,6 +172,11 @@
                 $fields['post_ids'] = preg_replace( "/(\s+)/", ",", $fields['post_ids'] ); // replace spaces with commas
             }
 
+            if ($fields['post_ids'] == 0 || $fields['post_ids'] == -1)
+            {
+                $fields['post_ids'] = get_the_ID();
+            }
+
             $args = array(
                 'post_type' 	=> $fields['fpost_type'],
                 'category'		=> $fields['category'],

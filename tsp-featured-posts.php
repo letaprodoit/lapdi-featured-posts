@@ -5,7 +5,7 @@
     Description: 	Featured Posts allows you to <strong>add featured posts with quotes to your blog</strong>'s website. Powered by <strong><a href="http://wordpress.org/plugins/tsp-easy-dev/">LAPDI Easy Dev</a></strong>.
     Author: 		Let A Pro Do IT!
     Author URI: 	https://letaprodoit.com/
-    Version: 		1.3.3
+    Version: 		1.3.4
     Text Domain: 	tspfp
     Copyright: 		Copyright � 2021 Let A Pro Do IT!, LLC (www.letaprodoit.com). All rights reserved
     License: 		APACHE v2.0 (http://www.apache.org/licenses/LICENSE-2.0)
